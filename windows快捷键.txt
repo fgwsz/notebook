@@ -1,0 +1,40 @@
+>> 打开终端
+   win+r 打开输入框，输入powershell，输入回车键就可以打开终端
+
+>> 打开搜索框
+   win+s 打开搜索框窗口，光标进入搜索框
+         输入后点击回车，进入选中项窗口
+   esc   退出窗口
+   
+>> 切换任务栏
+   按住alt键，按数次tab键来选择任务窗口，松开alt键跳转到选择的任务窗口
+   按住alt键，使用方向键也可以选择窗口，松开alt键跳转到选择的任务窗口
+
+>> 运行程序
+   把常用的软件的主程序的父路径设置成环境变量。
+   这样我们可以直接调用{exe_file_name} 来调用环境变量中文件夹下的一些可执行程序。
+   QQ       # 启动QQ
+   WeChat   # 启动微信
+   msedge   # 启动Edge浏览器
+   explorer # 启动资源管理器
+   也有一些在脚本中使用的土办法：
+   Start-Process {exe_path} # powershell命令调用方式
+   start {exe_path}         # cmd命令调用方式
+ 
+>> 窗口操作
+   win+↑  最大化窗口
+   alt+f4 关闭窗口
+
+>> 一些通用的快捷键
+
+alt 按一下然后进入当前窗口的菜单栏选项
+    +space 切换
+    +tab   切换
+	+alt   退出alt模式
+	
+ctrl+s 保存
+ctrl+c 复制
+ctrl+v 粘贴
+ctrl+z 撤销
+ctrl+y 取消撤销
+ctrl+d 复制一行并粘贴
