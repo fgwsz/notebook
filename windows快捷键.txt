@@ -38,3 +38,9 @@ ctrl+v 粘贴
 ctrl+z 撤销
 ctrl+y 取消撤销
 ctrl+d 复制一行并粘贴
+
+>> 用键盘选中文本
+shfit + ↑ 向上选择文本  
+shfit + ↓ 向下选择文本  
+shfit + ← 向左选择文本
+shfit + → 向右选择文本
