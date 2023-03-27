@@ -38,7 +38,7 @@ ctrl+c 复制
 ctrl+v 粘贴
 ctrl+z 撤销
 ctrl+y 取消撤销
-ctrl+d 复制一行并粘贴
+ctrl+d 删除文件/复制光标所在的一行内容，新建下一行，粘贴内容到新建的行中
 ctrl+x 剪切
 F2     重命名
 
