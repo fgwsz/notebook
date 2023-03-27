@@ -41,6 +41,7 @@ ctrl+y 取消撤销
 ctrl+d 删除文件/复制光标所在的一行内容，新建下一行，粘贴内容到新建的行中
 ctrl+x 剪切
 F2     重命名
+win+l  锁屏
 
 >> 用键盘选中文本
 shfit + ↑ 向上选择文本  
@@ -62,3 +63,5 @@ Fn + windows 键可以恢复
 >> word 快捷键(wps通用)
 ctrl+b     字体加粗
 ctrl+alt+v 粘贴(粘贴之前可以选择粘贴的格式)
+>> wps 快捷键
+ctrl+tab  切换标签页
