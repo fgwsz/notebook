@@ -63,5 +63,10 @@ Fn + windows 键可以恢复
 >> word 快捷键(wps通用)
 ctrl+b     字体加粗
 ctrl+alt+v 粘贴(粘贴之前可以选择粘贴的格式)
+
 >> wps 快捷键
 ctrl+tab  切换标签页
+ctrl+w    关闭标签页
+
+>> explorer.exe 快捷键
+alt+↑  切换到上一级目录
