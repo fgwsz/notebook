@@ -43,6 +43,7 @@ ctrl+x 剪切
 F2     重命名
 win+l  锁屏
 win+x  打开菜单栏选项卡
+win+space 切换输入法
 
 >> 用键盘选中文本
 shfit + ↑ 向上选择文本  
