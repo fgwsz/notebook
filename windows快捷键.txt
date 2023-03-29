@@ -72,3 +72,9 @@ ctrl+alt+v 粘贴(粘贴之前可以选择粘贴的格式)
 >> wps 快捷键
 ctrl+tab  切换标签页
 ctrl+w    关闭标签页
+
+>> vscode 快捷键
+ctrl+tab  切换标签页
+
+>> opera 浏览器
+alt 打开菜单栏选项卡
