@@ -92,3 +92,4 @@ ctrl+d         收藏当前标签页
 ctrl+w         关闭当前标签页
 ctrl+tab       切换到下一个标签页
 ctrl+shfit+tab 切换到上一个标签页
+ctrl+j         打开下载标签栏小窗口，之后可以使用tab键来选择选项按钮，enter来点击按钮，esc键退出小窗口
