@@ -20,6 +20,7 @@
     <tab>         切换到下一个
     <shift+tab>   切换到上一个
 
+<ctrl-a> 全选
 <ctrl-s> 保存
 <ctrl-c> 复制
 <ctrl-v> 粘贴
