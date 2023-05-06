@@ -349,6 +349,8 @@ A   光标放置在本行所有字符之后
         例如可以使用`exit`命令来退出cmd/powershell
     :rightbelow term[inal]
         可以在右下方打开一个终端窗口
+    :bo[tright] term[inal]
+        可以在下方打开一个终端窗口
     注意：vim :term 打开的终端窗口也可以使用vim的三种编辑模式，但有些地方不同。
     <ctrl-\><ctrl-n> 
         终端窗口下从插入模式进入普通模式(一般模式)。
