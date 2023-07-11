@@ -34,6 +34,8 @@ F2       重命名
 <win-space> 切换输入法
 <win-e>  打开文件浏览器
 <space>  选中/取消选中按钮
+
+>> visual studio 快捷键
 <alt-space> 弹出全局搜索框
 
 >> 用键盘选中文本
