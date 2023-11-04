@@ -1,4 +1,9 @@
-git add .
+echo "you can input exit to abort git push."
 $commit_info=Read-Host -Prompt "input commit info"
-git commit -m $commit_info
-git push
+if($commit_info -eq "exit"){
+    echo "git push exit!"
+}else{
+    git add .
+    git commit -m $commit_info
+    git push
+}
