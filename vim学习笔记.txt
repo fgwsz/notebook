@@ -494,3 +494,20 @@ A   光标放置在本行所有字符之后
         $ 表示行尾
         \s表示空格
         * 是正则表达式通配符，表示0个或多个
+22.一些兼容性的疑难杂症
+    1.vim内置终端功能异常
+    环境：
+        操作系统：Windows 11
+        系统终端：Windows PowerShell(已在$profile配置PSReadLine命令行补全)
+        powershell版本：5.1.22621.2428
+        vim版本：VIM-Vi IMproved 9.0(2022 Jun 28,编译于Jun 28 2022 12:30:17)
+        vim内置终端：vimrc中配置vim内置终端为powershell
+    场景：
+    1) 在Windows PowerShell中使用vim/gvim命令打开vim/gvim，然后在vim/gvim中调出vim内置终端，
+        vim内置终端加载$profile PSReadLine配置成功，
+        vim内置终端命令行补全功能正常，
+        vim内置终端可以使用<ctrl-v>粘贴。
+    2) 直接在vim/gvim调出vim内置终端，
+        vim内置终端加载$profile PSReadLine配置失败，
+        vim内置终端命令行补全功能无法使用，
+        vim内置终端无法使用<ctrl-v>粘贴。
