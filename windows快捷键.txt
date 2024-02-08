@@ -104,6 +104,8 @@ F2       重命名
 <alt-←>          后退
 <alt-→>          前进
 <alt-p>          固定/取消固定标签页
+<space>          向下滚动
+<shift-space>    向上滚动
 
 >> powershell 快捷键
 <ctrl-,>    弹出设置窗口
