@@ -1,7 +1,7 @@
-# VimiumC学习笔记
-VimiumC是一款浏览器插件，可以在各个浏览器的扩展商店里面下载  
+# `Vimium C`学习笔记
+`Vimium C`是一款浏览器插件  
 它的作用让我们在使用浏览器的时候，可以通过键盘来操作浏览器  
-在此，总结一下VimiumC的常用快捷键  
+在此，总结一下`Vimium C`的常用快捷键  
 # 标签页操作
 ## 标签页刷新
 `r` 刷新当前标签页  
@@ -67,17 +67,17 @@ VimiumC是一款浏览器插件，可以在各个浏览器的扩展商店里面�
 &emsp;&emsp;`y` 复制选中区域到剪贴板  
 &emsp;&emsp;`c` 进入`光标模式`  
 &emsp;&emsp;按两次`Esc` 退出  
-`光标模式`下
+`光标模式`下  
 &emsp;&emsp;`j` 光标向下移动一行  
 &emsp;&emsp;`k` 光标向上移动一行  
 &emsp;&emsp;`h` 光标向左移动一个字符  
 &emsp;&emsp;`l` 光标向右移动一个字符  
 &emsp;&emsp;`V` 选中光标所在的一整行，并进入`自由选择模式`  
 &emsp;&emsp;`v` 进入`自由选择模式`  
-# VimiumC操作
-## VimiumC关闭/启用
-`i`   暂时关闭VimiumC  
-`Esc` 重新启用VimiumC  
-## VimiumC帮助文档
-`?`   在当前标签页的网页上层显示VimiumC帮助文档子界面  
-`Esc` 关闭VimiumC帮助文档子界面  
+# `Vimium C`操作
+## `Vimium C`关闭/启用
+`i`   暂时关闭`Vimium C`  
+`Esc` 重新启用`Vimium C`  
+## `Vimium C`帮助文档
+`?`   在当前标签页的网页上层显示`Vimium C`帮助文档子界面  
+`Esc` 关闭`Vimium C`帮助文档子界面  
