@@ -478,9 +478,9 @@ A   光标放置在本行所有字符之后
     9.模式寄存器last search pattern
         / 缓存最近的搜索模式
     查看寄存器中的内容
-        :reg 查看寄存器中的内容
+        :reg[isters] 查看寄存器中的内容
     清空寄存器中的内容
-        :let @{reg name}="" 清空{reg name}寄存器中的内容
+        :let @{register name}="" 清空{register name}寄存器中的内容
     结论：
     最常用的是第7个
     如果在vimrc中设置了系统剪贴板和vim寄存器互通的情况下，
