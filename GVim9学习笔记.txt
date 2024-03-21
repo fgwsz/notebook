@@ -552,3 +552,7 @@ A   光标放置在本行所有字符之后
     {number}@{char} 执行名为{char}的宏操作{number}次
     :let @{char}="" 删除名为{char}的宏操作
         其中{char}的取值范围是[0-9a-zA-z]，并且a-z和A-Z对应的字母是同一个宏名
+
+25.更改工作目录（命令模式下）
+    :cd {path}  更改全局工作目录为{path}
+    :lcd {path} 更改当前窗口的工作目录为{path}
