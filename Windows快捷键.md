@@ -3,7 +3,11 @@
 ## 终端
 `Cmd r` 打开`运行`输入框  
 &emsp;&emsp;输入`powershell`后按Enter键打开powershell终端  
-`Ctrl ,` 弹出终端窗口设置标签页  
+`Ctrl ,` 新建终端窗口设置标签页  
+`Ctrl Shift t` 新建标签页  
+`Ctrl Shift w` 关闭标签页  
+`Ctrl Tab` 切换到下一个标签页  
+`Ctrl Shift Tab` 切换到上一个标签页  
 ## Windows搜索框
 `Cmd s` 打开搜索框窗口，光标进入搜索框  
 &emsp;&emsp;输入后按Enter键进入选中项窗口  
