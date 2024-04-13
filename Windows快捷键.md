@@ -51,6 +51,7 @@
 `Alt ←` 回退到上一次打开的目录  
 `Alt →` 取消回退，回到原先打开的目录  
 `Alt d` 进入地址输入框  
+`Ctrl f` 进入搜索输入框
 &emsp;&emsp;可以在地址输入框输入powershell并回车来在当前目录下打开powershell  
 &emsp;&emsp;可以在地址输入框输入一个文件路径并回车来跳转到该文件路径  
 &emsp;&emsp;`Esc` 退出地址输入框  
