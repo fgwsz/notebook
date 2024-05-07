@@ -310,3 +310,25 @@ if(
     //...
 }
 ```
+### while/for
+while/for遵循if的规则。
+### switch
+```cpp
+switch(number){
+    case 0:{
+        break;
+    }
+    case 1:{
+        break;
+    }
+    case 2:{
+        break;
+    }
+    case 3:{
+        break;
+    }
+    default:{
+        //...
+    }
+}
+```
