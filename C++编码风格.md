@@ -1,4 +1,21 @@
 # C++编码风格
+## 命名方式介绍
+### 大驼峰命名法
+每个单词的首字符采用大写字母开头，剩余字符采用小写字母。
+```
+BigCamelStyle
+```
+### 小驼峰命名法
+整体的首个单词的全部字符采用小写字母。  
+其他单词的首字符采用大写字母开头，剩余字符采用小写字母。
+```
+smallCamelStyle
+```
+### 蛇形命名法
+每个单词的全部字符采用小写字母，使用一个`_`来分隔每个单词。
+```
+snake_style
+```
 ## 缩进
 缩进统一使用4个英文空格，不要使用`Tab`。  
 设置文本编辑器自动把`Tab`转换为4个英文空格。
@@ -12,11 +29,19 @@
 所有文件名统一采用蛇形命名法。
 ## 宏
 ### 命名
+宏定义命名方式：单词使用大写字母，分隔符采用`_`。  
+宏函数参数命名方式：蛇形+`__`的命名方式。
 ```cpp
-#define MACRO_EMPTY//宏采用大写字母+下划线分隔的形式
-#define MACRO_FUNCTION(parameter_variable__)//宏函数参数采用蛇形命名法，然后尾部加上两个下划线`__`
+//宏采用大写字母+下划线分隔的形式
+#define MACRO_EMPTY
+//宏函数参数采用蛇形命名法，然后尾部加上两个下划线`__`
+#define MACRO_FUNCTION(parameter_variable__)
 ```
-### 分支缩进
+### 宏定义实现内容的缩进
+宏定义实现采用缩进的方式。  
+一些不采用缩进的特例：  
+1. 头文件防卫宏定义
+2. 只有一行的简短定义
 ```cpp
 #ifndef COUNTER
     #define COUNTER 0
@@ -64,17 +89,77 @@
 ### 选择方式
 当需要和`C语言`兼容的头文件采用`.h`后缀名，并采用`防卫式保护`。  
 当只使用`C++`的时候头文件采用`.hpp`后缀名，并使用`非标准扩展`。
+### 头文件应当自给自足
+`bar.hpp`
+```cpp
+#include"common.hpp"
+```
+`foo.hpp`
+```cpp
+#include"bar.hpp"
+#include"common.hpp"
+```
+若`foo.cpp`使用了`common.hpp`的符号，
+就需要导入`common.hpp`，即使`foo.hpp`已经导入了`bar.hpp`。  
+### 头文件不应出现路径信息
+头文件包含的文件信息中不能出现，  
+应该使用项目管理工具(例如`CMake`)来处理头文件/源文件路径信息。
+1. 绝对目录
+```cpp
+//错误示例
+#include"D:/Boost/mpl/mpl.hpp"
+```
+2. `.`(当前目录)或`..`(上级目录)等相对路径信息  
+`project/src/foo.cpp`
+```cpp
+//错误示例
+//`project/include/foo.hpp`
+#include"../include/foo.hpp"
+```
+### include的顺序
+在`dir/foo.cpp`或`dir/foo_test.cpp`
+这两个实现或测试`dir2/foo2.hpp`内容的文件中，
+按如下顺序导入头文件：
+```
+1. dir2/foo2.hpp
+空行
+2. C语言系统文件
+空行
+3. C++标准库头文件
+空行
+4. 其他库的头文件
+空行
+5. 本项目的头文件
+```
+每个非空的分组之间用空行隔开。
 ## 模板
 ### 类型模板参数
+普通类型采用大驼峰+`__`的命名方式。  
+类模板实例化类型采用`TI_`+大驼峰+`__`的命名方式。
 ```cpp
-template<typename TypeParameter__>//普通类型参数
-template<typename TI_TemplateInstanceTypeParameter__>//类模板实例化类型参数
+//普通类型参数
+template<typename TypeParameter__>
+//类模板实例化类型参数
+template<typename TI_TemplateInstanceTypeParameter__>
+```
+为什么类型模板参数的命名方式是大驼峰+尾部2个下划线？  
+是为了避免下面的这种情况：
+```cpp
+struct Type{
+    //...
+};
+//这里的`Type`到底是类型`struct Type`
+//还是类型模板参数呢？
+template<typename Type>
+struct IsConst;
 ```
 ### 变量模板参数
+采用蛇形+`__`的命名方式。
 ```cpp
 template<int variable_parameter__>
 ```
 ### 模板模板参数
+采用`T_`+大驼峰+`__`的命名方式。
 ```cpp
 template<template<typename...>typename T_TemplateParameter__>
 ```
@@ -125,13 +210,17 @@ enum MyEnum;
 enum class MyEnumClass;
 ```
 统一使用大驼峰命名法。  
-一些特殊情况如下：
+一些特殊情况如下：  
+对于单词缩写统一使用大写字母拼接的形式。  
+对于类模板的成员元函数使用`类模板名`+`_`+`元函数名`的形式。
 ```cpp
-class ColorRGB;//对于单词缩写统一使用大写字母拼接的形式
+//对于单词缩写统一使用大写字母拼接的形式
+class ColorRGB;
+//对于类模板的成员元函数使用类模板名_元函数名的形式
 template<typename TI_TypeList__>
-class TypeList_At;//对于类模板的成员元函数使用类模板名_元函数名的形式
+class TypeList_At;
 ```
-### 类空格/缩进
+### 空类/非空类缩进
 ```cpp
 class EmptyClass
 {};//空类大括号在一行
@@ -167,6 +256,7 @@ private:
 ### 成员缩进
 ```cpp
 class MyClass{
+    friend class Friend;
 public:
     void member_function();
 protected:
@@ -178,18 +268,25 @@ private:
 ```
 ## 变量
 ### 局部变量
+采用蛇形命名法。
 ```cpp
-int local_variable;//蛇形命名法
+//蛇形命名法
+int local_variable;
 ```
 ### 成员变量
+采用蛇形+`_`命名法。
 ```cpp
-int member_variable_;//蛇形命名法+尾部1个`_`
+//蛇形命名法+尾部1个`_`
+int member_variable_;
 ```
 ### 模板参数变量
+采用蛇形+`__`命名法。
 ```cpp
-int template_parameter_variable__;//蛇形命名法+尾部2个`_`
+//蛇形命名法+尾部2个`_`
+int template_parameter_variable__;
 ```
 ### 枚举值
+采用`k`+大驼峰命名法。
 ```cpp
 enum JsonValueType{
     kUndefined,//`k`+大驼峰命名法
@@ -203,6 +300,7 @@ enum JsonValueType{
 ```
 ## 函数
 ### 命名
+采用蛇形命名法。
 ```cpp
 //普通函数采用蛇形命名法
 void this_is_a_function();
@@ -210,6 +308,18 @@ void this_is_a_function();
 MyClass();
 //函数参数的命名方式遵循局部变量的命名方式
 void foo(::std::string const& c_str);
+```
+函数命方式和变量命名方式都是采用蛇形命名法的原因：  
+C++支持lambda匿名函数，
+lambda变量到底是采用变量命名方式，还是函数命名方式。
+为了消除这种命名方式的归属权问题，所以采用变量命名和函数命名基本一致的方式。
+```cpp
+auto print_hello=[](){
+    ::std::cout<<"hello\n";
+}
+void print_hello(){
+    ::std::cout<<"hello\n";
+}
 ```
 ### 缩进
 ```cpp
