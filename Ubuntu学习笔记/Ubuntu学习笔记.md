@@ -104,3 +104,117 @@
 至此等待系统安装完成即可  
 ![](data/20240516170558.png)  
 点击`Restart Now`按钮重启系统  
+## 使用
+### 打开终端
+桌面右键单击  
+点击`Open in Terminal`按钮  
+![](data/20240516220107.png)  
+此时终端已打开  
+![](data/20240516220157.png)  
+### 重启
+点击右上角菜单栏  
+点击`Power Off/Log Out`按钮  
+点击`Restart`按钮  
+![](data/20240516221541.png)  
+### 安装中文输入法
+点击右上角的`Settings`选项  
+![](data/20240516214126.png)  
+向下翻找到`Region & Language`选项卡  
+点击右侧的`Manage Installed Languages`按钮  
+![](data/20240516214333.png)  
+点击`Install/Remove Languages`按钮  
+![](data/20240516214628.png)  
+勾选`Chinese(simplified)`选项  
+点击`Apply`按钮  
+![](data/20240516214726.png)  
+`Language for menus and windows:`栏下出现`汉语(中国)`字样  
+设置`Keyboard input method system:`栏为`IBus`  
+点击`Close`按钮  
+![](data/20240516214929.png)  
+点击`Keyboard`选项卡  
+点击`Input Sources`栏下`+`按钮  
+![](data/20240516215256.png)  
+点击`Chinese`按钮  
+![](data/20240516215445.png)  
+点击`Chinese(intelligent pinyin)`按钮  
+点击`Add`按钮  
+![](data/20240516215554.png)  
+此时`Input Sources`栏下出现`Chinese(intellient pinyin)`  
+点击右侧的按钮  
+点击`Move up`按钮将中文输入法置顶  
+![](data/20240516215758.png)  
+打开终端,输入如下命令  
+```shell
+ibus-setup
+```
+此命令的作用:打开`ibus`管理页面  
+点击`Input Method`选项卡下的`Add`按钮  
+![](data/20240516220504.png)  
+点击`Chinese`按钮  
+![](data/20240516220615.png)  
+点击`Intelligent Pinyin`按钮  
+点击`Add`按钮  
+![](data/20240516220712.png)  
+切换到`General`选项卡下  
+点击`Next input method:`右侧的`...`按钮  
+![](data/20240516220957.png)  
+#### 设置切换中英文输入法的快捷键为`Ctrl+Space`
+> 注意:这是切换中文/英文2个输入法的快捷键  
+> 不是中文输入法切换中/英输入的快捷键  
+> 中文输入法切换中/英输入的快捷键是`shift`键  
+
+取消勾选`Super`  
+勾选`Control`  
+点击`Apply`按钮  
+点击`Close`按钮  
+![](data/20240516221154.png)  
+点击`Close`按钮  
+![](data/20240516221343.png)  
+重启系统  
+开机后发现右上角菜单栏出现`中`字样按钮  
+至此中文输入法安装成功  
+![](data/20240516221810.png)  
+### 安装/配置`Git`
+#### 安装`Git`
+```shell
+sudo apt-get install git
+git --version
+```
+#### 配置`Github`账号信息
+```shell
+git config --global user.name "your name"
+git config --global user.email youremail@example.com
+git config --list
+```
+#### 生成`ssh`密钥
+```shell
+ssh-keygen -t rsa -C "youremail@example.com"
+gedit ~/.ssh/id_rsa.pub
+```
+把`~/.ssh/id_rsa.pub`里的全部内容复制到剪切板  
+#### 连接到`github`
+登录`github`账号  
+点击`Settings`按钮  
+![](data/20240516225837.png)  
+切换到`SSH and GPG keys`栏  
+点击`New SSH key`按钮  
+![](data/20240516225951.png)  
+`Title`输入标题  
+`Key type`选择`Authentication Key`  
+`Key`栏粘贴`~/.ssh/id_rsa.pub`里的全部内容  
+![](data/20240516230339.png)  
+至此添加`ssh`到`github`成功  
+![](data/20240516230459.png)  
+测试一下是否可以`ssh`到`github`  
+```shell
+ssh -T git@github.com
+```
+如下图所示,证明配置成功  
+![](data/20240516231223.png)  
+### 安装`Vim 9`
+```shell
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt update
+sudo apt install vim
+vim --version
+```

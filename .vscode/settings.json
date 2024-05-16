@@ -1,0 +1,5 @@
+{
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "D:/MyWorkSpace/GitProjects/my_vimrc/_vimrc",
+    "editor.unicodeHighlight.invisibleCharacters": true
+}
