@@ -1,5 +1,6 @@
 {
     "vim.vimrc.enable": true,
-    "vim.vimrc.path": "D:/MyWorkSpace/GitProjects/my_vimrc/_vimrc",
-    "editor.unicodeHighlight.invisibleCharacters": true
+    "vim.vimrc.path": "$HOME/.vimrc",
+    "editor.unicodeHighlight.invisibleCharacters": true,
+    "pasteImage.path": "${currentFileDir}/data"
 }
