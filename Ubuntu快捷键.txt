@@ -1,3 +1,4 @@
+注意:Ubuntu系统的`super`键的位置和为Windows系统中的`windows`键一致
 `ctrl alt t` 打开终端
 `super up` 最大化窗口
 `super Fn` 切换窗口
@@ -9,3 +10,4 @@
     使用方向键移动待选窗口框
     松开`alt`跳转到待选窗口框里的窗口
 `alt F4` 关闭窗口
+`super d` 显示桌面/恢复原先的显示窗口
