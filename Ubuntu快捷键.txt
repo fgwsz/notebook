@@ -1,3 +1,6 @@
+#=============================================================================
+#快捷键部分
+#=============================================================================
 注意:Ubuntu系统的`super`键的位置和为Windows系统中的`windows`键一致
 `ctrl alt t` 打开终端
 `super up` 最大化窗口
@@ -12,3 +15,29 @@
 `alt F4` 关闭窗口
 `super d` 显示桌面/恢复原先的显示窗口
 `super l` 锁屏
+#=============================================================================
+#命令行部分
+#=============================================================================
+
+dpkg -l [package name]
+    查找[package name]的包是否安装
+    如果[package name]为空则显示全部的包信息
+
+dpkg search [package name]
+    搜索远程仓库中和[package name]有关的包信息
+
+sudo [command]
+    使用管理员权限来执行[command]指令
+
+su [user name]
+    切换到名为[user name]的用户
+    如果[user name]为空,切换到root账号
+
+apt install [package name]
+    使用apt安装名为[package name]的包
+
+apt remove [package name]
+    使用apt卸载名为[package name]的包
+
+apt update
+    更新apt远程仓库

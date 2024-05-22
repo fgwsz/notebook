@@ -223,3 +223,7 @@ vim --version
 ![](data/20240517112556.png)  
 搜索`GVim`然后点进去点击`install`按钮即可  
 ![](data/20240517112741.png)  
+### 删除无用的应用图标
+系统图标:`/usr/share/applications`  
+用户应用:`~/.local/share/applications`  
+进入上述文件夹之后使用`grep`/`vim`的高亮查找功能锁定对应的文件,删除即可.  
