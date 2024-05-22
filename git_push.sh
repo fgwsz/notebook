@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "you can input exit to abort git push."
 read -p "input commit info: " commit_info
 if [ "$commit_info" = "exit" ]; then
