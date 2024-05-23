@@ -53,6 +53,15 @@ history | grep [command info]
     grep [string/regex pattern] [path/string include match mode]
         查找显示目录/字符信息中的正则表达式匹配结果
 
+apt-get purge [string/regex pattern]
+    卸载[string/regex pattern]名称匹配的包并且删除相关配置
+
+apt-get clean
+    删除安装了的软件包的安装包（如果你确定这些安装包不会再用）删除包缓存中的所有包
+
+apt-get autoremove
+    删除为了满足其他软件包的依赖而安装的,系统会自动卸载这些不再需要的软件包
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
