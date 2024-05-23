@@ -227,3 +227,13 @@ vim --version
 系统图标:`/usr/share/applications`  
 用户应用:`~/.local/share/applications`  
 进入上述文件夹之后使用`grep`/`vim`的高亮查找功能锁定对应的文件,删除即可.  
+### AppImage包如何使用
+AppImage包本身是一个可执行文件  
+但是需要先安装FUSE  
+然后赋予可执行权限  
+最后执行即可  
+```shell
+sudo apt-get install fuse
+chmod +x ./xxx.AppImage
+./xxx.AppImage
+```
