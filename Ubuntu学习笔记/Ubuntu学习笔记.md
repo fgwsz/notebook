@@ -218,11 +218,17 @@ sudo apt update
 sudo apt install vim
 vim --version
 ```
-### 安装`GVim 9`
+### 安装`Vim`
+1.方式一
 打开`Ubuntu Software`  
 ![](data/20240517112556.png)  
 搜索`GVim`然后点进去点击`install`按钮即可  
 ![](data/20240517112741.png)  
+2.方式二
+```shell
+sudo apt install vim
+sudo apt install vim-gtk3
+```
 ### 删除无用的应用图标
 系统图标:`/usr/share/applications`  
 用户应用:`~/.local/share/applications`  
