@@ -174,6 +174,19 @@ ibus-setup
 开机后发现右上角菜单栏出现`中`字样按钮  
 至此中文输入法安装成功  
 ![](data/20240516221810.png)  
+安装另一个超好用的ibus输入法:Rime
+```shell
+sudo apt install ibus-rime
+```
+上述指令执行完之后输入
+```shell
+ibus-setup
+```
+点击`input method`标签栏下的`add`按钮,  
+添加`Chinese`下的`Rime`  
+其他的设置和上述一开始的`Intelligent Pinyin`输入法一样  
+可以在系统设置的`keyboard`标签栏下添加新的中文输入法  
+然后管理输入法的优先级顺序  
 ### 安装/配置`Git`
 #### 安装`Git`
 ```shell
