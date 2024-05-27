@@ -182,11 +182,13 @@ sudo apt install ibus-rime
 ```shell
 ibus-setup
 ```
-点击`input method`标签栏下的`add`按钮,  
+点击`Input Method`标签栏下的`Add`按钮,  
 添加`Chinese`下的`Rime`  
 其他的设置和上述一开始的`Intelligent Pinyin`输入法一样  
-可以在系统设置的`keyboard`标签栏下添加新的中文输入法  
+可以在系统设置的`Keyboard`标签栏下添加新的中文输入法  
 然后管理输入法的优先级顺序  
+`Rime`默认的中文输出方式是中文繁体,在打字弹出输入框的情况下  
+按`F4`可以切换到`明月拼音 简化字`即可输出中文简体  
 ### 安装/配置`Git`
 #### 安装`Git`
 ```shell
