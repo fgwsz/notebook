@@ -298,3 +298,13 @@ ascii_composer:
 鼠标左键单击选中`部署`  
 等待一会儿会显示提示`Rime is ready`  
 至此重新配置ibus-rime成功  
+### 使用ripgrep替换grep
+安装  
+```shell
+sudo apt install ripgrep
+rg --version
+```
+替换:在`~/.bashrc`中输入如下内容  
+```shell
+alias grep='rg'
+```
