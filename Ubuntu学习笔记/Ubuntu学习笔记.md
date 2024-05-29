@@ -258,3 +258,43 @@ sudo apt-get install fuse
 chmod +x ./xxx.AppImage
 ./xxx.AppImage
 ```
+### 修改gnome显示样式
+```shell
+sudo apt install gnome-tweaks
+gnome-tweaks
+```
+### 配置ibus-rime输入法
+#### 设置横排显示候选项
+```shell
+gvim ~/.config/ibus/rime/build/ibus_rime.yaml
+```
+修改该文件的如下内容(#标注的)  
+```yaml
+style:
+  cursor_type: insert
+  horizontal: true #横排显示候选项
+  inline_preedit: true
+  preedit_style: composition
+```
+#### 使用shift切换的时候清除已输入字符
+```shell
+gvim ~/.config/ibus/rime/build/default.yaml
+```
+修改该文件的如下内容(#标注的)  
+```yaml
+ascii_composer:
+  good_old_caps_lock: true
+  switch_key:
+    Caps_Lock: clear
+    Control_L: noop
+    Control_R: noop
+    Eisu_toggle: clear
+    Shift_L: clear #inline_ascii
+    Shift_R: clear #commit_text
+```
+#### 重新配置ibus-rime
+鼠标左键单击右上角的语言栏`ibus`图标  
+鼠标左键单击选中`Chinese(Rime)`  
+鼠标左键单击选中`部署`  
+等待一会儿会显示提示`Rime is ready`  
+至此重新配置ibus-rime成功  
