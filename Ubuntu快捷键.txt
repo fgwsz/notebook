@@ -20,6 +20,58 @@
 #命令行部分
 #=============================================================================
 
+touch [file path]
+    新建一个路径为[file path]的文本文件
+
+mkdir [dir path]
+    新建一个路径为[dir path]的文件夹
+
+rm -rf [path]
+    强制删除路径[path]的文件/文件夹
+
+cd [dir path]
+    切换工作目录到[dir path]
+    一些特殊的相对目录表示方法:
+        .. 上一级目录
+        .  当前目录
+        ~  用户根目录
+
+cp [from path] [to path]
+    拷贝[from path]文件/文件夹到[to path]
+
+mv [from path] [to path]
+    剪切[from path]文件/文件夹到[to path]
+
+ls -f [dir path]
+    [dir path]为空,默认为.(当前工作目录)
+    显示路径为[dir path]目录下的下一级文件/文件夹信息
+
+tree -f [dir path]
+    安装:
+    ```shell
+    sudo apt install tree
+    ```
+    [dir path]为空,默认为.(当前工作目录)
+    以树形式结构显示路径为[dir path]目录下的全部文件/文件夹信息
+
+clear
+    清空终端
+
+grep [string/regex pattern] [path expr]
+    在[path expr]匹配的目录查找[string/regex pattern]的全部匹配项
+
+reboot
+    重启计算机
+
+shutdown -h now
+    关闭计算机
+
+chmod +x [file path]
+    赋予路径为[file path]的可执行文件可执行权限
+    含义:
+        chmod(change mode)
+        +x(plus execute)
+
 dpkg -l [package name]
     查找[package name]的包是否安装
     如果[package name]为空则显示全部的包信息
