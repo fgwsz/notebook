@@ -23,9 +23,15 @@
 dpkg -l [package name]
     查找[package name]的包是否安装
     如果[package name]为空则显示全部的包信息
+    小技巧:
+    dpkg -l|grep [string/regex pattern]
+    查看[string/regex pattern]匹配的包信息
 
-dpkg search [package name]
+apt search [package name]
     搜索远程仓库中和[package name]有关的包信息
+    小技巧:
+    apt search [package name]|grep installed
+    查看[package name]是否已经安装
 
 sudo [command]
     使用管理员权限来执行[command]指令
