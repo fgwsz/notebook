@@ -67,10 +67,16 @@ shutdown -h now
     关闭计算机
 
 chmod +x [file path]
-    赋予路径为[file path]的可执行文件可执行权限
+    赋予路径为[file path]的可执行文件可执行权限,即设置文件为可执行的文件
     含义:
         chmod(change mode)
-        +x(plus execute)
+        +(add)x(execute)
+
+chmod -w [file path]
+    取消路径为[file path]的文本文件的写入权限,即设置文件为不可修改的文件
+    含义:
+        chmod(change mode)
+        -(delete)w(write)
 
 dpkg -l [package name]
     查找[package name]的包是否安装
