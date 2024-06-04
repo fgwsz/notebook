@@ -437,21 +437,59 @@ A   光标放置在本行所有字符之后
     <ctrl-x><ctrl-f> 自动补全文件名
 
 19.vimgrep搜索和跳转
-    :cope[n]
-        打开quickFix窗口
-        在quickFix窗口显示vimgrep命令的搜索结果
+    vimgrep是直接在command模式中使用的
+    它可以查找当前目录下文件中包含关键词的行
+    默认自动跳转到第一个符合目标的位置
+    :vim[grep][!] /{pattern}/[g][j] {path} ...
+    :vim[grep][!] {pattern} {path} ...
+        vim可作为vimgrep的缩写
+        !可紧随vimgrep之后，表示强制执行该命令
+        索引的关键字pattern放在了两个/中间，并且支持正则表达式
+        g,j可选
+            如果添加g，将显示重复行，
+            默认跳转到第一个搜索结果，并在主窗口打开
+            如果添加j，Vim将不会自动跳转到第一个匹配的行（可能是别的文件）
+        path可以是正则文件名/目录名，也可以是多个确定的文件名/目录名
+            一些特殊的通配符:
+                *为当前工作目录下的所有文件(不包括文件夹)
+                    (可以使用:pwd查看当前工作目录)
+                **代表当前工作目录和其子目录(递归子目录)下的所有文件
+            举例:*.h代表当前目录下所有后缀名为.h的文件
+        使用
+            :vimgrep /user/g **
+                使用该命令可以查找当前目录下所有文件中包含user字符串的文件
+                并跳转到第一个匹配的位置
+                同时所有搜索结果会显示在QuickFix-List窗口中
+    :cope[n],:cw
+        打开QuickFix-List窗口
+        在QuickFix-List窗口显示vimgrep命令的搜索结果
             ↑ 切换到上一个搜索结果
             ↓ 切换到下一个搜索结果
             <enter> 选中该搜索结果，并在主窗口打开
     :ccl[ose]
-        关闭quickFix窗口
-    :vim[grep] {string} {path}
-        默认跳转到第一个搜索结果，并在主窗口打开
-        {string}可以为正则表达式，也可以是普通字符串
-        {path}的通配符为*
-        *为当前工作目录下的所有文件(不包括文件夹)(可以使用:pwd查看当前工作目录)
-        **代表当前工作目录和其子目录(递归子目录)下的所有文件
-        举例:*.h代表当前目录下所有后缀名为.h的文件
+        关闭QuickFix-List窗口
+    :cn[ext]
+        跳转到下一个搜索结果
+    :cp[revious]
+        跳转到上一个搜索结果
+    :cl[ist]
+        使用more显示QuickFix-List窗口内容
+    lvimgrep
+        lvimgrep与vimgrep搜索命令基本一样
+        不同点在于搜索结果不是显示在QuickFix-List中而是显示在Location-List中
+    QuickFix-List vs Location-List
+        QuickFix-List是全局的
+        相对于窗口而言，不同的窗口共用一个QuickFix-List窗口
+        而Location-List是局部于某个特定窗口的
+        即不同窗口的Location-List可以不同
+    :lop[en],:lw
+        打开Location-List窗口
+        在Location-List窗口显示vimgrep命令的搜索结果
+            ↑ 切换到上一个搜索结果
+            ↓ 切换到下一个搜索结果
+            <enter> 选中该搜索结果，并在主窗口打开
+    :lcl[ose]
+        关闭Location-List窗口
 
 20.在命令行中粘贴文本
     在命令行模式中输入文字的时候按<ctrl-r>然后输入寄存器名称
@@ -600,3 +638,4 @@ A   光标放置在本行所有字符之后
 下空格会被插入，以防止之后的字符移动。
     该模式对编辑<Tab>分隔表格列的时候很有用，因为输入新的数据时同时还能保持所
 有的列对齐。
+
