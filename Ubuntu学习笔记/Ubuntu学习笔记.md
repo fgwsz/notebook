@@ -144,7 +144,7 @@
 点击`Move up`按钮将中文输入法置顶  
 ![](data/20240516215758.png)  
 打开终端,输入如下命令  
-```shell
+```bash
 ibus-setup
 ```
 此命令的作用:打开`ibus`管理页面  
@@ -175,11 +175,11 @@ ibus-setup
 至此中文输入法安装成功  
 ![](data/20240516221810.png)  
 安装另一个超好用的ibus输入法:Rime
-```shell
+```bash
 sudo apt install ibus-rime
 ```
 上述指令执行完之后输入
-```shell
+```bash
 ibus-setup
 ```
 点击`Input Method`标签栏下的`Add`按钮,  
@@ -191,18 +191,18 @@ ibus-setup
 按`F4`可以切换到`明月拼音 简化字`即可输出中文简体  
 ### 安装/配置`Git`
 #### 安装`Git`
-```shell
+```bash
 sudo apt-get install git
 git --version
 ```
 #### 配置`Github`账号信息
-```shell
+```bash
 git config --global user.name "your name"
 git config --global user.email youremail@example.com
 git config --list
 ```
 #### 生成`ssh`密钥
-```shell
+```bash
 ssh-keygen -t rsa -C "youremail@example.com"
 gedit ~/.ssh/id_rsa.pub
 ```
@@ -221,13 +221,13 @@ gedit ~/.ssh/id_rsa.pub
 至此添加`ssh`到`github`成功  
 ![](data/20240516230459.png)  
 测试一下是否可以`ssh`到`github`  
-```shell
+```bash
 ssh -T git@github.com
 ```
 如下图所示,证明配置成功  
 ![](data/20240516231223.png)  
 ### 安装`Vim 9`
-```shell
+```bash
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt update
 sudo apt install vim
@@ -240,7 +240,7 @@ vim --version
 搜索`GVim`然后点进去点击`install`按钮即可  
 ![](data/20240517112741.png)  
 2.方式二
-```shell
+```bash
 sudo apt install vim
 sudo apt install vim-gtk3
 ```
@@ -253,19 +253,19 @@ AppImage包本身是一个可执行文件
 但是需要先安装FUSE  
 然后赋予可执行权限  
 最后执行即可  
-```shell
+```bash
 sudo apt-get install fuse
 chmod +x ./xxx.AppImage
 ./xxx.AppImage
 ```
 ### 修改gnome显示样式
-```shell
+```bash
 sudo apt install gnome-tweaks
 gnome-tweaks
 ```
 ### 配置ibus-rime输入法
 #### 设置横排显示候选项
-```shell
+```bash
 gvim ~/.config/ibus/rime/build/ibus_rime.yaml
 ```
 修改该文件的如下内容(#标注的)  
@@ -277,7 +277,7 @@ style:
   preedit_style: composition
 ```
 #### 使用shift切换的时候清除已输入字符
-```shell
+```bash
 gvim ~/.config/ibus/rime/build/default.yaml
 ```
 修改该文件的如下内容(#标注的)  
@@ -300,11 +300,37 @@ ascii_composer:
 至此重新配置ibus-rime成功  
 ### 使用ripgrep替换grep
 安装  
-```shell
+```bash
 sudo apt install ripgrep
 rg --version
 ```
 替换:在`~/.bashrc`中输入如下内容  
-```shell
+```bash
 alias grep='rg'
 ```
+### 更换DNS服务器
+```bash
+sudo gvim /etc/systemd/resolved.conf
+```
+添加如下内容并保存:  
+```txt
+DNS=8.8.8.8 114.114.114.114
+FallbackDNS=8.8.8.8
+```
+然后依次执行如下命令:  
+```bash
+sudo systemctl restart systemd-resolved
+sudo systemctl enable systemd-resolved
+sudo mv /etc/resolv.conf /etc/resolv.conf.bak
+sudo ln -s /run/systemd/resolve/resolv.conf /etc/
+```
+再查看/etc/resolv.conf文件就可以看到新的dns信息已经写入其中了。  
+```bash
+sudo gvim /etc/resolv.conf
+```
+`etc/resolv.conf`文件发现如下内容:  
+```txt
+nameserver 8.8.8.8
+nameserver 114.114.114.114
+```
+此时更换DNS服务器完成  
