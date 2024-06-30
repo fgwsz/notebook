@@ -658,3 +658,16 @@ A   光标放置在本行所有字符之后
             xxx若不存在，则会打开vim内置的help.txt
             xxx若存在，则会打开vim内置的关于xxx的详细描述
 
+30.终端中调用vim执行vim内置操作
+```bash
+vim -c {vim-command-1} -c{vim-command-2} ... {file-path}
+```
+    在一个vim终端命令中，你可以使用多达10个"-c"参数
+    它们按照输入的先后顺序执行
+    如果{vim-command}包含空格，则必须使用双引号将其括起来
+举例
+```bash
+vim -c "%s/hello/foo/g" -c "wq!" hello.cpp
+```
+在vim中打开hello.cpp文件时执行替换操作然后保存并退出
+
