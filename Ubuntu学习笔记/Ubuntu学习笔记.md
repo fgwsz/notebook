@@ -334,3 +334,19 @@ nameserver 8.8.8.8
 nameserver 114.114.114.114
 ```
 此时更换DNS服务器完成  
+### 修复Grub Windows11引导项
+```bash
+sudo gvim /etc/default/grub
+```
+设置默认启动项为第一个  
+设置显示菜单  
+设置停留时间为10秒  
+```txt
+GRUB_DEFAULT=0
+GRUB_TIMEOUT_STYLE=menu
+GRUB_TIMEOUT=10
+```
+保存上述更改，执行如下指令  
+```bash
+sudo update-grub
+```
