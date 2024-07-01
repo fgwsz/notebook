@@ -350,3 +350,17 @@ GRUB_TIMEOUT=10
 ```bash
 sudo update-grub
 ```
+重启计算机即可解决
+### 修复Ubuntu启动显示`SGX disable by BIOS`问题
+```bash
+sudo gvim /etc/default/grub
+```
+设置不使用`SGX`  
+```txt
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nosgx"
+```
+保存上述更改，执行如下指令  
+```bash
+sudo update-grub
+```
+重启计算机即可解决
