@@ -364,3 +364,38 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nosgx"
 sudo update-grub
 ```
 重启计算机即可解决
+### 修复Ubuntu开机时间长问题
+打印启动时间信息  
+打印启动时服务占比最多的10个服务  
+```bash
+systemd-analyze 
+systemd-analyze blame | head -n 10
+```
+运行结果如下  
+```txt
+Startup finished in 4.429s (kernel) + 55.235s (userspace) = 59.665s 
+graphical.target reached after 55.125s in userspace
+31.520s plymouth-quit-wait.service
+22.053s e2scrub_reap.service
+15.839s snapd.seeded.service
+14.751s snapd.service
+13.303s networkd-dispatcher.service
+11.637s udisks2.service
+10.939s dev-sda6.device
+ 8.390s systemd-journal-flush.service
+ 7.438s grub-common.service
+ 7.416s NetworkManager-wait-online.service
+```
+关闭一些不必要的开机启动服务  
+```bash
+sudo systemctl stop plymouth-quit-wait.service
+sudo systemctl stop e2scrub_reap.service
+sudo systemctl stop snapd.seeded.service
+sudo systemctl stop snapd.service
+sudo systemctl disable plymouth-quit-wait.service
+sudo systemctl disable e2scrub_reap.service
+sudo systemctl disable snapd.seeded.service
+sudo systemctl disable snapd.service
+```
+重启计算机  
+遇到的问题：尝试上述操作之后，耗费时间的开机启动服务仍然开机启动，并没有被关闭
