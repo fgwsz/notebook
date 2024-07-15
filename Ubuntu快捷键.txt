@@ -176,6 +176,9 @@ gnome-control-center
 snap-store
     打开snap商店
 
+spark-store
+    打开spark商店
+
 head -n [line-number] [file-path/string]
     控制台打印显示[file-path/string]的前[line-number]行内容
 
