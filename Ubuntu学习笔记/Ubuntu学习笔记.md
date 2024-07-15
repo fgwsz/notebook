@@ -412,6 +412,10 @@ sudo dpkg -i spark-store_xxxx_amd64.deb # xxxx填下载的软件包的版本号
 ```
 ### 安装wine版微信
 打开安装好的`spark-store`  
+可以使用如下命令  
+```bash
+spark-store
+```
 在搜索框里面搜索`微信`  
 找到`微信(wine)`应用点击安装`Download and Install`按钮即可开始安装  
 安装完毕之后在开始菜单中点击对应的应用图标即可打开应用  
