@@ -399,3 +399,19 @@ sudo systemctl disable snapd.service
 ```
 重启计算机  
 遇到的问题：尝试上述操作之后，耗费时间的开机启动服务仍然开机启动，并没有被关闭
+### 安装spark-store
+进入官网下载页:<https://www.spark-app.store/download_latest>  
+点击`软件本体`下的`点击下载`  
+此时会弹出一个安装说明Q&A界面，点击界面右下角的`开始下载`按钮  
+此时会跳转到gitee的界面，点击`下载`下的其中一个`spark-store_xxxx_amd64.deb`  
+开始下载，下载完成之后，输入如下指令  
+```bash
+cd ~/Download
+sudo apt --fix-broken install
+sudo dpkg -i spark-store_xxxx_amd64.deb # xxxx填下载的软件包的版本号
+```
+### 安装wine版微信
+打开安装好的`spark-store`  
+在搜索框里面搜索`微信`  
+找到`微信(wine)`应用点击安装`Download and Install`按钮即可开始安装  
+安装完毕之后在开始菜单中点击对应的应用图标即可打开应用  
