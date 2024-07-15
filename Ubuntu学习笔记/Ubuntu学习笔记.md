@@ -407,6 +407,8 @@ sudo systemctl disable snapd.service
 开始下载，下载完成之后，输入如下指令  
 ```bash
 cd ~/Download
+sudo dpkg -i spark-store_xxxx_amd64.deb # xxxx填下载的软件包的版本号
+# 提示缺少一些软件依赖
 sudo apt --fix-broken install
 sudo dpkg -i spark-store_xxxx_amd64.deb # xxxx填下载的软件包的版本号
 ```
