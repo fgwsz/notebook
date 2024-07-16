@@ -258,12 +258,12 @@ sudo apt-get install fuse
 chmod +x ./xxx.AppImage
 ./xxx.AppImage
 ```
-### 修改gnome显示样式
+### 修改`gnome`显示样式
 ```bash
 sudo apt install gnome-tweaks
 gnome-tweaks
 ```
-### 配置ibus-rime输入法
+### 配置`ibus-rime`输入法
 #### 设置横排显示候选项
 ```bash
 gvim ~/.config/ibus/rime/build/ibus_rime.yaml
@@ -276,7 +276,7 @@ style:
   inline_preedit: true
   preedit_style: composition
 ```
-#### 使用shift切换的时候清除已输入字符
+#### 使用`shift`切换的时候清除已输入字符
 ```bash
 gvim ~/.config/ibus/rime/build/default.yaml
 ```
@@ -292,13 +292,13 @@ ascii_composer:
     Shift_L: clear #inline_ascii
     Shift_R: clear #commit_text
 ```
-#### 重新配置ibus-rime
+#### 重新配置`ibus-rime`
 鼠标左键单击右上角的语言栏`ibus`图标  
 鼠标左键单击选中`Chinese(Rime)`  
 鼠标左键单击选中`部署`  
 等待一会儿会显示提示`Rime is ready`  
 至此重新配置ibus-rime成功  
-### 使用ripgrep替换grep
+### 使用`ripgrep`替换`grep`
 安装  
 ```bash
 sudo apt install ripgrep
@@ -308,7 +308,7 @@ rg --version
 ```bash
 alias grep='rg'
 ```
-### 更换DNS服务器
+### 更换`DNS`服务器
 ```bash
 sudo gvim /etc/systemd/resolved.conf
 ```
@@ -334,7 +334,7 @@ nameserver 8.8.8.8
 nameserver 114.114.114.114
 ```
 此时更换DNS服务器完成  
-### 修复Grub Windows11引导项
+### 修复`Grub` `Windows11`引导项
 ```bash
 sudo gvim /etc/default/grub
 ```
@@ -351,7 +351,7 @@ GRUB_TIMEOUT=10
 sudo update-grub
 ```
 重启计算机即可解决
-### 修复Ubuntu启动显示`SGX disable by BIOS`问题
+### 修复`Ubuntu`启动显示`SGX disable by BIOS`问题
 ```bash
 sudo gvim /etc/default/grub
 ```
@@ -364,7 +364,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nosgx"
 sudo update-grub
 ```
 重启计算机即可解决
-### 修复Ubuntu开机时间长问题
+### 修复`Ubuntu`开机时间长问题
 打印启动时间信息  
 打印启动时服务占比最多的10个服务  
 ```bash
@@ -399,7 +399,7 @@ sudo systemctl disable snapd.service
 ```
 重启计算机  
 遇到的问题：尝试上述操作之后，耗费时间的开机启动服务仍然开机启动，并没有被关闭
-### 安装spark-store
+### 安装`spark-store`
 进入官网下载页:<https://www.spark-app.store/download_latest>  
 点击`软件本体`下的`点击下载`  
 此时会弹出一个安装说明Q&A界面，点击界面右下角的`开始下载`按钮  
@@ -412,7 +412,7 @@ sudo dpkg -i spark-store_xxxx_amd64.deb # xxxx填下载的软件包的版本号
 sudo apt --fix-broken install
 sudo dpkg -i spark-store_xxxx_amd64.deb # xxxx填下载的软件包的版本号
 ```
-### 安装wine版微信
+### 安装`wine`版微信
 打开安装好的`spark-store`  
 可以使用如下命令  
 ```bash
@@ -421,3 +421,40 @@ spark-store
 在搜索框里面搜索`微信`  
 找到`微信(wine)`应用点击安装`Download and Install`按钮即可开始安装  
 安装完毕之后在开始菜单中点击对应的应用图标即可打开应用  
+### 安装`wine`
+安装方式参考:<https://mirrors-i.tuna.tsinghua.edu.cn/help/wine-builds/>  
+首先启用32位架构  
+```bash
+sudo dpkg --add-architecture i386
+```
+之后信任来自<https://dl.winehq.org/>的公钥  
+```bash
+sudo wget -nc -O /usr/share/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+```
+注意:如果获取公钥提示错误，那么请使用如下命令重新获取  
+```bash
+sudo rm -rf /usr/share/keyrings/winehq-archive.key
+sudo wget -nc -O /usr/share/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+```
+注意:这里有一个不知道真伪性的方式，为了解决下载时的仓库冲突，我删除了如下文件  
+这个文件的产生来源于`wine`官网的安装教程<https://wiki.winehq.org/Ubuntu_zhcn>  
+但是由于我国国情原因，无法连接到<https://dl.winehq.org>进行下载  
+于是方式使用`wine`官网的安装方式，但是尝试之后会生成如下文件，为了避免干扰，  
+索性直接删除  
+```bash
+sudo rm -rf  /etc/apt/sources.list.d/winehq-jammy.sources
+```
+新增`/etc/apt/sources.list.d/winehq.list`，内容为
+```txt
+deb [arch=amd64,i386 signed-by=/usr/share/keyrings/winehq-archive.key] https://mirrors.tuna.tsinghua.edu.cn/wine-builds/ubuntu/ jammy main
+```
+通过以下命令安装`winehq`  
+```bash
+sudo apt update
+sudo apt install --install-recommends winehq-stable
+```
+安装完成之后，查看版本信息  
+```bash
+wine --version
+```
+至此`wine`安装完成  
