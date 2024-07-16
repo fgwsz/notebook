@@ -438,6 +438,7 @@ sudo wget -nc -O /usr/share/keyrings/winehq-archive.key https://dl.winehq.org/wi
 ```
 注意:这里有一个不知道真伪性的方式，为了解决下载时的仓库冲突，我删除了如下文件  
 这个文件的产生来源于`wine`官网的安装教程<https://wiki.winehq.org/Ubuntu_zhcn>  
+上述官网教程网址请使用`OpenDNS`解析打开  
 但是由于我国国情原因，无法连接到<https://dl.winehq.org>进行下载  
 于是方式使用`wine`官网的安装方式，但是尝试之后会生成如下文件，为了避免干扰，  
 索性直接删除  
