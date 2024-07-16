@@ -459,3 +459,51 @@ sudo apt install --install-recommends winehq-stable
 wine --version
 ```
 至此`wine`安装完成  
+### 安装`obs`
+`obs`官网安装教程:<https://obsproject.com/download#linux>  
+`obs`安装方式  
+```bash
+sudo add-apt-repository ppa:obsproject/obs-studio
+sudo apt update
+sudo apt install ffmpeg obs-studio
+```
+查看`obs`版本信息  
+```bash
+obs --version
+```
+启动`obs`  
+```bash
+obs
+```
+至此`obs`安装完毕  
+### 设置`obs`进行`bilibili`直播推流
+打开obs  
+```bash
+obs
+```
+#### 分享整个屏幕(声音采集电脑音频，不会采集麦克风和外部输入)
+在最下方的`Source`面板下选择`+`按钮  
+然后选择`Screen Caputure(PipeWire)`  
+此时会弹出一个`Screen Share`窗口  
+选中`Bulit-in display`按钮，然后点击`Share`按钮  
+#### 获取`bilibili`直播间串流密钥
+进入bilibili官网:<https://www.bilibili.com/>  
+登录个人帐号，然后点击个人头像，点击`个人中心`>>`直播中心`>>`我的直播间`  
+快捷网址:<https://link.bilibili.com/p/center/index#/my-room/start-live>  
+选择一个`直播分区`的标签  
+然后点击`开始直播`  
+然后将`串流密钥`复制到剪切板  
+#### 开始直播推流
+选中`obs`最上方菜单栏的`File`>>`Settings`>>`Stream`  
+进入`Stream`设置界面  
+`Service`选择`Bilibili Live - RTMP`  
+`Server`选择`Chinese Mainland - Backup`  
+`Stream Key`中粘贴获取到的`bilibili`直播间串流密钥  
+点击`OK`和`Apply`按钮  
+然后点击`obs`右下角的`Controls`面板上的`Start Streaming`  
+即可开始推流  
+#### 关闭直播的方式
+首先点击`obs`右下角的`Controls`面板上的`Stop Streaming`  
+关闭推流  
+然后进入<https://link.bilibili.com/p/center/index#/my-room/start-live>  
+点击`关闭直播`按钮  
