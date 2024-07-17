@@ -486,6 +486,9 @@ obs
 然后选择`Screen Caputure(PipeWire)`  
 此时会弹出一个`Screen Share`窗口  
 选中`Bulit-in display`按钮，然后点击`Share`按钮  
+也可以选择`Screen Caputure(XSHM)`  
+此时会弹出一个`Create/Select Source`窗口  
+点击右下角的`OK`按钮即可  
 #### 获取`bilibili`直播间串流密钥
 进入bilibili官网:<https://www.bilibili.com/>  
 登录个人帐号，然后点击个人头像，点击`个人中心`>>`直播中心`>>`我的直播间`  
@@ -498,6 +501,7 @@ obs
 进入`Stream`设置界面  
 `Service`选择`Bilibili Live - RTMP`  
 `Server`选择`Chinese Mainland - Backup`  
+`Server`也可以选择`Default`  
 `Stream Key`中粘贴获取到的`bilibili`直播间串流密钥  
 点击`OK`和`Apply`按钮  
 然后点击`obs`右下角的`Controls`面板上的`Start Streaming`  
