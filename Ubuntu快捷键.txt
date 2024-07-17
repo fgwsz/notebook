@@ -88,6 +88,9 @@ dpkg -l [package name]
     dpkg -l|grep [string/regex pattern]
     查看[string/regex pattern]匹配的包信息
 
+dpkg -i [package name].deb
+    安装本地的[package name].deb包
+
 apt search [package name]
     搜索远程仓库中和[package name]有关的包信息
     小技巧:
@@ -178,6 +181,9 @@ snap-store
 
 spark-store
     打开spark商店
+
+gnome-session-properties
+    打开开机应用设置界面
 
 head -n [line-number] [file-path/string]
     控制台打印显示[file-path/string]的前[line-number]行内容
