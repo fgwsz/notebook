@@ -511,14 +511,17 @@ obs
 关闭推流  
 然后进入<https://link.bilibili.com/p/center/index#/my-room/start-live>  
 点击`关闭直播`按钮  
-### 设置高性能模式
-#### 设置电源为高性能模式
+### 设置性能模式
+#### 设置电源性能模式
 打开控制中心  
 ```bash
 gnome-control-center
 ```
 选择`Power`面板  
-在`Power Mode`面板下选中`Performance`  
+在`Power Mode`面板下选择  
+`Performance`高性能模式  
+`Balanced`平衡模式  
+`Power Saver`省电模式  
 #### 查看`CPU`的当前管理模式  
 ```bash
 cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
@@ -531,7 +534,7 @@ cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 `ondemand`定时检查负载,根据负载来调节频率,负载低的时候降低`CPU`频率,
 负载高的时候提高`CPU`频率  
 `*`的意思表示匹配`CPU`编号  
-#### 设置`CPU`为高性能模式
+#### 设置`CPU`性能模式
 首先安装`cpufrequtils`  
 ```bash
 sudo apt-get install cpufrequtils
@@ -540,6 +543,17 @@ sudo apt-get install cpufrequtils
 ```
 cpufreq-info
 ```
+注意:重要的一点是此命令可以查看`CPU`支持设置的性能模式  
+```txt
+analyzing CPU 0:
+  driver: intel_pstate
+  CPUs which run at the same hardware frequency: 0
+  CPUs which need to have their frequency coordinated by software: 0
+  maximum transition latency: 4294.55 ms.
+  hardware limits: 400 MHz - 4.40 GHz
+  available cpufreq governors: performance, powersave
+```
+上述`CPU`只支持设置为`performance`和`powersave`  
 然后安装`sysfsutils`  
 ```bash
 sudo apt-get install sysfsutils
@@ -548,7 +562,7 @@ sudo apt-get install sysfsutils
 ```bash
 sudo gvim /etc/sysfs.conf
 ```
-在文件的最后面增加如下内容  
+在文件的最后面增加如下内容(以设置`performance`模式为例)  
 ```txt
 devices/system/cpu/cpu0/cpufreq/scaling_governor = performance
 devices/system/cpu/cpu1/cpufreq/scaling_governor = performance
@@ -556,7 +570,7 @@ devices/system/cpu/cpu2/cpufreq/scaling_governor = performance
 devices/system/cpu/cpu3/cpufreq/scaling_governor = performance
 devices/system/cpu/cpu4/cpufreq/scaling_governor = performance
 devices/system/cpu/cpu5/cpufreq/scaling_governor = performance
-#按照上述语句的格式可以继续填写...语句的条数取决于计算机的CPU数量
+#按照上述语句的格式可以继续填写,语句的条数取决于计算机的CPU数量
 ```
 也可以通过一个bash脚本来完成上述内容(请使用`root`账户来执行该脚本)  
 ```bash
@@ -573,4 +587,17 @@ done
 cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 cpufreq-info
 ```
-至此设置高性能结束  
+至此设置`CPU`性能模式结束  
+除了上述的终端设置方式,还可以采用`GUI`窗口操作设置的方式  
+安装`cpupower-gui`  
+```bash
+sudo apt-get install cpupower-gui
+```
+然后在开始菜单找到此应用的图标点击即可运行,
+操作方式和上述设置方式类似,不再赘述。  
+性能模式推荐:  
+`ondemand`指的是平时以低速方式运行,当系统负载提高时候自动提高频率。
+以这种模式运行不会因为降频造成性能降低,同时也能节约电能和降低温度。  
+`performance`指满速运行,即使系统负载非常低,`CPU`的频率也为最高频率,
+性能很好,但是电量消耗较快,温度也高一些,这可能会对`CPU`和其他硬件造成损害,
+从而降低硬件的使用寿命。  
