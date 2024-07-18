@@ -192,6 +192,17 @@ man [command]
     显示[command]的帮助信息
     按q退出帮助信息
 
+zip -r [zip path] [input path]...
+    压缩文件为.zip
+    [zip path]==>[zip root path/zip name].zip
+    注意:[zip path]的根目录必须是已存在的目录
+    [input path]指的是要被压缩的文件路径，可以是单个文件，也可以是文件夹
+    [input path]...表示可以有多个
+
+unzip [zip file path] -d [output path]
+    解压.zip文件到[output path]
+    其中[output path]可以是未存在的目录
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
