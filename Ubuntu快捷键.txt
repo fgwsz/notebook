@@ -206,6 +206,9 @@ unzip [zip file path] -d [output path]
 uname -a
     显示当前系统信息包含操作系统版本以及硬件架构
 
+grep 'cpu MHz' /proc/cpuinfo
+    显示cpu当前的运行频率
+
 watch grep \'cpu MHz\' /proc/cpuinfo
     实时显示cpu当前的运行频率
 

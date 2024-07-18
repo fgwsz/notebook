@@ -604,6 +604,40 @@ sudo apt-get install cpupower-gui
 性能模式推荐:  
 `ondemand`指的是平时以低速方式运行,当系统负载提高时候自动提高频率.
 以这种模式运行不会因为降频造成性能降低,同时也能节约电能和降低温度.  
-`performance`指满速运行,即使系统负载非常低,`CPU`的频率也为最高频率,
+`performance`指满速运行(超频),即使系统负载非常低,`CPU`的频率也为最高频率,
 性能很好,但是电量消耗较快,温度也高一些,这可能会对`CPU`和其他硬件造成损害,
 从而降低硬件的使用寿命.  
+#### 关于`CPU`超频(`Overclocking`)
+这里引入`CPU超频`(超越基础时钟频率)的知识:  
+首先可以在终端查一下计算机的`CPU`型号  
+```bash
+sudo apt-get install neofetch
+neofetch
+```
+列举一个具体案例:  
+例如查看到如下的`CPU`信息  
+```txt
+CPU: Intel i5-9400 (6) @ 4.100GHz 
+```
+我们可以通过`bing`搜索引擎来查看一下该型号`CPU`的基础频率信息  
+```txt
+2.90 GHz (4.10 GHz)
+CPU核心数与基础频率 Intel Core i5-9400 有 6 个核心
+Intel Core i5-9400 的时钟频率为 2.90 GHz (4.10 GHz)
+```
+也就是说我们的`CPU`的实时运行频率只要超过基础时钟频率(2.9GHz)
+就属于超频了.  
+`performance`模式下`CPU`用最大运行频率(4.10GHz)运行属于超频.  
+已设置`performance`模式的`Intel Core i5-9400 CPU`的某一时刻的运行频率如下  
+```bash
+grep 'cpu MHz' /proc/cpuinfo
+```
+```txt
+cpu MHz         : 800.000
+cpu MHz         : 4066.256
+cpu MHz         : 4046.383
+cpu MHz         : 4048.137
+cpu MHz         : 4076.363
+cpu MHz         : 800.000
+```
+至此关于`CPU超频`的论述结束.  
