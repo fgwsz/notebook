@@ -88,8 +88,8 @@ dpkg -l [package name]
     dpkg -l|grep [string/regex pattern]
     查看[string/regex pattern]匹配的包信息
 
-dpkg -i [package name].deb
-    安装本地的[package name].deb包
+dpkg -i [deb package path]
+    安装本地的路径为[deb package path]的deb包
 
 apt search [package name]
     搜索远程仓库中和[package name]有关的包信息
@@ -187,6 +187,10 @@ gnome-session-properties
 
 head -n [line-number] [file-path/string]
     控制台打印显示[file-path/string]的前[line-number]行内容
+
+man [command]
+    显示[command]的帮助信息
+    按q退出帮助信息
 
 #=============================================================================
 #应用快捷键部分
