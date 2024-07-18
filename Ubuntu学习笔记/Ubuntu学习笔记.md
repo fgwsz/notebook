@@ -10,7 +10,7 @@
 点击`Ubuntu xx.yy.z LTS`栏下的`Ubuntu 桌面版(64位)`按钮  
 此时会下载`ubuntu-xx.yy.z-desktop-amd64.iso.torrent`  
 ![](data/20240516095053.png)
-下载完成之后，使用BT下载工具打开这个`torrent`文件下载即可  
+下载完成之后,使用BT下载工具打开这个`torrent`文件下载即可  
 ### 选择其他下载的原因
 如果点击`下载xx.yy.z`按钮会开始下载  
 但Chinese国情原因,下载速度会很慢(`kb/s`级别 
@@ -33,7 +33,7 @@
 ### 安装模式
 进入`Updates and other software`界面选择安装模式  
 有两个选项:`Normal installation`/`Minimal installation`  
-在`Normal installation`中，将安装所有 GUI 相关的应用程序  
+在`Normal installation`中,将安装所有 GUI 相关的应用程序  
 在`Minimal installation`中只会安装基本的应用程序  
 我的选择是`Normal installation`  
 注意到`Other options`选项中还有2个选项  
@@ -346,7 +346,7 @@ GRUB_DEFAULT=0
 GRUB_TIMEOUT_STYLE=menu
 GRUB_TIMEOUT=10
 ```
-保存上述更改，执行如下指令  
+保存上述更改,执行如下指令  
 ```bash
 sudo update-grub
 ```
@@ -359,7 +359,7 @@ sudo gvim /etc/default/grub
 ```txt
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nosgx"
 ```
-保存上述更改，执行如下指令  
+保存上述更改,执行如下指令  
 ```bash
 sudo update-grub
 ```
@@ -398,13 +398,13 @@ sudo systemctl disable snapd.seeded.service
 sudo systemctl disable snapd.service
 ```
 重启计算机  
-遇到的问题：尝试上述操作之后，耗费时间的开机启动服务仍然开机启动，并没有被关闭
+遇到的问题：尝试上述操作之后,耗费时间的开机启动服务仍然开机启动,并没有被关闭
 ### 安装`spark-store`
 进入官网下载页:<https://www.spark-app.store/download_latest>  
 点击`软件本体`下的`点击下载`  
-此时会弹出一个安装说明Q&A界面，点击界面右下角的`开始下载`按钮  
-此时会跳转到gitee的界面，点击`下载`下的其中一个`spark-store_xxxx_amd64.deb`  
-开始下载，下载完成之后，输入如下指令  
+此时会弹出一个安装说明Q&A界面,点击界面右下角的`开始下载`按钮  
+此时会跳转到gitee的界面,点击`下载`下的其中一个`spark-store_xxxx_amd64.deb`  
+开始下载,下载完成之后,输入如下指令  
 ```bash
 cd ~/Download
 sudo dpkg -i spark-store_xxxx_amd64.deb # xxxx填下载的软件包的版本号
@@ -431,21 +431,21 @@ sudo dpkg --add-architecture i386
 ```bash
 sudo wget -nc -O /usr/share/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
 ```
-注意:如果获取公钥提示错误，那么请使用如下命令重新获取  
+注意:如果获取公钥提示错误,那么请使用如下命令重新获取  
 ```bash
 sudo rm -rf /usr/share/keyrings/winehq-archive.key
 sudo wget -nc -O /usr/share/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
 ```
-注意:这里有一个不知道真伪性的方式，为了解决下载时的仓库冲突，我删除了如下文件  
+注意:这里有一个不知道真伪性的方式,为了解决下载时的仓库冲突,我删除了如下文件  
 这个文件的产生来源于`wine`官网的安装教程<https://wiki.winehq.org/Ubuntu_zhcn>  
 上述官网教程网址请使用`OpenDNS`解析打开  
-但是由于我国国情原因，无法连接到<https://dl.winehq.org>进行下载  
-于是方式使用`wine`官网的安装方式，但是尝试之后会生成如下文件，为了避免干扰，  
+但是由于我国国情原因,无法连接到<https://dl.winehq.org>进行下载  
+于是方式使用`wine`官网的安装方式,但是尝试之后会生成如下文件,为了避免干扰,  
 索性直接删除  
 ```bash
 sudo rm -rf  /etc/apt/sources.list.d/winehq-jammy.sources
 ```
-新增`/etc/apt/sources.list.d/winehq.list`，内容为
+新增`/etc/apt/sources.list.d/winehq.list`,内容为
 ```txt
 deb [arch=amd64,i386 signed-by=/usr/share/keyrings/winehq-archive.key] https://mirrors.tuna.tsinghua.edu.cn/wine-builds/ubuntu/ jammy main
 ```
@@ -454,7 +454,7 @@ deb [arch=amd64,i386 signed-by=/usr/share/keyrings/winehq-archive.key] https://m
 sudo apt update
 sudo apt install --install-recommends winehq-stable
 ```
-安装完成之后，查看版本信息  
+安装完成之后,查看版本信息  
 ```bash
 wine --version
 ```
@@ -481,17 +481,17 @@ obs
 ```bash
 obs
 ```
-#### 分享整个屏幕(声音采集电脑音频，不会采集麦克风和外部输入)
+#### 分享整个屏幕(声音采集电脑音频,不会采集麦克风和外部输入)
 在最下方的`Source`面板下选择`+`按钮  
 然后选择`Screen Caputure(PipeWire)`  
 此时会弹出一个`Screen Share`窗口  
-选中`Bulit-in display`按钮，然后点击`Share`按钮  
+选中`Bulit-in display`按钮,然后点击`Share`按钮  
 也可以选择`Screen Caputure(XSHM)`  
 此时会弹出一个`Create/Select Source`窗口  
 点击右下角的`OK`按钮即可  
 #### 获取`bilibili`直播间串流密钥
 进入bilibili官网:<https://www.bilibili.com/>  
-登录个人帐号，然后点击个人头像，点击`个人中心`>>`直播中心`>>`我的直播间`  
+登录个人帐号,然后点击个人头像,点击`个人中心`>>`直播中心`>>`我的直播间`  
 快捷网址:<https://link.bilibili.com/p/center/index#/my-room/start-live>  
 选择一个`直播分区`的标签  
 然后点击`开始直播`  
@@ -511,3 +511,66 @@ obs
 关闭推流  
 然后进入<https://link.bilibili.com/p/center/index#/my-room/start-live>  
 点击`关闭直播`按钮  
+### 设置高性能模式
+#### 设置电源为高性能模式
+打开控制中心  
+```bash
+gnome-control-center
+```
+选择`Power`面板  
+在`Power Mode`面板下选中`Performance`  
+#### 查看`CPU`的当前管理模式  
+```bash
+cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+```
+`scaling_governor`内容表示的含义:  
+`performance`最高性能,最高频率,不考虑耗电  
+`interactive`一开始使用最高频率,然后根据`CPU`负载慢慢降低  
+`powersave`省电模式,通常以最低频率运行,系统性能会受到影响  
+`userspace`可以在用户空间手动调节频率  
+`ondemand`定时检查负载,根据负载来调节频率,负载低的时候降低`CPU`频率,
+负载高的时候提高`CPU`频率  
+`*`的意思表示匹配`CPU`编号  
+#### 设置`CPU`为高性能模式
+首先安装`cpufrequtils`  
+```bash
+sudo apt-get install cpufrequtils
+```
+安装完成后,可以使用如下命令来查看`CPU`的个数和实时频率信息  
+```
+cpufreq-info
+```
+然后安装`sysfsutils`  
+```bash
+sudo apt-get install sysfsutils
+```
+使用管理员权限编辑`/etc/sysfs.conf`  
+```bash
+sudo gvim /etc/sysfs.conf
+```
+在文件的最后面增加如下内容  
+```txt
+devices/system/cpu/cpu0/cpufreq/scaling_governor = performance
+devices/system/cpu/cpu1/cpufreq/scaling_governor = performance
+devices/system/cpu/cpu2/cpufreq/scaling_governor = performance
+devices/system/cpu/cpu3/cpufreq/scaling_governor = performance
+devices/system/cpu/cpu4/cpufreq/scaling_governor = performance
+devices/system/cpu/cpu5/cpufreq/scaling_governor = performance
+#按照上述语句的格式可以继续填写...语句的条数取决于计算机的CPU数量
+```
+也可以通过一个bash脚本来完成上述内容(请使用`root`账户来执行该脚本)  
+```bash
+#!/bin/bash
+# 获取当前系统的cpu数量
+cpu_count=$(nproc)
+# 向/etc/sysfs.conf尾部增加语句
+for ((i=0; i<cpu_count; i++)); do
+    echo "devices/system/cpu/cpu$i/cpufreq/scaling_governor = performance" >> /etc/sysfs.conf
+done
+```
+上述操作完毕之后,重启计算机,重启之后使用如下命令查看是否生效  
+```
+cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+cpufreq-info
+```
+至此设置高性能结束  
