@@ -324,7 +324,7 @@ sudo systemctl enable systemd-resolved
 sudo mv /etc/resolv.conf /etc/resolv.conf.bak
 sudo ln -s /run/systemd/resolve/resolv.conf /etc/
 ```
-再查看/etc/resolv.conf文件就可以看到新的dns信息已经写入其中了。  
+再查看/etc/resolv.conf文件就可以看到新的dns信息已经写入其中了.  
 ```bash
 sudo gvim /etc/resolv.conf
 ```
@@ -554,6 +554,10 @@ analyzing CPU 0:
   available cpufreq governors: performance, powersave
 ```
 上述`CPU`只支持设置为`performance`和`powersave`  
+然后可以暂时设置一下性能模式(以设置`performance`模式为例)(重启会失效)  
+```bash
+sudo cpufreq-set -g performance
+```
 然后安装`sysfsutils`  
 ```bash
 sudo apt-get install sysfsutils
@@ -594,10 +598,12 @@ cpufreq-info
 sudo apt-get install cpupower-gui
 ```
 然后在开始菜单找到此应用的图标点击即可运行,
-操作方式和上述设置方式类似,不再赘述。  
+操作方式和上述设置方式类似,不再赘述.  
+注意:这个`cpupower-gui`应用安装之后会将它自带的默认设置应用到计算机,
+可能会覆盖掉终端方式设置的`CPU`性能模式,最好自己设置一下再使用.  
 性能模式推荐:  
-`ondemand`指的是平时以低速方式运行,当系统负载提高时候自动提高频率。
-以这种模式运行不会因为降频造成性能降低,同时也能节约电能和降低温度。  
+`ondemand`指的是平时以低速方式运行,当系统负载提高时候自动提高频率.
+以这种模式运行不会因为降频造成性能降低,同时也能节约电能和降低温度.  
 `performance`指满速运行,即使系统负载非常低,`CPU`的频率也为最高频率,
 性能很好,但是电量消耗较快,温度也高一些,这可能会对`CPU`和其他硬件造成损害,
-从而降低硬件的使用寿命。  
+从而降低硬件的使用寿命.  
