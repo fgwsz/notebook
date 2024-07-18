@@ -207,7 +207,14 @@ uname -a
     显示当前系统信息包含操作系统版本以及硬件架构
 
 watch grep \'cpu MHz\' /proc/cpuinfo
-    实时查看cpu当前的运行频率
+    实时显示cpu当前的运行频率
+
+cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+    查看cpu当前工作模式
+
+cpufreq-info
+    安装`sudo apt-get install cpufrequtils`
+    显示cpu信息,包含cpu编号,当前的运行频率等
 
 #=============================================================================
 #应用快捷键部分
