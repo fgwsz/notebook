@@ -607,7 +607,7 @@ sudo apt-get install cpupower-gui
 `performance`指满速运行(超频),即使系统负载非常低,`CPU`的频率也为最高频率,
 性能很好,但是电量消耗较快,温度也高一些,这可能会对`CPU`和其他硬件造成损害,
 从而降低硬件的使用寿命.  
-#### 关于`CPU`超频(`Overclocking`)
+#### 关于`CPU超频`(`Overclocking`)
 这里引入`CPU超频`(超越基础时钟频率)的知识:  
 首先可以在终端查一下计算机的`CPU`型号  
 ```bash
@@ -626,8 +626,8 @@ CPU核心数与基础频率 Intel Core i5-9400 有 6 个核心
 Intel Core i5-9400 的时钟频率为 2.90 GHz (4.10 GHz)
 ```
 也就是说我们的`CPU`的实时运行频率只要超过基础时钟频率(2.9GHz)
-就属于超频了.  
-`performance`模式下`CPU`用最大运行频率(4.10GHz)运行属于超频.  
+就属于`CPU超频`了.  
+`performance`模式下`CPU`用最大运行频率(4.10GHz)运行属于`CPU超频`.  
 已设置`performance`模式的`Intel Core i5-9400 CPU`的某一时刻的运行频率如下  
 ```bash
 grep 'cpu MHz' /proc/cpuinfo
