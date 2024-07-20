@@ -681,3 +681,20 @@ screenkey
 至此设置显示信息区域完毕  
 注意:不管字体字号设置如何,都不会超出显示区域的范围,
 因此显示区域的宽度和高度尤为重要  
+### 屏幕跟随鼠标光标位置放大/缩小(Zoom)
+打开设置  
+```bash
+gnome-control-center
+```
+在`Keyboard`面板下滑动到最下方  
+点击`Keyboard Shortcuts`面板下的`View and Customize Shortcuts`按钮  
+在搜索框中搜索`Zoom`  
+会显示如下搜索结果  
+`Turn zoom on or off`设置`Zoom`功能打开/关闭  
+`Zoom in`放大  
+`Zoom out`缩小  
+点击这三个搜索结果后面的快捷键即可重新设置该功能的全局快捷键  
+为了使用方便,我设置了如下的快捷键组合:  
+`Turn zoom on or off`设置`Ctrl+Space`  
+`Zoom in`设置`Ctrl+8`  
+`Zoom out`设置`Ctrl+/`  
