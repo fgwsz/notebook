@@ -632,6 +632,7 @@ Intel Core i5-9400 的时钟频率为 2.90 GHz (4.10 GHz)
 ```bash
 grep 'cpu MHz' /proc/cpuinfo
 ```
+
 ```txt
 cpu MHz         : 800.000
 cpu MHz         : 4066.256
@@ -698,3 +699,6 @@ gnome-control-center
 `Turn zoom on or off`设置`Ctrl+Space`  
 `Zoom in`设置`Ctrl+8`  
 `Zoom out`设置`Ctrl+/`  
+注意:`Zoom`放大的区域中默认是以屏幕最中央为中心点放大的,
+并不是以鼠标光标所在的点为中心点,
+但是可以通过移动鼠标光标的位置来使得`Zoom`放大区域的矩形跟随鼠标光标移动.  
