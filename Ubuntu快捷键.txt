@@ -171,7 +171,10 @@ cat [file path]
 
 neofetch
     安装`sudo apt install neofetch`
-    查看系统信息
+    查看计算机信息
+
+lsb_release -a
+    查看操作系统版本信息
 
 gnome-control-center
     打开设置

@@ -702,3 +702,35 @@ gnome-control-center
 注意:`Zoom`放大的区域中默认是以屏幕最中央为中心点放大的,
 并不是以鼠标光标所在的点为中心点,
 但是可以通过移动鼠标光标的位置来使得`Zoom`放大区域的矩形跟随鼠标光标移动.  
+### 当操作系统版本信息不正确时如何还原
+修改如下的两个文件:  
+将`/etc/lsb-release`修改为如下内容:  
+```txt
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=22.04 LTS
+DISTRIB_CODENAME=bookworm
+DISTRIB_DESCRIPTION="Ubuntu 22.04 LTS"
+```
+将`/etc/os-release`修改为如下内容:  
+```txt
+PRETTY_NAME="Ubuntu (linux) 2022.04 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04 LTS"
+VERSION="22.04"
+VERSION_CODENAME=bookworm
+ID=ubuntu
+ID_LIKE=Debian
+HOME_URL="https://cn.ubuntu.com"
+OS_LIKE="Ubuntu"
+```
+修复`Grub`引导项中的操作系统版本信息  
+编辑文件`/etc/default/grub`  
+将`GRUB_DISTRIBUTOR`这一行修改为如下内容
+```txt
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Ubuntu`
+```
+然后重新生成`Grub`配置文件,以应用修改  
+```bash
+sudo update-grub
+```
+重新启动计算机,以使修改生效.  
