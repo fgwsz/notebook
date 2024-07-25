@@ -733,4 +733,16 @@ GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Ubuntu`
 ```bash
 sudo update-grub
 ```
-重新启动计算机,以使修改生效.  
+重新启动计算机,以使修改生效  
+如果此时还是没有识别到正确的操作系统信息,
+请直接编辑`/boot/grub/grub.cfg`的内容来进行手动修改引导项中操作系统信息  
+重新启动计算机,以使修改生效  
+### 修改`Grub`引导菜单界面的颜色
+编辑`/boot/grub/grub.cfg`的这两行  
+下面的第一行是设置菜单的字体颜色和背景颜色  
+下面的第二行是设置正在选中的菜单项的字体颜色和背景颜色  
+```txt
+set menu_color_normal=white/black
+set menu_color_highlight=yellow/blue
+```
+修改完成之后,重新启动计算机,以使修改生效  
