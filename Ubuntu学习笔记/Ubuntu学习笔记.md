@@ -746,3 +746,24 @@ set menu_color_normal=white/black
 set menu_color_highlight=yellow/blue
 ```
 修改完成之后,重新启动计算机,以使修改生效  
+### 安装缺失的字体
+查看系统已安装的全部字体  
+```bash
+fc-list
+```
+查找已安装的字体  
+```bash
+fc-list | grep [regex] # 这里[regex]指的是正则表达式
+```
+建立一个文件夹(以`my-fonts-dir`为例)
+用于存放已经下载好的系统缺失的字体文件(`.ttf`)  
+```bash
+#复制字体文件夹到/usr/share/fonts/目录下
+sudo cp -r my-fonts-dir /usr/share/fonts/
+cd /usr/share/fonts/my-fonts-dir/
+#生成字体索引信息
+sudo mkfontscale
+sudo mkfontdir
+#更新字体缓存
+fc-cache
+```
