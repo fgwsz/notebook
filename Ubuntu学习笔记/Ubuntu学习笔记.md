@@ -767,3 +767,24 @@ sudo mkfontdir
 #更新字体缓存
 fc-cache
 ```
+# 升级`nodejs`和`npm`到最新版本
+如果已经安装过`nodejs`,请使用如下命令删除:  
+```bash
+sudo apt-get purge nodejs
+sudo apt remove libnode-dev
+sudo dpkg --remove --force-remove-reinstreq libnode-dev
+sudo dpkg --remove --force-remove-reinstreq libnode72:amd64
+```
+删除之后,使用如下命令安装最新版`nodejs`和`npm`  
+```bash
+sudo apt update
+sudo apt install curl
+# 下面的18指的是nodejs的大版本号,填入你需要的最新版版号即可
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+```
+最后输入如下命令查看一下安装好的`nodejs`和`npm`的版本信息  
+```bash
+node -v
+npm -v
+```
