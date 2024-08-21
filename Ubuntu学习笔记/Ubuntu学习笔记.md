@@ -788,3 +788,12 @@ sudo apt install -y nodejs
 node -v
 npm -v
 ```
+### 安装`Steam`
+进入`Steam`官网下载页面<https://store.steampowered.com/about/>  
+点击`安装 STEAM`按钮开始下载`steam_latest.deb`  
+下载完成之后,在终端进入`steam_latest.deb`的所在目录,输入如下命令:  
+```bash
+sudo dpkg -i steam_latest.deb # 安装steam
+steam # 运行steam
+```
+至此`Steam`安装完成.
