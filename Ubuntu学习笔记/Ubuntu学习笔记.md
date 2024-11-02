@@ -797,3 +797,9 @@ sudo dpkg -i steam_latest.deb # 安装steam
 steam # 运行steam
 ```
 至此`Steam`安装完成.
+### 文件管理器文件显示视频缩略图
+```bash
+sudo apt install gstreamer1.0-libav
+sudo apt install ffmpegthumbnailer
+```
+输入上述命令,重新打开文件管理器,就能看到视频文件的缩略图.  
