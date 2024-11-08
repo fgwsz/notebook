@@ -803,3 +803,10 @@ sudo apt install gstreamer1.0-libav
 sudo apt install ffmpegthumbnailer
 ```
 输入上述命令,重新打开文件管理器,就能看到视频文件的缩略图.  
+### 增大`gnome`显示字体
+```bash
+gnome-control-center
+```
+输入上述命令打开设置.  
+然后选中`Accessibility`>>`Seeing`>>`Large Text`按钮,点击打开.  
+至此,增大`gnome`显示字体完成.  
