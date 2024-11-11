@@ -810,3 +810,12 @@ gnome-control-center
 输入上述命令打开设置.  
 然后选中`Accessibility`>>`Seeing`>>`Large Text`按钮,点击打开.  
 至此,增大`gnome`显示字体完成.  
+### 安装flash
+安装`flash`  
+```bash
+sudo apt-get update
+sudo apt install flash
+flash --version
+```
+`Edge`浏览器安装`flash`插件  
+打开`Edge`浏览器的插件商店,搜索并安装`Ruffle-Flash Emulator`插件.  
