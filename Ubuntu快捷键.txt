@@ -265,6 +265,8 @@ linux xdg(类似于windows的explorer.exe)
     `ctrl c` 复制
     `ctrl v` 粘贴
     `ctrl x` 剪切
+    `ctrl i` 打开文件右键属性菜单界面
+    `delete` 删除
     `ctrl a` 全选
     `ctrl z` 撤销
     `ctrl Z` 取消撤销

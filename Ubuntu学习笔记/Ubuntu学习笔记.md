@@ -819,3 +819,19 @@ flash --version
 ```
 `Edge`浏览器安装`flash`插件  
 打开`Edge`浏览器的插件商店,搜索并安装`Ruffle-Flash Emulator`插件.  
+### 安装`mGBA`模拟器
+`mGBA`模拟器官网下载地址:<https://mgba.io/downloads.html>  
+选择对应的`Ubuntu`版本下载安装包即可.  
+下载下来之后是`***.tar.xz`压缩包.  
+使用归档管理器解压缩会得到3个`.deb`安装文件.  
+右键点击其中的`mgba-qt.deb`选择`Open With Software Install`左键单击,  
+如果没有没有上述的右键菜单选项,可以使用两种方式解决.  
+1. 选择`Open With Other Application`选项左键单击,  
+然后选择`Software Install`选项,点击`Select`按钮.  
+2. 选择`Properties`选项左键单击,  
+选中`Open With`选项卡,选中`Software Install`,然后点击`Set as default`按钮.  
+(更改文件拓展名的默认打开应用)  
+
+打开之后会有一段等待的时间,然后会打开应用商店跳转到`mGBA`应用页面,  
+点击`Install`按钮,会跳出一个输入用户密码的页面,输入完用户密码,  
+等待安装完毕即可.  
