@@ -851,4 +851,19 @@ flash --version
 mgba-qt
 ```
 ### 查看攻击者的`ip`地址
-
+查看用户登录的ip地址.  
+```bash
+last --ip
+```
+查看日志条数  
+```bash
+wc -l /var/log/auth.log
+```
+查看日志中密码验证失败的条数  
+```bash
+grep "Failed password" /var/log/auth.log | wc -l
+```
+查看日志中密码验证失败的日志行  
+```bash
+grep "Failed password" /var/log/auth.log
+```

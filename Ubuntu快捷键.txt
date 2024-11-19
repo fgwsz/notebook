@@ -247,6 +247,22 @@ date
 ldd --version
     查看glibc的版本信息
 
+wc [OPTION]
+  -c, --bytes            print the byte counts
+  -m, --chars            print the character counts
+  -l, --lines            print the newline counts
+      --files0-from=F    read input from the files specified by
+                           NUL-terminated names in file F;
+                           If F is - then read names from standard input
+  -L, --max-line-length  print the maximum display width
+  -w, --words            print the word counts
+      --help     display this help and exit
+      --version  output version information and exit
+    统计输出流(文件/命令执行结果)中的字符/行/字数的数量信息
+    举例:
+        wc -l xxx.txt # 打印xxx.txt中的行数
+        [command] | wc -w # 打印[command]命令输出结果的字数
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
