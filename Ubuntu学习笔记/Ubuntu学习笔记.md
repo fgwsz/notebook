@@ -881,8 +881,8 @@ avahi-browse --all -t -r
 下载网址:<https://support.epson.com.cn/linux/en/epsonscan2.php>  
 进入之后根据操作系统进行选择即可.  
 下载完成之后会是一个`xxx.tar.gz`  
-使用归档管理器解压缩之后,会发现是一个文件夹,进入这个文件夹,
-运行里面的`install.sh`即可完成`Epson Scan2`的安装.
+使用归档管理器解压缩之后,会发现是一个文件夹,进入这个文件夹,  
+运行里面的`install.sh`即可完成`Epson Scan2`的安装.  
 使用如下命令来打开`Epson Scan2`  
 ```bash
 epsonscan2
