@@ -867,3 +867,32 @@ grep "Failed password" /var/log/auth.log | wc -l
 ```bash
 grep "Failed password" /var/log/auth.log
 ```
+### 使用`Epson Scan2`连接网络打印机(`Epson`打印机)进行纸质文件扫描
+安装`avahi-browse`(查找局域网网络打印机的工具)  
+```bash
+sudo apt-get install avahi-utils
+```
+安装完之后,使用如下命令来搜索可用的网络打印机  
+```bash
+avahi-browse --all -t -r
+```
+将搜索到的网络打印机的`ip`地址记录下来,后面要用到.  
+下载`Epson Scan2`  
+下载网址:<https://support.epson.com.cn/linux/en/epsonscan2.php>  
+进入之后根据操作系统进行选择即可.  
+下载完成之后会是一个`xxx.tar.gz`  
+使用归档管理器解压缩之后,会发现是一个文件夹,进入这个文件夹,
+运行里面的`install.sh`即可完成`Epson Scan2`的安装.
+使用如下命令来打开`Epson Scan2`  
+```bash
+epsonscan2
+```
+进入之后会发现,有一个打印机的驱动选择界面,如果没有找到打印机驱动,  
+那么会显示一个`Add`按钮,双击这个`Add`按钮,  
+在`Address`栏输入上面使用`avahi-browse`获取到的网络打印机的`ip`地址,  
+然后点击`OK`即可开始和网络打印机进行连接,  
+稍微等待一会儿,等待连接完成,会弹出一个打印机`Information`窗口,  
+在这个窗口中进行扫描设置,将纸质文件放到打印机的扫描平台上,  
+设置完毕之后,点击右下角的`Scan`按钮,即可开始扫描,  
+也可以先点击左下角的`Preview`按钮,进行扫描结果的预览,然后重新调整设置等等,  
+至此设置完毕,开始愉快地扫描吧.  
