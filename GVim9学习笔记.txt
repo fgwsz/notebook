@@ -673,6 +673,7 @@ vim -c "%s/hello/foo/g" -c "wq!" hello.cpp
 
 30.统计字数
     g<ctrl-g>
-        normal模式下,统计全文的字数信息,在vim最下方的命令行显示统计结果
+        统计结果在vim最下方的命令行显示
+        normal模式下,统计光标所在的行/列之前的全部内容的字数信息
         visual模式下,统计选中的内容的字数信息
 
