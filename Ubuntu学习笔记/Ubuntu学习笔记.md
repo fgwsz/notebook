@@ -2,7 +2,7 @@
 ## 下载
 进入官网下载页:<https://cn.ubuntu.com/download>  
 点击`下载Ubuntu桌面版`按钮  
-![](data/20240516094331.png 
+![](data/20240516094331.png)  
 进入后向下翻,找到`Ubuntu xx.yy.z LTS`  
 点击`其他下载`  
 ![](data/20240516094453.png)  
@@ -398,7 +398,7 @@ sudo systemctl disable snapd.seeded.service
 sudo systemctl disable snapd.service
 ```
 重启计算机  
-遇到的问题：尝试上述操作之后,耗费时间的开机启动服务仍然开机启动,并没有被关闭
+遇到的问题:尝试上述操作之后,耗费时间的开机启动服务仍然开机启动,并没有被关闭
 ### 安装`spark-store`
 进入官网下载页:<https://www.spark-app.store/download_latest>  
 点击`软件本体`下的`点击下载`  
@@ -896,3 +896,12 @@ epsonscan2
 设置完毕之后,点击右下角的`Scan`按钮,即可开始扫描,  
 也可以先点击左下角的`Preview`按钮,进行扫描结果的预览,然后重新调整设置等等,  
 至此设置完毕,开始愉快地扫描吧.  
+### 永久关闭错误弹窗
+在`Ubuntu`使用过程中,有时会经常弹出提示框"检测到系统程序出现问题",怎么回事?  
+原因:这是`Ubuntu`中的系统错误弹窗,一旦有一个程序崩溃了,  
+你就会看到"检测到系统程序出现问题"的弹窗.  
+解决办法:  
+想要不再弹出`Ubuntu`中的上述弹窗,需要将`Apport`禁止,  
+并且彻底地摆脱`Ubuntu`系统中的程序崩溃报告,  
+具体做法是编辑`/etc/default/apport`文件最后一行,  
+把`enabled=1`改为`enabled=0`,然后保存并关闭该文件.  
