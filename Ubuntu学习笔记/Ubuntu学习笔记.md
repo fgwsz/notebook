@@ -830,7 +830,7 @@ flash --version
 ```
 `Edge`浏览器安装`flash`插件  
 打开`Edge`浏览器的插件商店,搜索并安装`Ruffle-Flash Emulator`插件.  
-### 安装`mGBA`模拟器
+### 安装`GBA`模拟器`mGBA`
 `mGBA`模拟器官网下载地址:<https://mgba.io/downloads.html>  
 选择对应的`Ubuntu`版本下载安装包即可.  
 下载下来之后是`***.tar.xz`压缩包.  
@@ -905,3 +905,41 @@ epsonscan2
 并且彻底地摆脱`Ubuntu`系统中的程序崩溃报告,  
 具体做法是编辑`/etc/default/apport`文件最后一行,  
 把`enabled=1`改为`enabled=0`,然后保存并关闭该文件.  
+### `dpkg`错误
+在使用`sudo apt-get install`的时候出现如下错误:  
+```bash
+dpkg: error processing package shim-signed (--configure):
+ installed shim-signed package post-installation script subprocess returned error exit status 127
+Errors were encountered while processing:
+ shim-signed
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+```
+解决方式:  
+```bash
+sudo mv /var/lib/dpkg/info /var/lib/dpkg/info.bak
+sudo mkdir /var/lib/dpkg/info
+sudo apt-get update
+sudo apt-get install shim-signed
+sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info.bak/
+sudo rm -rf /var/lib/dpkg/info
+sudo mv /var/lib/dpkg/info.bak /var/lib/dpkg/info
+```
+### 安装`NDS`模拟器`melonDS`
+安装并生成执行文件:  
+```bash
+sudo apt install cmake extra-cmake-modules libcurl4-gnutls-dev libpcap0.8-dev libsdl2-dev libarchive-dev libenet-dev libzstd-dev
+sudo apt install qt6-base-dev
+sudo apt install qt6-base-private-dev
+sudo apt install qt6-multimedia-dev
+sudo apt install libqt6svg6-dev
+cd ~/Downloads
+git clone https://github.com/melonDS-emu/melonDS
+cd melonDS
+cmake -B build
+cmake --build build -j$(nproc --all)
+```
+生成的可执行文件的路径:`~/Downloads/melonDS/build/melonDS`  
+运行`melonDS`模拟器:  
+```bash
+~/Downloads/melonDS/build/melonDS
+```
