@@ -133,10 +133,6 @@ apt-get clean
 apt-get autoremove
     删除为了满足其他软件包的依赖而安装的,系统会自动卸载这些不再需要的软件包
 
-tar -zxvf [file_path.tar.gz] -C [dir_path]
-    解压文件路径为[file_path.tar.gz]中的内容到[dir_path]目录下
-    注意:[dir_path]必须是一个已存在的目录路径
-
 top
     查看进程信息(实时显示)
     进程信息的第一列就是进程编号PID
@@ -194,6 +190,25 @@ head -n [line-number] [file-path/string]
 man [command]
     显示[command]的帮助信息
     按q退出帮助信息
+
+tar -czvf [.tar.gz file path] [input path]...
+    压缩文件为.tar.gz
+    -c 创建归档文件
+    -z 使用gzip压缩
+    -v 显示处理过程
+    -f 指定文件路径
+    [.tar.gz path]==>[root path/filename].tar.gz
+    注意:[root path]必须是已存在的目录
+    [input path]指的是要被压缩的文件路径，可以是单个文件，也可以是文件夹
+    [input path]...表示可以有多个
+
+tar -xzvf [.tar.gz file path] -C [output path]
+    -x 提取归档文件
+    -z 使用gzip解压
+    -v 显示处理过程
+    -f 指定文件路径
+    解压文件路径为[.tar.gz file path]中的内容到[output path]目录下
+    注意:[output path]必须是一个已存在的目录路径
 
 zip -r [zip path] [input path]...
     压缩文件为.zip
