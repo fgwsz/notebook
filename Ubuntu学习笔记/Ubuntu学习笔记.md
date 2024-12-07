@@ -943,3 +943,7 @@ cmake --build build -j$(nproc --all)
 ```bash
 ~/Downloads/melonDS/build/melonDS
 ```
+### 安装`7-zip`
+```bash
+sudo apt-get install p7zip-full
+```
