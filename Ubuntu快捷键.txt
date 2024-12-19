@@ -266,6 +266,10 @@ fc-list | grep [regex]
     [regex]指的是正则表达式
     查找符合[regex]的已安装字体
 
+gnome-paint
+    安装`sudo apt install gnome-paint`
+    打开画板
+
 [command] &
 通过在命令后添加`&`符号,将命令[command]放在后台运行,
 不会避免阻塞当前的指令执行进程.
