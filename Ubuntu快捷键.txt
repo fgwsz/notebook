@@ -300,6 +300,50 @@ wc [OPTION]
         wc -l xxx.txt # 打印xxx.txt中的行数
         [command] | wc -w # 打印[command]命令输出结果的字数
 
+nslookup
+    进入>指令界面
+    [url]   查看网址[url]解析成的IP地址信息
+    exit    退出
+    使用案例:
+    ```txt
+    $ nslookup
+    > bing.com
+    Server:         8.8.8.8
+    Address:        8.8.8.8#53
+
+    Non-authoritative answer:
+    Name:   bing.com
+    Address: 204.79.197.200
+    Name:   bing.com
+    Address: 13.107.21.200
+    Name:   bing.com
+    Address: 2620:1ec:c11::200
+    > exit
+    $ 
+    ```
+
+nslookup [url]
+    查看网址[url]解析成的IP地址信息
+    使用案例:
+    ```txt
+    $ nslookup bing.com
+    Server:         8.8.8.8
+    Address:        8.8.8.8#53
+
+    Non-authoritative answer:
+    Name:   bing.com
+    Address: 204.79.197.200
+    Name:   bing.com
+    Address: 13.107.21.200
+    Name:   bing.com
+    Address: 2620:1ec:c11::200
+
+    $ 
+    ```
+
+ping [url]
+    尝试连接网址[url]
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
@@ -347,3 +391,11 @@ linux microsoft-edge
     `↓`              网页视图显示范围下移一段距离（不平滑移动）
     `←`              网页视图显示范围左移一段距离（不平滑移动）
     `→`              网页视图显示范围右移一段距离（不平滑移动）
+
+linux Document Viewer
+    `j`/`↓` 向下滑动一段距离
+    `k`/`↑` 向上滑动一段距离
+    `h`/`←` 向前翻一页
+    `l`/`→` 向后翻一页
+    `ctrl f` 搜索
+    `ctrl p` 打印
