@@ -188,8 +188,24 @@ head -n [line-number] [file-path/string]
     控制台打印显示[file-path/string]的前[line-number]行内容
 
 man [command]
-    显示[command]的帮助信息
-    按q退出帮助信息
+    进入man显示界面,显示[command]的帮助信息
+    `j`             向下滑动一小段距离
+    `k`             向上滑动一小段距离
+    `space`         向下滑动一大段距离
+    `shift space`   向上滑动一大段距离
+    `f`             向后翻一页
+    `b`             向前翻一页
+    `h`             进入帮助界面,显示帮助信息(包含man命令更详细的快捷键说明)
+        `q`         退出帮助界面
+    `q`             退出man显示界面
+    `g`             跳转到首行
+    `G`             跳转到尾行
+    `/`             向后搜索
+    `?`             向前搜索
+    `n`             跳转到下一个搜索结果
+    `N`             跳转到前一个搜索结果
+    `Esc u`         关闭搜索结果的高亮显示:Undo (toggle) search highlighting
+    `Esc U`         关闭搜索结果的高亮显示:Clear search highlighting
 
 tar -czvf [.tar.gz file path] [input path]...
     压缩文件为.tar.gz
