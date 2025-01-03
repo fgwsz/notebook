@@ -360,6 +360,54 @@ nslookup [url]
 ping [url]
     尝试连接网址[url]
 
+curl [url]
+    安装`sudo apt install curl`
+    功能一:下载[url]指定的文件到本地
+        `-o [path]`                 指定下载路径(支持绝对路径和相对路径)
+        `-C -`                      使用断点续传功能
+        `--retry [number]`          自定义断点续传重试的次数
+            只写`--retry`不写[number],代表无限次数
+        `--retry-delay [seconds]`   自定义每次断点续传重试之前延时的秒数
+        `-L`                        支持重定向的链接
+        `--http1.1`                 使用http1.1进行下载,默认使用http2.0
+        指令的返回值
+            成功时返回0
+            失败时返回错误码
+    功能二:获取[url]指定的文件的大小
+    ```bash
+    #文件的网址
+    url="www.xxx.com/yyy.txt"
+    #获取文件大小
+    remote_size=$(curl -sI "$url" | grep -i Content-Length | awk '{print $2}' | tr -d '\r')
+    remote_size=${remote_size% } #去除尾部的空白字符
+    #判断文件是否存在
+    if [ -z "$remote_size" ]; then #-z 表示判断是否为空字符串
+        echo "Unable to retrieve the size of the remote file."
+    fi
+    ```
+
+wget [url]
+    主要用来下载小型文件(自动支持断点续传)
+    安装`sudo apt install wget`
+    下载[url]指定的文件到本地的当前文件夹下
+    `-O [filename]` 重命名下载文件的名称
+    `-t [number]`   自定义断点续传重试的次数,默认是20
+        `-t 0`/`-t inf`都代表无限次数
+    指令的返回值
+        成功时返回0
+        失败时返回错误码
+
+axel [url]
+    主要用来下载大型文件(自动支持断点续传)
+    安装`sudo apt install axel`
+    下载(多线程断点续传分块下载)[url]指定的文件到本地
+    `-o [path]`                 指定下载路径(支持绝对路径和相对路径)
+    `-n [number]`               文件分成[number]块(线程数)进行下载
+        默认情况下(不写`-n`时),使用4线程下载
+    指令的返回值
+        成功时返回0
+        失败时返回错误码
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
