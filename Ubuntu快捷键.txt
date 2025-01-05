@@ -461,7 +461,7 @@ linux Document Viewer
     `k`/`↑`         向上滑动一小段距离
     `h`/`←`         向前翻一页
     `l`/`→`         向后翻一页
-    `space`         向下滑动一大段距离
-    `shift space`   向上滑动一大段距离
+    `shift space`   向前翻一页
+    `space`         向后翻一页
     `ctrl f`        搜索当前文档的注释
     `ctrl p`        打印当前文档
