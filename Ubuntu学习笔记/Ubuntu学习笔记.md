@@ -226,6 +226,30 @@ ssh -T git@github.com
 ```
 如下图所示,证明配置成功  
 ![](data/20240516231223.png)  
+### 更换`apt`软件源
+用`root`权限编辑`/etc/apt/source.list`修改为如下内容:  
+文件内容来自清华大学开源软件镜像站:
+<https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/>  
+```txt
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
+# 以下安全更新软件源包含了官方源与镜像站配置，如有需要可自行修改注释切换
+deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+# deb-src http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+# 预发布软件源，不建议启用
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
+# # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
+```
+执行`sudo apt update`即可看到上述软件源更新的信息.  
+但是可能会因为前期/软件配置一些原因,  
+会发现一些没有写在`/etc/apt/source.list`里面的软件源信息,  
+那么这些软件源信息保存在哪里呢?  
+答案是在`/etc/apt/source.list.d/`这个文件夹里.  
 ### 安装`Vim 9`
 ```bash
 sudo add-apt-repository ppa:jonathonf/vim
@@ -778,7 +802,7 @@ sudo mkfontdir
 #更新字体缓存
 fc-cache
 ```
-# 升级`nodejs`和`npm`到最新版本
+### 升级`nodejs`和`npm`到最新版本
 如果已经安装过`nodejs`,请使用如下命令删除:  
 ```bash
 sudo apt-get purge nodejs
