@@ -1006,5 +1006,6 @@ alias vim='~/Downloads/vim.appimage'
 存在的问题:  
 1. `GVim 9.1`无法使用中文输入法;  
 2. `GVim 9.1` `Netrw` `x`打开文件的功能无效.  
+
 综上还是继续使用`Vim/GVim 8.2`好了.  
 此外还有一个未尝试的待选项`vim-gtk3 9.1`.  
