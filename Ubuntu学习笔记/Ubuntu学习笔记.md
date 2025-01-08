@@ -1009,3 +1009,11 @@ alias vim='~/Downloads/vim.appimage'
 
 综上还是继续使用`Vim/GVim 8.2`好了.  
 此外还有一个未尝试的待选项`vim-gtk3 9.1`.  
+### 关闭`IBus`在应用窗口中启用内嵌编辑模式
+关闭`IBus`在应用窗口中启用内嵌编辑模式功能,  
+有助于解决一部分应用程序中无法使用`IBus`来输入非英文文字的问题.  
+使用如下命令来打开`IBus`设置界面:  
+```bash
+ibus-setup
+```
+点击`General`选项卡,取消勾选`Embed preedit text in application window`选项.  
