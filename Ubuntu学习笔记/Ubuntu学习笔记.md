@@ -274,14 +274,7 @@ deb-src https://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted unive
 会发现一些没有写在`/etc/apt/source.list`里面的软件源信息,  
 那么这些软件源信息保存在哪里呢?  
 答案是在`/etc/apt/source.list.d/`这个文件夹里.  
-### 安装`Vim 9`
-```bash
-sudo add-apt-repository ppa:jonathonf/vim
-sudo apt update
-sudo apt install vim
-vim --version
-```
-### 安装`Vim`
+### 安装`Vim/GVim 8.2`
 1.方式一
 打开`Ubuntu Software`  
 ![](data/20240517112556.png)  
@@ -995,3 +988,5 @@ cmake --build build -j$(nproc --all)
 ```bash
 sudo apt-get install p7zip-full
 ```
+### 安装`Vim/GVim 9.1`
+
