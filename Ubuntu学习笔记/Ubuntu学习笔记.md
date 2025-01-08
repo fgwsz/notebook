@@ -1017,3 +1017,4 @@ alias vim='~/Downloads/vim.appimage'
 ibus-setup
 ```
 点击`General`选项卡,取消勾选`Embed preedit text in application window`选项.  
+重启计算机,应用生效.  
