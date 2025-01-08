@@ -989,4 +989,17 @@ cmake --build build -j$(nproc --all)
 sudo apt-get install p7zip-full
 ```
 ### 安装`Vim/GVim 9.1`
-
+安装方式来自于`Vim`官方发布的`vim-appimage`仓库的`releases`页:  
+<https://github.com/vim/vim-appimage/releases/tag/v9.1.0995>
+```bash
+wget -O /tmp/gvim.appimage https://github.com/vim/vim-appimage/releases/download/v9.1.0995/GVim-v9.1.0995.glibc2.29-x86_64.AppImage
+wget -O /tmp/vim.appimage https://github.com/vim/vim-appimage/releases/download/v9.1.0995/Vim-v9.1.0995.glibc2.29-x86_64.AppImage
+chmod +x /tmp/gvim.appimage
+chmod +x /tmp/vim.appimage
+```
+安装完成之后,需要将老版本的`Vim/GVim 8.2`的命令行启动方式替换掉.  
+在`.bashrc`中进行修改
+```bash
+alias gvim='/tmp/gvim.appimage'
+alias vim='/tmp/vim.appimage'
+```

@@ -97,6 +97,9 @@ apt search [package name]
     apt search [package name]|grep installed
     查看[package name]是否已经安装
 
+apt list --upgradable
+    查看本地哪些包可以从远程仓库获取更新
+
 sudo [command]
     使用管理员权限来执行[command]指令
 
