@@ -992,14 +992,19 @@ sudo apt-get install p7zip-full
 安装方式来自于`Vim`官方发布的`vim-appimage`仓库的`releases`页:  
 <https://github.com/vim/vim-appimage/releases/tag/v9.1.0995>
 ```bash
-wget -O /tmp/gvim.appimage https://github.com/vim/vim-appimage/releases/download/v9.1.0995/GVim-v9.1.0995.glibc2.29-x86_64.AppImage
-wget -O /tmp/vim.appimage https://github.com/vim/vim-appimage/releases/download/v9.1.0995/Vim-v9.1.0995.glibc2.29-x86_64.AppImage
-chmod +x /tmp/gvim.appimage
-chmod +x /tmp/vim.appimage
+wget -O ~/Downloads/gvim.appimage https://github.com/vim/vim-appimage/releases/download/v9.1.0995/GVim-v9.1.0995.glibc2.29-x86_64.AppImage
+wget -O ~/Downloads/vim.appimage https://github.com/vim/vim-appimage/releases/download/v9.1.0995/Vim-v9.1.0995.glibc2.29-x86_64.AppImage
+chmod +x ~/Downloads/gvim.appimage
+chmod +x ~/Downloads/vim.appimage
 ```
 安装完成之后,需要将老版本的`Vim/GVim 8.2`的命令行启动方式替换掉.  
-在`.bashrc`中进行修改
+在`.bashrc`中进行如下修改:  
 ```bash
-alias gvim='/tmp/gvim.appimage'
-alias vim='/tmp/vim.appimage'
+alias gvim='~/Downloads/gvim.appimage'
+alias vim='~/Downloads/vim.appimage'
 ```
+存在的问题:  
+1. `GVim 9.1`无法使用中文输入法;  
+2. `GVim 9.1` `Netrw` `x`打开文件的功能无效.  
+综上还是继续使用`Vim/GVim 8.2`好了.  
+此外还有一个未尝试的待选项`vim-gtk3 9.1`.  
