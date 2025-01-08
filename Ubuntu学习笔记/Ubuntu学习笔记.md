@@ -230,7 +230,12 @@ ssh -T git@github.com
 用`root`权限编辑`/etc/apt/source.list`修改为如下内容:  
 文件内容来自清华大学开源软件镜像站:
 <https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/>  
+以及阿里云镜像:
+<https://developer.aliyun.com/mirror/ubuntu>  
 ```txt
+# ============================================================================
+# 清华源
+# ============================================================================
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
@@ -238,12 +243,31 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted u
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
+
 # 以下安全更新软件源包含了官方源与镜像站配置，如有需要可自行修改注释切换
 deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
 # deb-src http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+
 # 预发布软件源，不建议启用
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
 # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
+# ============================================================================
+# 阿里云源
+# ============================================================================
+deb https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
+
+deb https://mirrors.aliyun.com/ubuntu/ jammy-security main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ jammy-security main restricted universe multiverse
+
+deb https://mirrors.aliyun.com/ubuntu/ jammy-updates main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ jammy-updates main restricted universe multiverse
+
+# deb https://mirrors.aliyun.com/ubuntu/ jammy-proposed main restricted universe multiverse
+# deb-src https://mirrors.aliyun.com/ubuntu/ jammy-proposed main restricted universe multiverse
+
+deb https://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
 ```
 执行`sudo apt update`即可看到上述软件源更新的信息.  
 但是可能会因为前期/软件配置一些原因,  
