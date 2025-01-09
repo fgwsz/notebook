@@ -116,6 +116,9 @@ apt remove [package name]
 apt update
     更新apt远程仓库
 
+apt upgrade
+    更新所有可以更新的本地包到apt远程仓库的最新版本
+
 xdg-open [path]
     使用系统默认的文件浏览器打开路径为[path]的文件夹/文件
 

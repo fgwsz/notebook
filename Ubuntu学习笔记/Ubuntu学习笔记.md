@@ -227,7 +227,7 @@ ssh -T git@github.com
 如下图所示,证明配置成功  
 ![](data/20240516231223.png)  
 ### 更换`apt`软件源
-用`root`权限编辑`/etc/apt/source.list`修改为如下内容:  
+用`root`权限编辑`/etc/apt/sources.list`修改为如下内容:  
 文件内容来自清华大学开源软件镜像站:
 <https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/>  
 以及阿里云镜像:
