@@ -322,6 +322,10 @@ wc [OPTION]
         wc -l xxx.txt # 打印xxx.txt中的行数
         [command] | wc -w # 打印[command]命令输出结果的字数
 
+cloc [path]
+    安装`sudo apt install cloc`
+    统计路径[path]中的代码行数
+
 nslookup
     进入>指令界面
     [url]   查看网址[url]解析成的IP地址信息
