@@ -134,7 +134,7 @@ apt-get purge [string/regex pattern]
     卸载[string/regex pattern]名称匹配的包并且删除相关配置
 
 apt-get clean
-    删除安装了的软件包的安装包（如果你确定这些安装包不会再用）删除包缓存中的所有包
+    删除安装了的软件包的安装包(如果你确定这些安装包不会再用)删除包缓存中的所有包
 
 apt-get autoremove
     删除为了满足其他软件包的依赖而安装的,系统会自动卸载这些不再需要的软件包
@@ -162,11 +162,11 @@ kill -9 [PID]
 
 echo [string]>[file path]
     覆盖路径为[file path]的文本文件内容为[string]
-    若[file path]不存在，则创建一个路径为[file path]的文本文件
+    若[file path]不存在,则创建一个路径为[file path]的文本文件
 
 echo [string]>>[file path]
     在路径为[file path]的文本文件内容的尾部插入一行字符串[string]
-    若[file path]不存在，则创建一个路径为[file path]的文本文件
+    若[file path]不存在,则创建一个路径为[file path]的文本文件
 
 cat [file path]
     查看(在终端显示)路径为[file path]的文本文件的具体内容
@@ -221,7 +221,7 @@ tar -czvf [.tar.gz file path] [input path]...
     -f 指定文件路径
     [.tar.gz path]==>[root path/filename].tar.gz
     注意:[root path]必须是已存在的目录
-    [input path]指的是要被压缩的文件路径，可以是单个文件，也可以是文件夹
+    [input path]指的是要被压缩的文件路径,可以是单个文件,也可以是文件夹
     [input path]...表示可以有多个
 
 tar -xzvf [.tar.gz file path] -C [output path]
@@ -236,7 +236,7 @@ zip -r [zip path] [input path]...
     压缩文件为.zip
     [zip path]==>[zip root path/zip name].zip
     注意:[zip path]的根目录必须是已存在的目录
-    [input path]指的是要被压缩的文件路径，可以是单个文件，也可以是文件夹
+    [input path]指的是要被压缩的文件路径,可以是单个文件,也可以是文件夹
     [input path]...表示可以有多个
 
 unzip [zip file path] -d [output path]
@@ -254,7 +254,7 @@ unzip [zip file path] -d [output path]
         压缩等级选取越大,代表压缩之后的7z文件体积越小
     [7z path]==>[7z root path/7z name].7z
     注意:[7z path]的根目录必须是已存在的目录
-    [input path]指的是要被压缩的文件路径，可以是单个文件，也可以是文件夹
+    [input path]指的是要被压缩的文件路径,可以是单个文件,也可以是文件夹
     [input path]...表示可以有多个,每一个之间用空格隔开
 
 7z x [7z path] -o[output path]
@@ -418,6 +418,14 @@ axel [url]
         成功时返回0
         失败时返回错误码
 
+aria2c [磁力链接]
+    用来下载磁力链接
+    安装`sudo apt install aria2`
+    `-d [path]`     下载文件的存储目录
+    `-o [filename]` 下载文件的名称
+        它总是相对于在-d选项中给出的目录
+        当使用-Z选项时,此选项将被忽略
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
@@ -448,12 +456,12 @@ linux xdg(类似于windows的explorer.exe)
     `ctrl l` 进入地址编辑栏
 
 linux microsoft-edge
-    `ctrl n`         打开一个新的edge窗口，并显示`new tab`页
+    `ctrl n`         打开一个新的edge窗口,并显示`new tab`页
     `ctrl d`         收藏当前标签页
     `ctrl w`         关闭当前标签页
     `ctrl tab`       切换到下一个标签页
     `ctrl shift tab` 切换到上一个标签页
-    `ctrl j`         打开下载标签栏小窗口，之后可以使用`tab`键来选择选项按钮，`enter`来点击按钮，`esc`键退出小窗口
+    `ctrl j`         打开下载标签栏小窗口,之后可以使用`tab`键来选择选项按钮,`enter`来点击按钮,`esc`键退出小窗口
     `ctrl p`         打印当前网页
     `alt d`          进入标签页地址栏
     `alt ←`          后退
@@ -461,10 +469,10 @@ linux microsoft-edge
     `alt p`          固定/取消固定标签页
     `space`          网页视图显示范围的下一页
     `shift space`    网页视图显示范围的上一页
-    `↑`              网页视图显示范围上移一段距离（不平滑移动）
-    `↓`              网页视图显示范围下移一段距离（不平滑移动）
-    `←`              网页视图显示范围左移一段距离（不平滑移动）
-    `→`              网页视图显示范围右移一段距离（不平滑移动）
+    `↑`              网页视图显示范围上移一段距离(不平滑移动)
+    `↓`              网页视图显示范围下移一段距离(不平滑移动)
+    `←`              网页视图显示范围左移一段距离(不平滑移动)
+    `→`              网页视图显示范围右移一段距离(不平滑移动)
 
 linux Document Viewer
     `j`/`↓`         向下滑动一小段距离
