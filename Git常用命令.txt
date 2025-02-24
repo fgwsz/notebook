@@ -1,0 +1,43 @@
+git --version
+    显示git的版本信息
+git config --global user.name [name]
+    配置git账户信息中的账户名
+git config --global user.email [email]
+    配置git账户信息中的账户邮箱
+git config --list
+    显示git账户信息
+git init
+    初始化当前文件夹为一个本地仓库
+git pull
+    从云端拉取更新
+git add [-f] [path]
+    将[path]包含的文件添加入到本次更改中
+    -f 可选项,表示强制添加被忽略的内容
+git rm [--cached] [path]
+    将[path]包含的文件从云端仓库中删除(纳入本次更改中),
+    同时也会删除本地仓库中[path]包含的文件
+    --cached 可选项,表示不删除本地仓库[path]包含的文件
+git commit -m [string]
+    设置本次更改的提交信息
+git push [--force]
+    将本地的更改提交到云端
+    --force 可选项,表示强制提交(覆盖云端仓库)
+git log
+    查看云端仓库全部的提交信息(会显示每次提交的commit ID)
+git reset --hard [commit ID]
+    回退本地仓库内容为云端[commit ID]版本
+git fetch origin
+    用于从云端仓库下载最新的数据(提交记录)到本地仓库,但不会修改本地仓库的内容
+git reset --hard origin/main
+    强制回退本地仓库内容和云端仓库完全一致(舍弃本地仓库的一切更改)
+git status
+    显示当前本地仓库的状态(更改情况)
+git add -A 或者是 git add --all
+    提交本地仓库的全部文件以及文件的更改(包括文件删除)添加到本次更改中
+git add -a
+    提交本地仓库的已追踪文件(已使用git add 添加过的)的更改(包括文件删除)
+    添加到本次更改中
+一些特殊的文件:
+.gitignore
+    这个文件中用于填写一些文件路径,
+    用于在每次提交的时候自动忽略这些文件(不添加)
