@@ -8,35 +8,53 @@ git config --list
     显示git账户信息
 git init
     初始化当前文件夹为一个本地仓库
+git branch -M main
+    用于将本地仓库所在的分支(默认所在分支为master)重命名为main
+git remote add origin [repository url]
+    用于将本地仓库与远程仓库仓库关联起来,这个命令做了下面的2件事:
+        添加远程仓库仓库:它告诉Git你需要将本地仓库与哪个远程仓库仓库进行关联
+        设置别名:为远程仓库仓库起一个别名,默认情况下这个别名通常是origin
+git push -u origin main
+    用于将本地的 main 分支推送到远程仓库仓库,并设置上游(upstream)关系
+    git push:这是Git中用于将本地分支上的提交推送到远程仓库仓库的基本命令
+    -u或--set-upstream这个选项用于设置上游(upstream)关系,
+    一旦设置了上游关系,
+    未来的git push和git pull操作可以直接省略远程仓库仓库和分支名称
+    例如,下次只需输入git push即可自动推送到origin main
+    origin:这是远程仓库仓库的名称(别名)
+        默认情况下,克隆下来的远程仓库仓库会被命名为origin
+        如果你有多个远程仓库仓库,可能会有不同的名称
+    main:这是要推送的本地分支名称.在这个例子中,指的是本地的main分支
 git pull
-    从云端拉取更新
+    从远程仓库拉取更新到本地仓库
 git add [-f] [path]
     将[path]包含的文件添加入到本次更改中
     -f 可选项,表示强制添加被忽略的内容
-git rm [--cached] [path]
-    将[path]包含的文件从云端仓库中删除(纳入本次更改中),
-    同时也会删除本地仓库中[path]包含的文件
-    --cached 可选项,表示不删除本地仓库[path]包含的文件
-git commit -m [string]
-    设置本次更改的提交信息
-git push [--force]
-    将本地的更改提交到云端
-    --force 可选项,表示强制提交(覆盖云端仓库)
-git log
-    查看云端仓库全部的提交信息(会显示每次提交的commit ID)
-git reset --hard [commit ID]
-    回退本地仓库内容为云端[commit ID]版本
-git fetch origin
-    用于从云端仓库下载最新的数据(提交记录)到本地仓库,但不会修改本地仓库的内容
-git reset --hard origin/main
-    强制回退本地仓库内容和云端仓库完全一致(舍弃本地仓库的一切更改)
-git status
-    显示当前本地仓库的状态(更改情况)
 git add -A 或者是 git add --all
     提交本地仓库的全部文件以及文件的更改(包括文件删除)添加到本次更改中
 git add -a
     提交本地仓库的已追踪文件(已使用git add 添加过的)的更改(包括文件删除)
     添加到本次更改中
+git rm [--cached] [path]
+    将[path]包含的文件从远程仓库仓库中删除(纳入本次更改中),
+    同时也会删除本地仓库中[path]包含的文件
+    --cached 可选项,表示不删除本地仓库[path]包含的文件
+git commit -m [string]
+    设置本次更改的提交信息
+git push [--force]
+    将本地仓库的更改提交到远程仓库
+    --force 可选项,表示强制提交(覆盖远程仓库仓库)
+git log
+    查看远程仓库仓库全部的提交信息(会显示每次提交的commit ID)
+git reset --hard [commit ID]
+    回退本地仓库内容为远程仓库[commit ID]版本
+git fetch origin
+    用于从远程仓库仓库下载最新的数据(提交记录)到本地仓库,
+    但不会修改本地仓库的内容
+git reset --hard origin/main
+    强制回退本地仓库内容和远程仓库仓库完全一致(舍弃本地仓库的一切更改)
+git status
+    显示当前本地仓库的状态(更改情况)
 一些特殊的文件:
 .gitignore
     这个文件中用于填写一些文件路径,
