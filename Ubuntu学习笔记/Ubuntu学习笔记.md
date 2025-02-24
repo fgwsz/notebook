@@ -236,7 +236,7 @@ ssh -T git@github.com
 # ============================================================================
 # 清华源
 # ============================================================================
-# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+# 默认注释了源码镜像以提高 apt update 速度,如有需要可自行取消注释
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
@@ -244,11 +244,11 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted u
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
 
-# 以下安全更新软件源包含了官方源与镜像站配置，如有需要可自行修改注释切换
+# 以下安全更新软件源包含了官方源与镜像站配置,如有需要可自行修改注释切换
 deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
 # deb-src http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
 
-# 预发布软件源，不建议启用
+# 预发布软件源,不建议启用
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
 # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
 # ============================================================================
@@ -462,6 +462,18 @@ spark-store
 在搜索框里面搜索`微信`  
 找到`微信(wine)`应用点击安装`Download and Install`按钮即可开始安装  
 安装完毕之后在开始菜单中点击对应的应用图标即可打开应用  
+### 安装微信`linux`官方发布版本
+微信`linux`官网:<https://linux.weixin.qq.com/>  
+安装方式:  
+下载`X86`版本下的`deb`安装包,然后使用如下指令进行安装:  
+```bash
+sudo dpkg -i WeChatLinux_x86_64.deb
+```
+启动方式:  
+```bash
+/usr/bin/wechat
+```
+注意:当微信`linux`官方版本正在运行的时候,使用上述指令无效(即不会打开第二个).  
 ### 安装`wine`
 安装方式参考:<https://mirrors-i.tuna.tsinghua.edu.cn/help/wine-builds/>  
 首先启用32位架构  
