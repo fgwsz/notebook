@@ -39,8 +39,9 @@ cd [dir path]
         .  当前目录
         ~  用户根目录
 
-cp [from path] [to path]
+cp [-r] [from path] [to path]
     拷贝[from path]文件/文件夹到[to path]
+    -r 可选项,在拷贝文件夹的时候需添加该可选项
 
 mv [from path] [to path]
     剪切[from path]文件/文件夹到[to path]
