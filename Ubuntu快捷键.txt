@@ -430,6 +430,16 @@ aria2c [磁力链接]
 ibus-daemon -r -d -x
     重启ibus,主要用于ibus输入法悬浮框无法弹出时(异常退出),重启输入法
 
+dwebp [webp image path] -o [output image path]
+    安装`sudo apt-get install webp`
+    将文件路径为[webp image path]的webp格式的图像文件
+        转换为文件路径为[output image path]的其他格式的图像文件
+
+cwebp [input image path] -o [webp image path]
+    安装`sudo apt-get install webp`
+    将文件路径为[input image path]的其他格式的图像文件
+        转换为文件路径为[webp image path]的webp格式的图像文件
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
