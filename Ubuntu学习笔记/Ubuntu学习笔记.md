@@ -1030,3 +1030,10 @@ ibus-setup
 ```
 点击`General`选项卡,取消勾选`Embed preedit text in application window`选项.  
 重启计算机,应用生效.  
+### 解决输入法悬浮框无法弹出问题
+输入法悬浮框突然间无法弹出了,这是怎么一回事呢?  
+有可能是`IBus`运行异常退出导致的.  
+使用如下命令来重启`IBus`,看是否可以解决上述问题:  
+```bash
+ibus-daemon -r -d -x
+```
