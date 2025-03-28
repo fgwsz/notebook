@@ -467,6 +467,14 @@ sudo ddrescue -d -r3 [硬件设备的完整盘符] 硬件镜像.img 恢复日志
         `-R`
             表示从上次中断点继续
 
+foremost -i [input img file path] -o [output path]
+    提取路径为[input img file path]的镜像文件中的数据到本地[output path]中
+    安装`sudo apt install foremost`
+
+testdisk [硬件设备的完整盘符]
+    安装`sudo apt install testdisk`
+    读取/分析/修复[硬件设备的完整盘符]对应的硬件存储信息
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
