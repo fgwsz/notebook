@@ -479,6 +479,18 @@ gimp
     gimp是一个图片编辑软件,定位类似于linux上的PhotoShop
     安装`sudo apt install gimp`
 
+sudo lshw -C display
+    查看显示器的品牌和型号
+
+sudo dmidecode -s system-manufacturer
+    查看主机品牌(制造商)
+
+sudo dmidecode -s system-product-name
+    查看主机型号(产品名称)
+
+sudo dmidecode -s system-serial-number
+    查看序列号
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
