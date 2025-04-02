@@ -426,6 +426,60 @@ aria2c [磁力链接]
     `-o [filename]` 下载文件的名称
         它总是相对于在-d选项中给出的目录
         当使用-Z选项时,此选项将被忽略
+    aria2c的配置文件路径在`~/.config/aria2/`文件路径下,
+    如果没有这个文件夹的话可以自行创建,并创建如下路径:
+    ~/.config/aria2
+        ├── aria2.conf
+        ├── aria2.log
+        └── aria2.session
+    `aria2.conf`是配置文件,
+    `aria2.log`是日志文件,
+    `aria2.session`是下载器进度保存文件,
+    `aria2`启动的过程中会从这个文件夹读取下载参数和配置.
+    注意:
+        在`aria2.conf`这个配置文件中无法将`~`这个用户目录文件夹的通配符,
+        识别成正确的用户目录文件全路径,
+        请自行更改为实际的用户目录文件全路径
+    下面给出一个`aria2.conf`配置文件的实例作为参考:
+    ```txt
+    # /home/fgwsz/.config/aria2/aria2.conf
+    # 日志文件路径
+    log=/home/fgwsz/.config/aria2/aria2.log
+    # 下载目录
+    dir=/home/fgwsz/Downloads
+    # 输入文件路径(记录下载历史)
+    input-file=/home/fgwsz/.config/aria2/aria2.session
+    # 输出文件路径(保存下载历史)
+    save-session=/home/fgwsz/.config/aria2/aria2.session
+    # 启用 DHT (IPv4)
+    enable-dht=true
+    # DHT 文件路径
+    dht-file-path=/home/fgwsz/.config/aria2/dht.dat
+    # DHT 监听端口范围
+    listen-port=6881-6999
+    dht-listen-port=6881-6999
+    # 启用本地节点发现 (LPD)
+    bt-enable-lpd=true
+    # 启用节点交换扩展
+    enable-peer-exchange=true
+    # 断点续传
+    continue=true
+    # 文件预分配方式
+    file-allocation=falloc
+    # 最大并发下载任务数
+    max-concurrent-downloads=5
+    # 同一服务器最大连接数
+    max-connection-per-server=10
+    # 整体下载速度限制(单位:字节/s),0 表示无限制
+    max-overall-download-limit=0
+    # 单个任务下载速度限制(单位:字节/s),0 表示无限制
+    max-download-limit=0
+    # 整体上传速度限制(单位:字节/s),0 表示无限制
+    max-overall-upload-limit=0
+    # 单个任务上传速度限制(单位:字节/s),0 表示无限制
+    max-upload-limit=0
+    ```
+    其中`/home/fgwsz`是我的用户目录的全路径
 
 ibus-daemon -r -d -x
     重启ibus,主要用于ibus输入法悬浮框无法弹出时(异常退出),重启输入法
