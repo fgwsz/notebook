@@ -50,6 +50,9 @@ ls -f [dir path]
     [dir path]为空,默认为.(当前工作目录)
     显示路径为[dir path]目录下的下一级文件/文件夹信息
 
+ls -ld [path]
+    检查路径[path]的文件/目录是否存在
+
 tree -f [dir path]
     安装:
     ```shell
