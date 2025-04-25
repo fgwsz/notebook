@@ -548,6 +548,64 @@ sudo dmidecode -s system-product-name
 sudo dmidecode -s system-serial-number
     查看序列号
 
+pdftk [[input pdf file] list] [[operator] [arguemnts] list] output [output pdf file path]
+    pdf操作工具
+    安装`sudo apt install pdftk-java`
+    output 指定输出文件路径
+    使用案例:
+        扫描页交替排序
+                pdftk A=even.pdf B=odd.pdf shuffle A B output collated.pdf
+            若odd.pdf页面顺序颠倒:
+                pdftk A=even.pdf B=odd.pdf shuffle A Bend-1 output collated.pdf
+        PDF解密
+            pdftk secured.pdf input_pw foopass output unsecured.pdf
+        PDF加密
+            128位强度加密(默认),禁止所有权限(默认):
+                pdftk 1.pdf output 1.128.pdf owner_pw foopass
+            添加用户密码'baz'用于打开文件:
+                pdftk 1.pdf output 1.128.pdf owner_pw foo user_pw baz
+            允许打印(需先输入密码):
+                pdftk 1.pdf output 1.128.pdf owner_pw foo user_pw baz allow printing
+        合并PDF文件
+            基础合并:
+                pdftk in1.pdf in2.pdf cat output out1.pdf
+            使用句柄合并:
+                pdftk A=in1.pdf B=in2.pdf cat A B output out1.pdf
+            通配符批量合并:
+                pdftk *.pdf cat output combined.pdf
+        删除指定页面
+                pdftk in.pdf cat 1-12 14-end output out1.pdf
+            替代写法:
+                pdftk A=in1.pdf cat A1-12 A14-end output out1.pdf
+        40位加密操作
+            pdftk 1.pdf 2.pdf cat output 3.pdf encrypt_40bit owner_pw foopass
+        合并含密码保护的文件
+            pdftk A=secured.pdf 2.pdf input_pw A=foopass cat output 3.pdf
+        压缩PDF
+            pdftk doc.pdf output doc.c.pdf compress
+        解压PDF
+            pdftk doc.c.pdf output doc.pdf uncompress
+        修复损坏的PDF
+            pdftk broken.pdf output fixed.pdf
+        拆分PDF为单页文件
+            基础拆分:
+              pdftk in.pdf burst
+            加密拆分并允许低质量打印:
+              pdftk in.pdf burst owner_pw foopass allow DegradedPrinting
+        生成元数据报告
+            pdftk in.pdf dump_data output report.txt
+        页面旋转参数说明
+            奇偶页限定符:`even`(偶)或`odd`(奇)
+            旋转关键词与角度对应:
+                `north`(0度),`east`(90度),`south`(180度),`west`(270度),
+                `left`(逆时针90度),`right`(顺时针90度),`down`(180度翻转)
+            首页顺时针旋转90度,其余页面选取奇数页面旋转270度:
+                pdftk in.pdf cat 1east 2-endoddwest output out.pdf
+            全文旋转180度:
+                pdftk in.pdf cat 1-endsouth output out.pdf
+        使用注意事项
+            文件名含空格时需用引号包裹(如`"file name.pdf"`)
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
