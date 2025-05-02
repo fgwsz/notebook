@@ -606,6 +606,11 @@ pdftk [[input pdf file] list] [[operator] [arguemnts] list] output [output pdf f
         使用注意事项
             文件名含空格时需用引号包裹(如`"file name.pdf"`)
 
+shotcut
+    启动shotcut
+    shotcut是一款开源的视频剪辑软件
+    安装`sudo apt install shotcut`
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
