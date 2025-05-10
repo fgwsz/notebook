@@ -1037,3 +1037,40 @@ ibus-setup
 ```bash
 ibus-daemon -r -d -x
 ```
+### 解决使用`ssh`连接`Github`的端口`22`时出现连接超时的问题
+在使用`git pull`的时候弹出如下报错信息:  
+```txt
+ssh: connect to host github.com port 22: Connection timed out
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+```
+解决方式:  
+在`~/.ssh/`文件夹下新建一个文件名为`config`的文本文件,输入如下内容:  
+```txt
+Host github.com
+User 这里填写你注册github帐号时使用的邮箱地址
+Hostname ssh.github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa
+Port 443
+```
+然后测试一下是否可以正常使用`ssh`连接到`github`.  
+```bash
+ssh -T git@github.com
+```
+弹出如下的提示信息:  
+```txt
+The authenticity of host '[ssh.github.com]:443 ([20.205.243.160]:443)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:1: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+输入`yes`即可,弹出如下的提示信息:  
+```txt
+Warning: Permanently added '[ssh.github.com]:443' (ED25519) to the list of known hosts.
+Hi fgwsz! You've successfully authenticated, but GitHub does not provide shell access.
+```
+看来现在已经可以使用`ssh`正常连接`github`了,  
+不过是将原先访问的`22`端口改为了访问`443`端口.  
