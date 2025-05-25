@@ -639,6 +639,7 @@ linux xdg(类似于windows的explorer.exe)
     `ctrl Z` 取消撤销
     `F2` 重命名
     `ctrl l` 进入地址编辑栏
+    `ctrl n` 打开一个新的和当前文件路径一致的文件浏览器窗口
 
 linux microsoft-edge
     `ctrl n`         打开一个新的edge窗口,并显示`new tab`页
