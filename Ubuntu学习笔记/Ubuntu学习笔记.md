@@ -1074,3 +1074,17 @@ Hi fgwsz! You've successfully authenticated, but GitHub does not provide shell a
 ```
 看来现在已经可以使用`ssh`正常连接`github`了,  
 不过是将原先访问的`22`端口改为了访问`443`端口.  
+### 解决系统无法发出声音的问题
+安装`pavucontrol`工具:  
+```bash
+sudo apt install pavucontrol
+```
+运行`pavucontrol`工具:  
+```bash
+pavucontrol
+```
+在最上方的菜单栏选中`Configuration`选项,  
+选择`Built in Audio`的`Profile`文件,  
+选择`Digital Stereo(HDMI) Output`,  
+这时可以打开一首歌曲,看一下此时系统能不能发出声音.  
+可以发出声音的话,配置完毕.  
