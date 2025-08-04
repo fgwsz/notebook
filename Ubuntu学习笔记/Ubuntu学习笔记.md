@@ -1088,3 +1088,25 @@ pavucontrol
 选择`Digital Stereo(HDMI) Output`,  
 这时可以打开一首歌曲,看一下此时系统能不能发出声音.  
 可以发出声音的话,配置完毕.  
+### 更新`GCC`版本到`13.1.0`
+```bash
+#!/bin/bash
+sudo apt install build-essential # gcc-11 g++-11
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt install gcc-13 g++-13 libgcc-13-dev libstdc++-13-dev -y
+sudo apt --fix-broken install
+sudo apt install gcc-13 g++-13 libgcc-13-dev libstdc++-13-dev -y
+# 移除旧配置
+sudo update-alternatives --remove-all gcc
+sudo update-alternatives --remove-all g++
+sudo rm /etc/alternatives/gcc /etc/alternatives/g++  # 删除残留符号链接
+# 重新注册（明确指定路径和优先级）
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 130 \
+                         --slave /usr/bin/g++ g++ /usr/bin/g++-13
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 110 \
+                         --slave /usr/bin/g++ g++ /usr/bin/g++-11
+# 切换版本
+sudo update-alternatives --config gcc
+gcc -v
+g++ -v
+```
