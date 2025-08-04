@@ -1094,8 +1094,9 @@ pavucontrol
 sudo apt install build-essential # gcc-11 g++-11
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt install gcc-13 g++-13 libgcc-13-dev libstdc++-13-dev -y
-sudo apt --fix-broken install
-sudo apt install gcc-13 g++-13 libgcc-13-dev libstdc++-13-dev -y
+# 出现依赖冲突运行如下注释的2行
+#sudo apt --fix-broken install
+#sudo apt install gcc-13 g++-13 libgcc-13-dev libstdc++-13-dev -y
 # 移除旧配置
 sudo update-alternatives --remove-all gcc
 sudo update-alternatives --remove-all g++
