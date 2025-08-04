@@ -185,6 +185,9 @@ lsb_release -a
 gnome-control-center
     打开设置
 
+gnome-terminal
+    打开终端
+
 snap-store
     打开snap商店
 
