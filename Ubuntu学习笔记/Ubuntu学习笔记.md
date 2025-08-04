@@ -772,7 +772,7 @@ gnome-control-center
 ```txt
 DISTRIB_ID=Ubuntu
 DISTRIB_RELEASE=22.04 LTS
-DISTRIB_CODENAME=bookworm
+DISTRIB_CODENAME=jammy
 DISTRIB_DESCRIPTION="Ubuntu 22.04 LTS"
 ```
 将`/etc/os-release`修改为如下内容:  
@@ -781,7 +781,7 @@ PRETTY_NAME="Ubuntu (linux) 2022.04 LTS"
 NAME="Ubuntu"
 VERSION_ID="22.04 LTS"
 VERSION="22.04"
-VERSION_CODENAME=bookworm
+VERSION_CODENAME=jammy
 ID=ubuntu
 ID_LIKE=Debian
 HOME_URL="https://cn.ubuntu.com"
