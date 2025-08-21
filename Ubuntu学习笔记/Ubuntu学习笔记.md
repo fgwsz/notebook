@@ -1116,6 +1116,11 @@ g++ -v
 `ssh`连接`Github`的端口`22`时出现连接超时的问题
 在使用`git pull`的时候弹出如下报错信息:  
 ```txt
+ssh: connect to host github.com port 443: Connection timed out
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
 ```
 解决方式:  
 在`~/.ssh/`文件夹下新建一个文件名为`config`的文本文件,输入如下内容:  
