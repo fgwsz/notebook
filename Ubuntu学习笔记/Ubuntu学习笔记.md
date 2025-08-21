@@ -1111,3 +1111,39 @@ sudo update-alternatives --config gcc
 gcc -v
 g++ -v
 ```
+### 解决`2025.08.20`开始大陆强制关闭国外站点`443`端口的问题
+#### `github.com`的`443`端口无法访问的问题
+`ssh`连接`Github`的端口`22`时出现连接超时的问题
+在使用`git pull`的时候弹出如下报错信息:  
+```txt
+```
+解决方式:  
+在`~/.ssh/`文件夹下新建一个文件名为`config`的文本文件,输入如下内容:  
+```txt
+Host github.com
+User 这里填写你注册github帐号时使用的邮箱地址
+Hostname ssh.github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa
+Port 22
+```
+然后测试一下是否可以正常使用`ssh`连接到`github`.  
+```bash
+ssh -T git@github.com
+```
+弹出如下的提示信息:  
+```txt
+The authenticity of host 'ssh.github.com (20.205.243.160)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:1: [hashed name]
+    ~/.ssh/known_hosts:4: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+输入`yes`即可,弹出如下的提示信息:  
+```txt
+Warning: Permanently added 'ssh.github.com' (ED25519) to the list of known hosts.
+Hi fgwsz! You've successfully authenticated, but GitHub does not provide shell access.
+```
+看来现在已经可以使用`ssh`正常连接`github`了,  
+不过是将原先访问的`443`端口改为了访问`22`端口.  
