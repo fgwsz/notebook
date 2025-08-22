@@ -4,6 +4,13 @@
 ```bash
 sudo apt install gdb
 ```
+## 使用`GDB`打开`Debug`可执行程序
+```txt
+语法:
+    gdb [binary file path]
+使用案例:
+    gdb ./binary-debug # 使用gdb打开当前目录下的binary-debug可执行程序
+```
 ## 显示行号和视图
 命令格式                |作用                           |示例
 :-----------------------|:------------------------------|:-------------------
@@ -157,6 +164,10 @@ run  # 重新启动
 r    # 重新启动
 run arg1 arg2 # 重新启动并指定main函数参数
 r arg1 arg2   # 重新启动并指定main函数参数
+```
+## 退出`GDB`
+```bash
+exit
 ```
 ## 历史命令
 ```txt
