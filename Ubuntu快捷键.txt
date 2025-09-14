@@ -46,6 +46,12 @@ cp [-r] [from path] [to path]
 
 mv [from path] [to path]
     剪切[from path]文件/文件夹到[to path]
+    -v
+        可选项,用于输出信息,下面是一个具体的例子:
+            ```bash
+            mv -v oldname.txt newname.txt
+            # 输出: 'oldname.txt' -> 'newname.txt'
+            ```
 
 ls -f [dir path]
     [dir path]为空,默认为.(当前工作目录)
@@ -56,7 +62,7 @@ ls -ld [path]
 
 tree -f [dir path]
     安装:
-    ```shell
+    ```bash
     sudo apt install tree
     ```
     [dir path]为空,默认为.(当前工作目录)
@@ -131,7 +137,7 @@ history | grep [command info]
     查找包含[command info]的历史命令
     使用管道符`|`传递前一个命令的结果作为下一个命令的输入
     history
-        查看shell命令历史输入信息
+        查看bash命令历史输入信息
     grep [string/regex pattern] [path/string include match mode]
         查找显示目录/字符信息中的正则表达式匹配结果
 
