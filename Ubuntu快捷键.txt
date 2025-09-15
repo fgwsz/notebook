@@ -621,6 +621,34 @@ shotcut
     shotcut是一款开源的视频剪辑软件
     安装`sudo apt install shotcut`
 
+rsync -avzh --delete [source path] [target path]
+    目录内容同步
+    让[target path]目录的内容变成和[source path]目录的内容完全相同
+    [path]的目录不局限于本地目录,也可以是远程服务器的目录.
+    安装 rsync
+        ```bash
+        sudo apt-get install rsync
+        ```
+    下面是参数解释:
+    -a:归档模式,保留文件属性,并递归同步.
+    -v:显示详细过程.
+    -z:传输时压缩,节省带宽.
+    -h:以易读的格式输出信息.
+    --delete:最关键选项.删除目标目录中存在但源目录中不存在的文件.这正是实现"完全一致"所必需的.
+     -n (--dry-run):进行试运行但不会实际执行
+    一个具体的案例:
+        ```bash
+        #让远程服务器的/path/to/remote/target内容与本地的/path/to/local/source完全相同
+        rsync -avzh --delete /path/to/local/source/ user@remote-server.com:/path/to/remote/target/
+        ```
+    如果你是想把远程目录同步到本地,只需调换源和目标:
+        ```bash
+        #让本地目录/path/to/local/target内容与远程服务器/path/to/remote/source完全相同
+        rsync -avzh --delete user@remote-server.com:/path/to/remote/source/ /path/to/local/target/
+        ```
+        警告: --delete 参数会删除文件,所以使用前务必确认命令的源和目标路径是否正确!
+        建议先使用 -n (--dry-run) 参数进行试运行,看会有什么变化而不实际执行.
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
