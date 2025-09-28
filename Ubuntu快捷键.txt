@@ -167,6 +167,8 @@ ps aux
     fgwsz       2344  0.4  0.1 909444 55864 ?        Ssl  May29   0:12 gvim .
     fgwsz       8858  2.2  0.1 1006572 54024 ?       Rsl  00:10   0:03 gvim ./Ubuntu快捷键.txt
     fgwsz       8939  0.0  0.0   8444  6016 pts/2    S+   00:13   0:00 rg vim
+    例子:查找内存占用最大的进程从上到下依次排序
+    $ ps aux --sort -rss|head
 
 kill -9 [PID]
     杀死编号为[PID]的进程
