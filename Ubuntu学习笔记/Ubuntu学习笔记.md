@@ -10,12 +10,28 @@
 点击`Ubuntu xx.yy.z LTS`栏下的`Ubuntu 桌面版(64位)`按钮  
 此时会下载`ubuntu-xx.yy.z-desktop-amd64.iso.torrent`  
 ![](data/20240516095053.png)
-下载完成之后,使用BT下载工具打开这个`torrent`文件下载即可  
+下载完成之后,使用BT下载工具打开这个`torrent`文件下载即可.  
+最终得到一个`.iso`文件.
 ### 选择其他下载的原因
 如果点击`下载xx.yy.z`按钮会开始下载  
 但Chinese国情原因,下载速度会很慢(`kb/s`级别 
 而且如果下载过程中一旦出现了中断,会造成此次下载失败
 ## 安装
+### 制作U盘启动盘
+首先选择一个大容量U盘(容量高于8GB),下载`rufus`.
+
+`rufus`官网:<https://rufus.ie/zh/>
+
+下载`rufus`之后直接打开.然后选中U盘盘符和之前准备好的`.iso`文件.
+点击开始制作启动盘.
+注意:制作启动盘,会将U盘格式化.在此之前请将U盘重要数据存放到其他设备中.
+等待制作完成即可.
+### 使用U盘启动盘进入
+查询一下电脑型号对应的进入`BIOS`的方式.
+在进入`BIOS`之后,
+将启动模式`Boot Mode`设置为`UEFI`
+在`UEFI`启动栏中将`USB Device`的位置上移到最上面的第一位.
+保存并退出之后,此时正式使用U盘作为启动盘开机.
 启动`Ubuntu`系统  
 选中第一项`Try or Install Ubuntu`并回车  
 ![](data/20240516152406.png)  
@@ -117,6 +133,10 @@
 点击`Restart`按钮  
 ![](data/20240516221541.png)  
 ### 安装中文输入法
+首先安装一个超好用的ibus输入法:`Rime`
+```bash
+sudo apt install ibus-rime
+```
 点击右上角的`Settings`选项  
 ![](data/20240516214126.png)  
 向下翻找到`Region & Language`选项卡  
@@ -174,11 +194,7 @@ ibus-setup
 开机后发现右上角菜单栏出现`中`字样按钮  
 至此中文输入法安装成功  
 ![](data/20240516221810.png)  
-安装另一个超好用的ibus输入法:Rime
-```bash
-sudo apt install ibus-rime
-```
-上述指令执行完之后输入
+启动`ibus`设置界面,
 ```bash
 ibus-setup
 ```
@@ -1101,7 +1117,7 @@ sudo apt install gcc-13 g++-13 libgcc-13-dev libstdc++-13-dev -y
 sudo update-alternatives --remove-all gcc
 sudo update-alternatives --remove-all g++
 sudo rm /etc/alternatives/gcc /etc/alternatives/g++  # 删除残留符号链接
-# 重新注册（明确指定路径和优先级）
+# 重新注册(明确指定路径和优先级)
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 130 \
                          --slave /usr/bin/g++ g++ /usr/bin/g++-13
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 110 \
@@ -1152,3 +1168,21 @@ Hi fgwsz! You've successfully authenticated, but GitHub does not provide shell a
 ```
 看来现在已经可以使用`ssh`正常连接`github`了,  
 不过是将原先访问的`443`端口改为了访问`22`端口.  
+### 关闭`Wayland`使用`X11`
+编辑GDM配置文件,输入以下命令以编辑GDM的配置文件:
+```bash
+sudo gvim /etc/gdm3/custom.conf
+```
+禁用Wayland找到以下行并取消注释(删除前面的#),然后确保设置为false:
+```bash
+WaylandEnable=false
+```
+保存并退出
+重启系统,输入以下命令以重启系统:
+```bash
+sudo reboot
+```
+验证切换结果,系统重启后,运行以下命令检查当前显示服务器:
+```bash
+echo $XDG_SESSION_TYPE
+```
