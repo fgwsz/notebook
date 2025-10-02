@@ -1199,18 +1199,22 @@ chmod +x ./Snipaste-XXX-x86_64.AppImage # 赋予可执行权限
 可以将上述对应的命令设置为开机启动.
 ### 安装`QQ`
 进入`QQ`官网下载页:<https://im.qq.com/linuxqq/index.shtml>
+
 选择对应的`x86版下载`下面的`.deb`下载.
 下载完成之后,
 使用如下命令进行安装:
+
 下面的`XXX`指的是下载的软件的版本号
 ```bash
 sudo dpkg -i QQ_XXX.deb
 ```
 ### 安装`Edge`浏览器
 进入`Edge`官网下载页:<https://www.microsoft.com/zh-cn/edge/download>
+
 选择对应的`Linux(.deb)`下载.
 下载完成之后,
 使用如下命令进行安装:
+
 下面的`XXX`指的是下载的软件的版本号
 ```bash
 sudo dpkg -i microsoft-edge-stable_XXX_amd64.deb
