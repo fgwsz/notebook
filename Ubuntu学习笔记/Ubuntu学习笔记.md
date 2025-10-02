@@ -1219,3 +1219,24 @@ sudo dpkg -i QQ_XXX.deb
 ```bash
 sudo dpkg -i microsoft-edge-stable_XXX_amd64.deb
 ```
+### 修复`sudo:Name or service not known`提示
+在使用`sudo`命令时出现了如下的提示:
+
+其中XXX是计算机的名称
+```bash
+sudo: unable to resolve host XXX: Name or service not known
+```
+解决:
+1. 编辑`/etc/hosts`文件
+
+取消如下两行前的`#`,在下面的第一行的`localhost`后面添加上当前计算机的名称,
+保存并退出
+```txt
+127.0.0.1   localhost XXX
+::1         localhost
+```
+2. 执行如下命令
+```bash
+sudo systemctl restart NetworkManager
+```
+至此,再次使用`sudo`命令时发现不再弹出提示.
