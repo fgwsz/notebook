@@ -1186,3 +1186,14 @@ sudo reboot
 ```bash
 echo $XDG_SESSION_TYPE
 ```
+### 安装截图软件`Snipaste`
+进入`Snipaste`官网:<https://zh.snipaste.com/>
+
+选择`免费下载/安装`栏目下的`下载 Snipaste 2 桌面版`中的`Linux AppImage(x86_64)`
+
+下载完成之后,可以使用如下命令运行截图软件,下面的`XXX`指的是下载的软件的版本号:
+```bash
+chmod +x ./Snipaste-XXX-x86_64.AppImage # 赋予可执行权限
+./Snipaste-XXX-x86_64.AppImage # 执行即可
+```
+可以将上述对应的命令设置为开机启动.
