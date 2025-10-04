@@ -365,6 +365,8 @@ rg --version
 ```bash
 alias grep='rg'
 ```
+注意:`rg`的命令行功能和`grep`并不完全相同,
+有些`bash`脚本中调用`grep`命令还是推荐使用原版的`grep`.
 ### 更换`DNS`服务器
 ```bash
 sudo gvim /etc/systemd/resolved.conf
@@ -1240,3 +1242,6 @@ sudo: unable to resolve host XXX: Name or service not known
 sudo systemctl restart NetworkManager
 ```
 至此,再次使用`sudo`命令时发现不再弹出提示.
+### 安装`WPS Office`
+打开系统自带的应用商店,搜索`WPS Office 2019 - Multi-Language`,点击安装,
+等待安装完毕即可.
