@@ -1286,6 +1286,8 @@ sudo systemctl restart NetworkManager
 [热键]
     开始录制:Control + Alt + R
     结束录制:Control + Alt + S
+    暂停录制:Control + Alt + P
+    恢复录制:Control + Alt + U
         设置完毕,点击最下方的[应用]按钮
 ```
 此时使用热键进行录制和结束录制就非常方便了.
