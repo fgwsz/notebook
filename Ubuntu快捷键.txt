@@ -672,6 +672,11 @@ sensors
     查看硬件设备的当前温度
     安装:sudo apt install lm-sensors
 
+pip install [package name]
+    pip是python官方包管理工具,使用pip下载名为[package name]的软件
+    -i https://pypi.tuna.tsinghua.edu.cn/simple
+        -i [url]是指定镜像加速站点,上面是清华大学国内镜像,用于加速下载速度.
+
 whisper [file path]
     为文件路径为[file path]的视频,音频生成字幕文件(本地AI无需联网的语音识别)
         安装:pip install openai-whisper
