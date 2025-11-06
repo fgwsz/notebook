@@ -686,6 +686,8 @@ whisper [file path]
         指定输出字幕的语言
         当此项没有指定的时候,会截取视频的前30秒用于判定视频的语言类型
         Detecting language using up to the first 30 seconds. Use `--language` to specify the language
+    --initial_prompt="下面是普通话的句子。"
+        添加这个参数可以修复 --language Chinese 默认输出繁体中文字幕的问题
     --model [模型]
         模型可选项
         模型有这几种:tiny,base,small,medium,large
