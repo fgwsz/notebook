@@ -679,11 +679,20 @@ whisper [file path]
     --language [语言]
         语言可选项
         指定输出字幕的语言
+        当此项没有指定的时候,会截取视频的前30秒用于判定视频的语言类型
+        Detecting language using up to the first 30 seconds. Use `--language` to specify the language
     --model [模型]
         模型可选项
         模型有这几种:tiny,base,small,medium,large
+        实际测试下来:medium是识别中文时间性价比最高的模型
     --help
         显示帮助信息
+    --fp16 False
+        UserWarning: FP16 is not supported on CPU; using FP32 instead
+          warnings.warn("FP16 is not supported on CPU; using FP32 instead")
+        当出现上述错误提示信息的时候,请添加参数:--fp16 False
+    下面是一个具体的使用案例:
+        whisper ./4S店最讨厌的人.mp4 --language Chinese --fp16 False --model medium
 
 #=============================================================================
 #应用快捷键部分
