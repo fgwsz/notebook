@@ -629,7 +629,16 @@ pdftk [[input pdf file] list] [[operator] [arguemnts] list] output [output pdf f
 shotcut
     启动shotcut
     shotcut是一款开源的视频剪辑软件
-    安装`sudo apt install shotcut`
+    安装方式:
+        方式一:
+            sudo apt install shotcut
+                # version 22.01.30+ds-1
+                这种安装方式安装的shotcut版本较老
+        方式二:
+            sudo snap install shotcut --classic
+                # version 25.08.16, or
+                这种安装方式安装的shotcut版本是最新版
+                最新版的shotcut支持视频自动生成字幕功能
 
 rsync -avzh --delete [source path] [target path]
     目录内容同步
