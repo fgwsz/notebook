@@ -1319,3 +1319,57 @@ brasero
 如果是需要连续写入多张光盘的话,请点击下面中间的`Burn Serveral Copies`按钮.
 
 之后等待刻录完成.刻录成功或者失败之后,会显示提示信息,然后弹出光盘.
+### 修复中文字体形状显示异常(日文字形)
+我们会发现在使用一些中文文字的时候,会发现字体的形状显示得很奇怪,
+例如:`失`这个字的显示,看起来和其他字的宽度不同.
+
+这种现象大概率是在使用`noto`字体,
+`noto`默认字形优先级日文比中文要高,
+所以字形会看起来怪怪的.
+```bash
+sudo gvim /etc/fonts/conf.d/64-language-selector-prefer.conf
+```
+编辑上述文件,
+将`Noto Sans CJK SC`与`Noto Sans Mono CJK SC`的优先级置于`JP`或`TC`之前,
+保存后即可恢复正确中文字形.
+
+修改后的文件内容类似如下:
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+	<alias>
+		<family>sans-serif</family>
+		<prefer>
+			<family>Noto Sans CJK SC</family>
+			<family>Noto Sans CJK TC</family>
+			<family>Noto Sans CJK HK</family>
+			<family>Noto Sans CJK JP</family>
+			<family>Noto Sans CJK KR</family>
+			<family>Lohit Devanagari</family>
+			<family>Noto Sans Sinhala</family>
+		</prefer>
+	</alias>
+	<alias>
+		<family>serif</family>
+		<prefer>
+			<family>Noto Serif CJK SC</family>
+			<family>Noto Serif CJK TC</family>
+			<family>Noto Serif CJK JP</family>
+			<family>Noto Serif CJK KR</family>
+			<family>Lohit Devanagari</family>
+			<family>Noto Serif Sinhala</family>
+		</prefer>
+	</alias>
+	<alias>
+		<family>monospace</family>
+		<prefer>
+			<family>Noto Sans Mono CJK SC</family>
+			<family>Noto Sans Mono CJK TC</family>
+			<family>Noto Sans Mono CJK HK</family>
+			<family>Noto Sans Mono CJK JP</family>
+			<family>Noto Sans Mono CJK KR</family>
+		</prefer>
+	</alias>
+</fontconfig>
+```
