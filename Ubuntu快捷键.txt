@@ -32,6 +32,15 @@
 #命令行部分
 #=============================================================================
 
+[command 1] | [command 2]
+    管道符号的作用:
+        将[command 1]指令的执行结果作为[command 2]指令的(最后一个)输入参数
+        并执行[command 2]
+    管道符号可以连接两个或多个指令,例如:
+        echo "hello" | grep "hel" | cat > 0.txt
+        它的工作原理相当于如下的指令组合:
+        cat $(grep "hello" $(echo "hello")) > 0.txt
+
 touch [file path]
     新建一个路径为[file path]的文本文件
 
@@ -189,6 +198,14 @@ echo [string]>>[file path]
     在路径为[file path]的文本文件内容的尾部插入一行字符串[string]
     若[file path]不存在,则创建一个路径为[file path]的文本文件
 
+[command]>[file path]
+    覆盖路径为[file path]的文本文件内容为[command]指令的执行结果
+    若[file path]不存在,则创建一个路径为[file path]的文本文件
+
+[command]>>[file path]
+    在路径为[file path]的文本文件内容的尾部插入[command]指令的执行结果
+    若[file path]不存在,则创建一个路径为[file path]的文本文件
+
 cat [file path]
     查看(在终端显示)路径为[file path]的文本文件的具体内容
 
@@ -216,6 +233,13 @@ gnome-session-properties
 
 head -n [line-number] [file-path/string]
     控制台打印显示[file-path/string]的前[line-number]行内容
+    [command] | head -n 10
+        打印[command]指令执行结果的前10行
+
+tail -n [line-number] [file-path/string]
+    控制台打印显示[file-path/string]的前[line-number]行内容
+    [command] | tail -n 10
+        打印[command]指令执行结果的最后10行
 
 man [command]
     进入man显示界面,显示[command]的帮助信息
