@@ -136,6 +136,11 @@ su [user name]
     如果[user name]为空,切换到root账号
 
 apt install [package name]
+    apt和apt-get只是在信息显示上有区别,更推荐使用apt获得更好的显示体验
+    apt-get install [package name]
+    常用的命令行功能选项:
+    -y
+        自动回答"yes",跳过所有交互式提示
     使用apt安装名为[package name]的包
 
 apt remove [package name]
