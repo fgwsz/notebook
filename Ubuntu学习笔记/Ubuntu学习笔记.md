@@ -976,7 +976,7 @@ epsonscan2
 并且彻底地摆脱`Ubuntu`系统中的程序崩溃报告,  
 具体做法是编辑`/etc/default/apport`文件最后一行,  
 把`enabled=1`改为`enabled=0`,然后保存并关闭该文件.  
-### `dpkg`错误
+### `dpkg`错误`E: Sub-process /usr/bin/dpkg returned an error code (1)`
 在使用`sudo apt-get install`的时候出现如下错误:  
 ```bash
 dpkg: error processing package shim-signed (--configure):
@@ -991,6 +991,17 @@ sudo mv /var/lib/dpkg/info /var/lib/dpkg/info.bak
 sudo mkdir /var/lib/dpkg/info
 sudo apt-get update
 sudo apt-get install shim-signed
+sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info.bak/
+sudo rm -rf /var/lib/dpkg/info
+sudo mv /var/lib/dpkg/info.bak /var/lib/dpkg/info
+```
+由此引出一个更加通用的解决方案:专门针对`dpkg`返回错误代码`(1)`  
+```bash
+#!/bin/bash
+sudo mv /var/lib/dpkg/info /var/lib/dpkg/info.bak
+sudo mkdir /var/lib/dpkg/info
+sudo apt-get update
+sudo apt-get -f install
 sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info.bak/
 sudo rm -rf /var/lib/dpkg/info
 sudo mv /var/lib/dpkg/info.bak /var/lib/dpkg/info
