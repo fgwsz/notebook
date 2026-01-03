@@ -487,6 +487,16 @@ spark-store
 ```bash
 sudo dpkg -i WeChatLinux_x86_64.deb
 ```
+如果安装时出现如下的错误:  
+```txt
+dpkg: error processing archive WeChatLinux_x86_64.deb (--install):
+ trying to overwrite '/usr/share/applications/wechat.desktop', which is also in package electronic-wechat-icons-atzlinux 1.0.5
+```
+请使用如下的指令进行修复并重新安装:  
+```bash
+sudo apt remove electronic-wechat-icons-atzlinux
+sudo dpkg -i WeChatLinux_x86_64.deb
+```
 启动方式:  
 ```bash
 /usr/bin/wechat
@@ -1383,4 +1393,14 @@ sudo gvim /etc/fonts/conf.d/64-language-selector-prefer.conf
 		</prefer>
 	</alias>
 </fontconfig>
+```
+### 解决`sudo`命令出现找不到主机名问题
+错误提示如下:  
+```txt
+sudo: unable to resolve host Computer: No address associated with hostname
+```
+输入的命令进行解决:  
+```bash
+# 获取当前主机名并自动添加到 hosts 文件
+echo "127.0.1.1 $(hostname)" | sudo tee -a /etc/hosts
 ```
