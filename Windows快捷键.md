@@ -99,7 +99,7 @@
 `Ctrl Shift Tab` 切换到上一个标签页  
 `Ctrl j`         打开下载标签栏小窗口，之后可以使用Tab键来选择选项按钮，`Enter`来点击按钮，`Esc`键退出小窗口  
 `Ctrl p`         打印当前网页  
-`Ctrl r`         刷新当前网页
+`Ctrl r`         刷新当前网页  
 `Alt d`          进入标签页地址栏  
 `Alt ←`          后退  
 `Alt →`          前进  
