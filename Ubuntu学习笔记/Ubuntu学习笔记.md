@@ -1404,3 +1404,16 @@ sudo: unable to resolve host Computer: No address associated with hostname
 # 获取当前主机名并自动添加到 hosts 文件
 echo "127.0.1.1 $(hostname)" | sudo tee -a /etc/hosts
 ```
+### 解决`/home`空间不够用的时候,将部分文件转存到`/`下的方法
+```bash
+# 在`/`新建一个空文件夹
+sudo mkdir /extra_space
+# 在`/home`新建一个空文件夹
+mkdir ~/RootExtraSpace
+# 使用绑定操作绑定两个文件夹
+sudo mount --bind /extra_space/ ~/RootExtraSpace
+# 赋予名为[用户名]的用户`/extra_space`文件夹的root用户访问权限
+# sudo chown -R [用户名]:[用户名] /extra_space
+# 下面以[用户名]为fgwsz为例
+sudo chown -R fgwsz:fgwsz /extra_space
+```
