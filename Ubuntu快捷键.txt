@@ -724,7 +724,7 @@ whisper [file path]
         指定输出字幕的语言
         当此项没有指定的时候,会截取视频的前30秒用于判定视频的语言类型
         Detecting language using up to the first 30 seconds. Use `--language` to specify the language
-    --initial_prompt="下面是普通话的句子。"
+    --initial_prompt="下面是普通话的句子."
         添加这个参数可以修复 --language Chinese 默认输出繁体中文字幕的问题
     --model [模型]
         模型可选项
@@ -773,6 +773,62 @@ rdfind [path]
         选择查重信息的本地存储文件的名称,默认是results.txt
     -deleteduplicates true|[false]
         默认是true,会删除results.txt中除了第一个以外的所有重复文件
+
+ln -s [target-path] [output-path]
+    创建一个指向[target-path]的软链接到[output-path]中
+    具体的使用案例如下:
+
+    # 测试创建一个指向目录的软链接文件到另一个目录中
+    $ mkdir 1 2
+    $ ln -s 1 2
+    $ tree 1
+    1
+
+    0 directories, 0 files
+    $ tree 2
+    2
+    └── 1 -> 1
+
+    0 directories, 1 file
+
+    # 测试创建一个指向文件的软链接文件替代现有文件
+    $ echo "hello" > 1.txt
+    $ touch 2.txt
+    $ ln -s 1.txt 2.txt 
+    ln: failed to create symbolic link '2.txt': File exists
+
+    # 测试创建一个指向文件的软链接文件存放到原先不存在的指定文件路径中
+    $ ln -s 1.txt 3.txt
+    vim 的netrw文件浏览器显示如下:
+        1.txt
+        2.txt
+        3.txt@	 --> 1.txt
+
+    # 测试创建一个指向文件的软链接文件存放到原先不存在的指定目录路径中
+    $ mkdir 3
+    $ ln -s 1.txt 3
+    $ tree 3
+    3
+    └── 1.txt -> 1.txt
+
+    0 directories, 1 file
+
+    # 测试删除软链接,会不会一并删除本体
+    $ rm -rf 3.txt
+    $ cat 1.txt
+    hello
+    # 答案是不会删除本体,因为软链接文件就类似windows操作系统的快捷方式
+
+    额外提醒:
+        软链接创建过程中指定路径参数的"相对/绝对"问题
+            上述测试中 ln -s 1.txt 3 后,tree 3 显示 3/1.txt -> 1.txt,
+            这是相对路径(因为源和目标在同一目录下).
+            如果移动了链接文件或目标文件,相对链接可能失效.
+        稳妥起见:
+            如果希望链接始终有效,建议创建时使用绝对路径.
+
+unlink [软链接文件的路径]
+    取消软链接,会让软链接文件直接取消关联然后删除自身.
 
 #=============================================================================
 #应用快捷键部分
