@@ -1466,3 +1466,49 @@ sudo mount --bind /extra_space/ ~/RootExtraSpace
 # 下面以[用户名]为fgwsz为例
 sudo chown -R fgwsz:fgwsz /extra_space
 ```
+在上述方法中,`mount --bind` 是临时挂载,重启后自然失效;
+
+而 `chown` 修改的权限是持久的,但绑定丢失后,
+`~/RootExtraSpace` 只是一个空目录(因为不再指向 `/extra_space`),
+所以用户会觉得"没有访问权限"(实际上是目录为空或指向了原空目录).
+
+#### 根本原因
+- **绑定挂载** 只存在于当前内核的挂载表中,重启后需重新挂载.
+- `/extra_space` 本身在根目录下,如果根分区和 `/home` 不是独立分区,
+那么 `/extra_space` 实际上使用的还是根分区的空间,
+**并没有额外增加可用空间**,只是多了一个入口.
+
+#### 解决方案(持久化绑定)
+将绑定挂载写入 `/etc/fstab`,让系统每次启动时自动挂载.
+
+##### 步骤:
+1. **编辑 fstab**  
+   ```bash
+   sudo gvim /etc/fstab
+   ```
+   添加以下行(将 `username` 替换为你的实际用户名):
+   ```
+   /extra_space   /home/username/RootExtraSpace   none   bind   0   0
+   ```
+   - 第一列:源目录(实际存储位置)
+   - 第二列:目标挂载点(你 home 下的目录)
+   - 第三列:文件系统类型 `none`
+   - 第四列:选项 `bind`
+   - 第五|六列:转储和检查参数,填 `0 0`
+
+2. **确保挂载点存在**  
+   ```bash
+   mkdir -p /home/username/RootExtraSpace
+   ```
+
+3. **测试挂载**(无需重启)  
+   ```bash
+   sudo mount -a
+   ```
+   这条命令会读取 `/etc/fstab` 并挂载所有未挂载的项,检查是否成功.
+
+4. **调整权限**(一次性设置,重启后保留)  
+   你已经执行过 `chown`,但如果将来重新创建了 `/extra_space`,可能需要再执行一次:
+   ```bash
+   sudo chown -R username:username /extra_space
+   ```
