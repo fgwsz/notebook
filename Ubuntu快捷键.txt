@@ -860,6 +860,8 @@ linux xdg(类似于windows的explorer.exe)
     `ctrl l` 进入地址编辑栏
     `ctrl n` 打开一个新的和当前文件路径一致的文件浏览器窗口
     `shift ctrl n` 新建目录
+    按住`ctrl`鼠标滚轮上滑 放大图标显示百分比
+    按住`ctrl`鼠标滚轮下滑 缩小图标显示百分比
 
 linux microsoft-edge
     `ctrl n`         打开一个新的edge窗口,并显示`new tab`页
@@ -879,6 +881,8 @@ linux microsoft-edge
     `↓`              网页视图显示范围下移一段距离(不平滑移动)
     `←`              网页视图显示范围左移一段距离(不平滑移动)
     `→`              网页视图显示范围右移一段距离(不平滑移动)
+    按住`ctrl`鼠标滚轮上滑 放大网页页面显示百分比
+    按住`ctrl`鼠标滚轮下滑 缩小网页页面显示百分比
 
 linux Document Viewer
     `j`/`↓`         向下滑动一小段距离
@@ -889,3 +893,5 @@ linux Document Viewer
     `space`         向后翻一页
     `ctrl f`        搜索当前文档的注释
     `ctrl p`        打印当前文档
+    按住`ctrl`鼠标滚轮上滑 放大文档页面显示百分比
+    按住`ctrl`鼠标滚轮下滑 缩小文档页面显示百分比
