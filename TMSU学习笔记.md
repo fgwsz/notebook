@@ -13,54 +13,22 @@ TMSU 提供两个主要功能：
 
 ## 二、安装
 
-### 2.1 通过包管理器安装（推荐）
-
-**Ubuntu/Debian**（使用官方 PPA）：
+**Ubuntu/Debian**（源码编译安装）：
 
 ```bash
-sudo add-apt-repository ppa:tmsu/ppa
+#!/bin/bash
 sudo apt update
-sudo apt install tmsu
-```
-
-**Arch Linux**（AUR）：
-
-```bash
-yay -S tmsu
-# 或
-paru -S tmsu
-```
-
-**Nix/NixOS**：
-
-```bash
-nix-env -iA nixos.tmsu
-```
-
-**macOS**（Homebrew）：
-
-```bash
-brew install tmsu
-```
-
-### 2.2 安装预编译二进制
-
-从 [GitHub Releases](https://github.com/oniony/TMSU/releases) 下载对应平台的二进制文件：
-
-```bash
-# 下载后复制到系统路径
-sudo cp tmsu /usr/bin/
-```
-
-> **依赖要求**：TMSU 需要 **FUSE** 和 **SQLite3**。通过包管理器安装会自动处理这些依赖。
-
-### 2.3 从源码编译
-
-```bash
+sudo apt install -y golang git
+cd ~/Downloads
 git clone https://github.com/oniony/TMSU.git
 cd TMSU
-make
-sudo make install
+export GOPROXY=https://goproxy.cn,direct
+go get github.com/hanwen/go-fuse@v1.0.0
+go get github.com/mattn/go-sqlite3@v1.14.7
+go mod tidy
+go build -o bin/tmsu .
+sudo cp bin/tmsu /usr/bin/
+tmsu --version
 ```
 
 ## 三、初始化数据库
