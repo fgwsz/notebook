@@ -7,17 +7,24 @@ shotcut是第一款剪辑软件.
     因此我选择kdenlive来代替shotcut.
 
 kdenlive的安装方式:
-    sudo apt install kdenlive
-    kdenlive --version
+    使用apt安装方式:
+        sudo apt install kdenlive
+        kdenlive --version
 
-    之后就可以直接使用`kdenlive`直接打开.
+        之后就可以直接使用`kdenlive`直接打开.
+    在官网下载最新版本:
+        https://kdenlive.org/zh-cn/download/
+        下载AppImage软件包,下载链接如下:
+            https://cdn.kde.org/ci-builds/multimedia/kdenlive/master/linux/kdenlive-master-13008-linux-gcc-x86_64.AppImage
+        下载完成之后,chmod +x 赋予.AppImage可执行权限
+        即可当作windows的exe那样使用.
 
 kdenlive设置为简体中文:
     顶部菜单栏:设置>>配置语言>>首选语言和备选语言都设置为简体中文,然后点击确定
 
-kdenlive的项目目录可以统一设置为:
+kdenlive的项目创建方式:
     设置方式:文件>>新建>>项目设置>>勾选`自定义项目文件夹`里面选择如下路径:
-        ~/Videos/kdenlive
+        举例:可以设置为~/Videos/kdenlive/my-project-0001
     注意:这个路径指的是项目路径文件夹,设置之后并不会自动创建项目文件.
         只有在第一次保存项目(ctrl-s)的时候才会弹出一个对话框,
         让用户输入项目文件的名称,此时才是真正的项目文件的建立.
@@ -63,10 +70,10 @@ kdenlive如何添加视频的音频到独立的音频轨道呢?
 kdenlive删除空白
     选中要删除的空白段,鼠标右键选择删除空白片段
 
-kdenlive切断分离
+kdenlive分割(切断分离)
     这个操作就比较隐藏了
-    首先选中要分离的轨道,然后将竖线移动要分割的那一帧,
-    此时按下快捷键`shift r`,此时就会发现选中的轨道全部分割成功了.
+    首先选中要分离的轨道,然后选中要分离的片段,然后将竖线移动要分割的那一帧,
+    此时按下快捷键`shift r`,此时就会发现选中的片段分割成功了.
 
 kdenlive效果怎么设置
     效果:shotcut中的滤镜
@@ -95,6 +102,12 @@ kdenlive的播放器预览窗口太小怎么办?
 
     全屏状态下,鼠标左键单击 暂停/继续播放
 
+kdenlive缩放时间线的比例显示:缩放时间轴
+    按住ctrl,鼠标滚轮上滑:
+        拉大时间轴(时间线窗口内显示更短的时间间隔)用于精确显示
+    按住ctrl,鼠标滚轮下滑:
+        缩短时间轴(时间线窗口内显示更长的时间间隔)用于粗略显示
+
 kdenlive的一些快捷键
     F1 打开用户手册
     ctrl s 保存
@@ -102,5 +115,4 @@ kdenlive的一些快捷键
     space 暂停/继续播放
     shift r 分割
     delete 删除
-
 
