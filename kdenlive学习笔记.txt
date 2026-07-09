@@ -147,9 +147,14 @@ kdenlive的一些快捷键
     F1 打开用户手册
     ctrl s 保存
     ctrl z 撤销
+    ctrl shift z 取消撤销
     space 暂停/继续播放
     shift r 分割
     delete 删除
+    ctrl c 复制
+    ctrl x 剪切
+    ctrl v 粘贴
+    ctrl a 全选
 
 kdenlive导出剪辑视频的方式:
     文件>>导出
