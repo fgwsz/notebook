@@ -10,14 +10,16 @@ kdenlive的安装方式:
     使用apt安装方式:
         sudo apt install kdenlive
         kdenlive --version
-
         之后就可以直接使用`kdenlive`直接打开.
-    在官网下载最新版本:
+    这种方式不推荐,因为apt安装的kdenlive是21年版本的,存在很多bug
+
+    推荐在在官网下载最新版本:
         https://kdenlive.org/zh-cn/download/
         下载AppImage软件包,下载链接如下:
-            https://cdn.kde.org/ci-builds/multimedia/kdenlive/master/linux/kdenlive-master-13008-linux-gcc-x86_64.AppImage
+           https://cdn.kde.org/ci-builds/multimedia/kdenlive/master/linux/kdenlive-master-13008-linux-gcc-x86_64.AppImage
         下载完成之后,chmod +x 赋予.AppImage可执行权限
         即可当作windows的exe那样使用.
+    我这里使用的版本是kdenlive-26.04.3-x86_64
 
 kdenlive设置为简体中文:
     顶部菜单栏:设置>>配置语言>>首选语言和备选语言都设置为简体中文,然后点击确定
@@ -98,7 +100,8 @@ kdenlive删除空白
 
 kdenlive分割(切断分离)
     这个操作就比较隐藏了
-    首先选中要分离的轨道,然后选中要分离的片段,然后将竖线移动要分割的那一帧,
+    首先选中要分离的轨道,然后选中要分离的片段(最新版kdenlive可以不选中),
+    然后将竖线移动要分割的那一帧,
     此时按下快捷键`shift r`,此时就会发现选中的片段分割成功了.
 
 kdenlive效果怎么设置
@@ -148,3 +151,9 @@ kdenlive的一些快捷键
     shift r 分割
     delete 删除
 
+kdenlive导出剪辑视频的方式:
+    文件>>导出
+    进入导出设置界面
+        格式>>Hardware Accelerated(硬件加速,这是实验特性)>>VAAPI INTEL/AMD
+    我使用的显卡是intel显卡,所以我选择了vaapi intel
+        如果导出显示崩溃,那还是选择默认的MP4-H.264导出方式
