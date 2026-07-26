@@ -830,6 +830,16 @@ ln -s [target-path] [output-path]
 unlink [软链接文件的路径]
     取消软链接,会让软链接文件直接取消关联然后删除自身.
 
+file [file-path]
+    检查文件头信息,根据二进制信息判断文件类型
+
+strings [file-path]
+    给出文件的二进制内容的可视信息(ASCII)
+
+unrar x [rar file path] [exprot dir path]
+    解压路径为[rar file path]的`.rar`压缩包到路径`exprot dir path`目录下.
+    安装`unrar`:`sudo apt install unrar`
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
