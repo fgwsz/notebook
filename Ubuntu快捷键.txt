@@ -840,6 +840,10 @@ unrar x [rar file path] [exprot dir path]
     解压路径为[rar file path]的`.rar`压缩包到路径`exprot dir path`目录下.
     安装`unrar`:`sudo apt install unrar`
 
+wireshark
+    一款网络抓包工具.
+    安装`sudo apt install wireshark`
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
