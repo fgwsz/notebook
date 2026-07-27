@@ -844,6 +844,50 @@ wireshark
     一款网络抓包工具.
     安装`sudo apt install wireshark`
 
+sed [-i] "{expr1}; {expr2}; ... {exprn}" [file-path]
+    sed 是一个强大的文本处理工具,我主要用它进行文件的文本内容替换.
+    -i
+        表示原位置修改
+        不写-i表示不修改原文件内容.
+
+    -i.bak
+        表示原位置修改,并备份(将修改前的文件另存为[file-path].bak)
+
+    -e "expr"
+        可以使用-e 标识符号来代替`;`分隔多个语句.
+        "expr1; expr2; expr3" 等价于 -e "expr1" -e "expr2" -e "expr3"
+
+    sed 的输出为"expr"序列处理后的字符串,可以与>/>>/|配合
+        写入/追加写入/作为参数传递给下一个命令
+
+    -n
+        关闭sed的默认输出
+
+    expr是什么呢?
+        expr有很多类型,我常用的是全局替换语句,
+        它的写法和vim的`:%s`替换表达式很类似.
+
+        例如:
+            #将全部的`hello.world\n`替换为`666\r`
+            vim全局替换命令是这样的:
+                `:%s/hello\.world\n/666\r/g`
+            sed的expr是这样的:
+                "s/hello\.world\n/666\r/g"
+
+        新的技巧: -n + p
+            上述替换expr中g指的是global行内的全部
+            可以附加p,p是print,意思是发生替换的时候,打印发生替换的那一行.
+            但是这好像没有什么用,因为sed默认会输出处理后的全部文本内容.
+            可以使用 -n 来关闭sed的默认输出.
+            由此可以使用 -n 配合 g和p
+            也就是:
+                sed -n "s/xxxx/yyyy/gp" file-path
+
+    用法举例:
+        sed -n "s/hello/world/g; s/abc\.6/de/gp" file.txt > file2.txt
+        sed -i "s/hello/world/g; s/abc\.6/de/g" file.txt
+        sed "s/hello/world/g; s/abc\.6/de/g" file.txt | rg world
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
