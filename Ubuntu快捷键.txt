@@ -888,6 +888,60 @@ sed [-i] "{expr1}; {expr2}; ... {exprn}" [file-path]
         sed -i "s/hello/world/g; s/abc\.6/de/g" file.txt
         sed "s/hello/world/g; s/abc\.6/de/g" file.txt | rg world
 
+gzip [file-path]
+    `.gz` 是 gzip(GNU zip)压缩格式的扩展名.
+        它使用 DEFLATE 算法进行压缩,
+        核心特点是 只压缩单个文件(或标准输入流),不具备文件打包功能.
+
+    压缩(创建 .gz 文件)
+    基本用法(压缩后删除原文件):
+    gzip filename.txt
+      执行后,`filename.txt` 消失,变为 `filename.txt.gz`.
+
+    -k
+        保留原文件(常用)
+        gzip -k filename.txt
+
+    -c
+        使用 `-c` 进行输出重定向,保留原文件(常用)
+        gzip -c filename.txt > filename.txt.gz
+
+    特殊用法:
+        压缩标准输入(比如管道传过来的数据).
+        cat log.txt | gzip > log.txt.gz
+
+gunzip [gzip file path]
+    解压(还原 .gz 文件)
+
+    基本用法(解压后删除 .gz 文件):
+    gunzip filename.txt.gz
+        执行后,`filename.txt.gz` 消失,变为 `filename.txt`.
+
+    -k
+        保留压缩包(常用)
+        gunzip -k filename.txt.gz
+        或使用 `gzip -d -k`
+
+    -c
+        输出到标准输出(最常用,且不改变原文件)
+        gunzip -c filename.txt.gz > output.txt
+
+    -l/-t
+        查看压缩包内容(不解压)
+        验证与测试(不解压,只检查)
+        gunzip -l file.gz    显示压缩前后的字节数
+        gunzip -t file.gz    测试完整性,无输出则正常
+
+    特别注意:
+        1. 如果你对普通的 `.gz` 文件执行 `tar -xzf`,会报错
+        (因为它不是一个 `tar` 归档).
+
+        2. 反之,如果你对 `.tar.gz` 执行 `gunzip`,虽然能解压出 `.tar` 文件,
+        但还得再用 `tar -xf` 解包.
+
+        3. gunzip可以解压无扩展名/扩展名不为`.gz`的gzip包
+        因为`gunzip` 不看扩展名,只认数据头(文件二进制头部的魔数),
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
