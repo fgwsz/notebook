@@ -106,3 +106,7 @@ git reflog
 
 git show [commit ID]
     显示[commit ID]对应的仓库修改的详细内容
+
+git 显示界面的快捷键:
+    使用回车`<RET>`来继续显示剩余部分(下一行).
+    使用`q`来退出显示.
