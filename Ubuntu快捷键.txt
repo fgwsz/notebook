@@ -1022,6 +1022,12 @@ ffmpeg -i [video/gif/mp4 file path] [export image file path format]
             ./
                 frame_00001.png ... frame_00010.png 
 
+nohup [command] > /dev/null 2>&1 &
+    后台运行命令[command]并脱离终端(彻底分离)
+    nohup 忽略 SIGHUP 信号,即使终端关闭[command]进程也不会被终止.
+    > /dev/null 2>&1 将标准输出和错误重定向到 /dev/null,避免产生 nohup.out 文件
+    & 表示[command]后台运行
+
 #=============================================================================
 #应用快捷键部分
 #=============================================================================
