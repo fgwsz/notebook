@@ -1063,12 +1063,23 @@ linux xdg(类似于windows的explorer.exe)
 
 linux microsoft-edge
     `ctrl n`         打开一个新的edge窗口,并显示`new tab`页
+    `ctrl t`         打开一个新的标签页,并进入地址输入栏
     `ctrl d`         收藏当前标签页
     `ctrl w`         关闭当前标签页
     `ctrl tab`       切换到下一个标签页
     `ctrl shift tab` 切换到上一个标签页
     `ctrl j`         打开下载标签栏小窗口,之后可以使用`tab`键来选择选项按钮,`enter`来点击按钮,`esc`键退出小窗口
     `ctrl p`         打印当前网页
+    `ctrl f`         搜索当前标签页内容
+                         弹出搜索框,键入要搜索的字符串后
+                         匹配内容会实时高亮显示
+                         并将网页位置自动跳转到第一个匹配位置
+                        `return`(回车键) 跳转到下一个匹配
+                        `shift return` 跳转到下一个匹配
+                        `esc` 退出搜索框
+    `ctrl o`         弹出资源管理器子窗口
+                        选中文件并点击`open`按钮后,在当前标签页加载选中的文件
+                        `esc` 退出资源管理器子窗口
     `alt d`          进入标签页地址栏
     `alt ←`          后退
     `alt →`          前进
