@@ -963,7 +963,21 @@ binwalk [binary file path]
     强项:处理"文件拼接"
     (一张图片尾部粘了另一张图片或 ZIP 包)|识别嵌入的压缩包.
 
-    安装:sudo apt install binwalk
+    安装:
+        不推荐的安装方式:
+        binwalk-python版(脚本版)
+        sudo apt install binwalk
+        卸载:
+        # 卸载 apt 安装的 binwalk 相关包
+        sudo apt remove --purge python3-binwalk binwalk
+        # 如果上面命令没有删除干净,可以手动删除残留的 /usr/bin/binwalk
+        sudo rm -f /usr/bin/binwalk
+        不推荐python版的原因:
+            会因为python包环境的变化,导致依赖库出现版本冲突造成无法使用.
+
+        注意:推荐使用snap安装binwalk(二进制发布版)
+        binwalk-rust版
+        sudo apt intall binwalk
 
     binwalk [binary file path]
         扫描(看结构):`binwalk 文件名`
@@ -978,10 +992,10 @@ binwalk [binary file path]
         但有个缺陷:如果某个数据块的特征没那么标准,
         或者藏的是纯文本|自定义数据,`-e` 可能会选择忽略它.
 
-        但是我实际测试下来并不会提取文件,需要添加--dd=".*"才可以提取.
+        但是我实际测试下来(python版)并不会提取文件,需要添加--dd=".*"才可以提取.
 
     --dd=".*"
-        这是强行补刀的参数.
+        这是强行补刀的参数.(python版)
         - `--dd` 的意思是"用类似 Linux `dd` 命令的方式,
         把某一段二进制数据原封不动地抠出来存成文件".
 
@@ -1027,6 +1041,9 @@ nohup [command] > /dev/null 2>&1 &
     nohup 忽略 SIGHUP 信号,即使终端关闭[command]进程也不会被终止.
     > /dev/null 2>&1 将标准输出和错误重定向到 /dev/null,避免产生 nohup.out 文件
     & 表示[command]后台运行
+
+which -a [command]
+    显示检查[command]指向的程序所在的所有文件位置
 
 #=============================================================================
 #应用快捷键部分

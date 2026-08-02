@@ -1512,3 +1512,17 @@ sudo chown -R fgwsz:fgwsz /extra_space
    ```bash
    sudo chown -R username:username /extra_space
    ```
+### 设置`wine`的分辨率和画面缩放
+使用如下命令调出`wine`配置程序`winecfg`:
+```bash
+winecfg
+```
+选中`Graphics`选项卡下的如下设置:
+```txt
+[O] Emulate a virtual desktop
+    Desktop size: 1920 x 1080
+Screen resolution:
+    200 dpi
+```
+然后点击`Apply`和`OK`按钮.
+至此设置完毕.
