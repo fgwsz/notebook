@@ -965,7 +965,7 @@ binwalk [binary file path]
 
     安装:
         不推荐的安装方式:
-        binwalk-python版(脚本版)
+        binwalk-python版(脚本版 binwalk v2)
         sudo apt install binwalk
         卸载:
         # 卸载 apt 安装的 binwalk 相关包
@@ -975,9 +975,18 @@ binwalk [binary file path]
         不推荐python版的原因:
             会因为python包环境的变化,导致依赖库出现版本冲突造成无法使用.
 
-        注意:推荐使用snap安装binwalk(二进制发布版)
-        binwalk-rust版
-        sudo apt intall binwalk
+        注意:不推荐使用snap安装binwalk(二进制发布版)
+        binwalk-rust版(binwalk v3),接口已经改变,无法使用`--dd`参数
+        安装:sudo snap intall binwalk
+        卸载:sudo snap remove binwalk
+
+        唯一推荐的安装方式:(python 2.3.4 源码虚拟环境构建0外部依赖二进制文件)
+            git clone git@github.com:fgwsz/binwalk_v2.git
+            cd binwalk_v2
+            chmod +x ./install_binwalk_v2.sh
+            ./install_binwalk_v2.sh
+            然后将如下语句写入.bashrc
+                alias binwalk={这里改为binwalk_v2.git下载路径}/binwalk_v2/binwalk_v2_env/bin/binwalk
 
     binwalk [binary file path]
         扫描(看结构):`binwalk 文件名`
