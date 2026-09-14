@@ -2,6 +2,26 @@
 #命令行部分
 #=============================================================================
 
+snap list
+    作用:
+        列出系统中所有通过 snap 安装的软件包
+    输出内容:
+        名称  版本  修订号  追踪通道  发布者  备注
+    常用搭配:
+        snap list
+        直接查看所有 snap 应用
+        snap list | grep 软件名
+        查找某个 snap 是否已安装
+    注意:
+        1. 只显示 snap 包，与 dpkg -l 互补
+        2. snap 软件通常自动更新，版本和修订号会变化
+        3. 卸载用 snap remove 软件名
+
+    两者关系:
+        dpkg -l   -> 查看 deb 包（apt/dpkg 安装）
+        snap list -> 查看 snap 包（snap 安装）
+        想完整了解系统装了哪些软件，最好两个都查，再配合 flatpak list
+
 [command 1] | [command 2]
     管道符号的作用:
         将[command 1]指令的执行结果作为[command 2]指令的(最后一个)输入参数
@@ -86,6 +106,27 @@ dpkg -l [package name]
     dpkg -l|grep [string/regex pattern]
     查看[string/regex pattern]匹配的包信息
 
+    dpkg -l
+        作用:
+            列出系统中所有通过 dpkg/apt 安装的 deb 软件包
+        输出内容:
+            每行一个包，依次为：
+            状态码  包名  版本  架构  描述
+            常见状态码:
+                ii  = 已安装且配置正常
+                rc  = 已删除但保留配置文件
+                iU  = 已解包但未配置
+                iF  = 半配置
+        常用搭配:
+            dpkg -l | grep 软件名
+            例如:
+                dpkg -l | grep firefox
+                查看是否安装了 firefox
+        注意:
+            1. 只显示 deb 包，不显示 snap、flatpak、AppImage 等
+            2. 输出列表通常很长，建议配合 grep 或 less 使用
+            3. 查看安装历史可看 /var/log/dpkg.log
+
 dpkg -i [deb package path]
     安装本地的路径为[deb package path]的deb包
 
@@ -95,8 +136,109 @@ apt search [package name]
     apt search [package name]|grep installed
     查看[package name]是否已经安装
 
-apt list --upgradable
-    查看本地哪些包可以从远程仓库获取更新
+apt list
+    作用:
+        列出 APT 已知的软件包
+        默认会列出软件源里所有包，包括已安装和未安装的
+        加参数后可以只看已安装、可升级、所有版本等
+
+    是否需要 root:
+        不需要，普通用户即可运行
+
+    常用参数:
+        --installed
+            只列出已安装的软件包
+            等价于查看 apt/dpkg 已安装的 deb 包
+        --upgradable
+            只列出可升级的软件包
+        --all-versions
+            列出软件包的所有可用版本
+            简写: -a
+        --manual-installed
+            只列出手动安装的包
+            不包括作为依赖自动装上的包
+
+    常用示例:
+        apt list --installed
+            列出所有已安装的 deb 包
+
+        apt list --installed | grep firefox
+            查看 firefox 是否已安装
+
+        apt list --upgradable
+            查看哪些软件可以升级
+
+        apt list --all-versions vim
+            查看 vim 所有可用版本
+
+        apt list --manual-installed
+            查看手动安装的包
+
+        apt list --installed > installed_apt.txt
+            把已安装列表导出到文件
+
+    输出格式:
+        包名/来源分支  版本  架构  [状态]
+
+        例如:
+            vim/jammy-updates,now 2:8.2.3995-1ubuntu2.24 amd64 [installed]
+
+        各部分含义:
+            包名          软件包名称
+            来源分支      来自哪个源，如 jammy、jammy-updates、jammy-security
+            now           表示当前安装版本来自该源
+            版本          软件版本
+            架构          amd64、i386、all 等
+            [状态]        安装状态、是否自动安装、是否可升级等
+
+    常见状态标记:
+        [installed]
+            已安装
+        [installed,automatic]
+            已安装，且是作为依赖自动安装的
+        [installed,local]
+            已安装，且来自本地 deb 包
+            例如用 dpkg -i 或 apt install ./xxx.deb 安装
+        [installed,upgradable to: 新版本]
+            已安装，且可以升级到新版本
+        [upgradable from: 旧版本]
+            可升级，当前是旧版本
+        [residual-config]
+            软件已删除，但配置文件还残留
+
+    注意:
+        1. apt list 只显示 APT 知道的 deb 包
+           不显示 snap、flatpak、AppImage 等
+        2. 结果依赖 apt 缓存
+           建议先执行 sudo apt update 再查看，结果更准确
+        3. apt list 在脚本中不是稳定接口
+           可能出现警告:
+           WARNING: apt does not have a stable CLI interface.
+           可以忽略，或写成:
+           apt list --installed 2>/dev/null
+        4. 中文环境下状态可能显示为中文
+           想让输出稳定，可以用:
+           LC_ALL=C apt list --installed
+        5. 输出通常很长
+           建议配合 grep、less、wc 使用
+
+    与 dpkg -l 的区别:
+        dpkg -l
+            只查 dpkg 数据库
+            显示已安装、半安装、残留配置等
+            不显示未安装的包
+            不显示“可升级”信息
+        apt list --installed
+            查 APT 数据库
+            也能显示已安装包
+            还能显示自动安装、本地安装、可升级等状态
+        apt list
+            默认还会显示未安装的包和所有可用版本
+
+    一句话总结:
+        apt list --installed   = 看已安装的 deb 包
+        apt list --upgradable  = 看可升级的包
+        apt list --all-versions 包名 = 看某个包的所有版本
 
 sudo [command]
     使用管理员权限来执行[command]指令
