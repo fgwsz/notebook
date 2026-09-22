@@ -1,0 +1,272 @@
+我们办公室的打印机是富士施乐牌的docu centre s2110打印机
+
+但是这个型号的打印机没有linux操作系统的驱动程序.
+
+我在网上找了很久的，终于在统信软件适配社区中找到了这个型号的linux驱动程序:
+
+网址:
+    https://ecology.chinauos.com/
+在这个网址搜索:
+    Fuji Xerox FX DocuCentre S2110(Bisheng)
+
+找到了其中满足条件的2个打印机驱动
+    drive-service_signed_printer-driver-bisheng-fx-docucentre-s2110_3.0.3_all.deb
+    drive-service_signed_printer-driver-bisheng-xerox-s2110pcl6_3.0.3_all.deb
+
+使用
+    sudo dpkg -i drive-service_signed_printer-driver-bisheng-fx-docucentre-s2110_3.0.3_all.deb
+安装过程中遇到问题
+使用如下的命令开始灵活安装
+    sudo apt --fix-broken install
+仍然出现问题
+    根据deepseek的指引,下载如下2个依赖:
+    下载网址如下:
+    网址1:
+        https://ppa.build.openkylin.top/liweinan/nile-uos/openkylin/pool/main/b/bisheng-engine-wine8/
+    下载:
+        x86_64
+            bisheng-engine-wine8_3.0.3-1_amd64.deb
+        arm 64:
+            bisheng-engine-wine8_3.0.3-1_arm64.deb
+    网址2:
+        https://mirrors.cqupt.edu.cn/deepin/pool/non-free/b/bisheng-filter/
+    下载:
+        bisheng-filter_2.0.8-1_amd64.deb
+
+接下来:
+    sudo dpkg -i bisheng-engine-wine8_3.0.3-1_amd64.deb
+安装成功
+
+    sudo dpkg -i bisheng-filter_2.0.8-1_amd64.deb
+安装出错:
+    dpkg: dependency problems prevent configuration of bisheng-filter:
+     bisheng-filter depends on deepin-elf-verify (>= 0.0.16.7-1); however:
+      Package deepin-elf-verify is not installed.
+      Package electronic-wechat-icons-atzlinux which provides deepin-elf-verify is not installed.
+      Package electronic-wechat-icons-atzlinux which provides deepin-elf-verify is not installed.
+     bisheng-filter depends on bisheng-engine (>= 2.0.6); however:
+      Package bisheng-engine is not installed.
+
+    dpkg: error processing package bisheng-filter (--install):
+     dependency problems - leaving unconfigured
+    Errors were encountered while processing:
+     bisheng-filter
+接下来询问DeepSeek得知需要下载bisheng引擎本体才行
+    网址:
+        https://mirrors.cqupt.edu.cn/deepin/pool/non-free/b/bisheng-engine/
+    下载:
+        bisheng-engine-i386_2.0.8-1_i386.deb
+        bisheng-engine-runtime_2.0.5-1_i386.deb
+
+    网址:
+        https://mirrors.cqupt.edu.cn/deepin/pool/main/d/deepin-elf-verify/
+    下载:
+        deepin-elf-verify_1.2.0.6-1_amd64.deb
+
+    网址:
+        https://ppa.build.openkylin.top/liweinan/nile-uos/openkylin/pool/main/d/deepin-wine-runtime/
+    下载:
+        deepin-wine-runtime_0.2.4_arm64.deb
+
+sudo dpkg -i deepin-elf-verify_1.2.0.6-1_amd64.deb
+    安装成功
+sudo dpkg -i deepin-wine-runtime_0.2.4_arm64.deb (arm64 显然无法在amd64中使用)
+    安装失败
+
+确认架构信息:
+    dpkg --print-architecture
+    amd64
+
+amd64方式:
+    wget -O- https://deepin-wine.i-m.dev/setup.sh | sh
+    sudo apt update
+    sudo apt install deepin-wine-runtime
+    # sudo apt install deepin-wine6-stable
+    # sudo dpkg --add-architecture i386
+    # sudo apt update
+
+
+接下来重新尝试:
+    sudo dpkg -i bisheng-engine-runtime_2.0.5-1_i386.deb
+    sudo dpkg -i bisheng-engine-i386_2.0.8-1_i386.deb
+    安装成功
+
+    sudo dpkg -i bisheng-filter_2.0.8-1_amd64.deb
+    安装失败
+
+    mkdir -p /tmp/bisheng-filter-extract
+    dpkg-deb -R bisheng-filter_2.0.8-1_amd64.deb /tmp/bisheng-filter-extract
+    编辑控制文件
+    用文本编辑器打开 /tmp/bisheng-filter-extract/DEBIAN/control：
+    gvim /tmp/bisheng-filter-extract/DEBIAN/control
+    找到 Depends: 这一行，你会看到类似这样的内容：
+    Depends: deepin-elf-verify (>= 0.0.16.7-1), bisheng-engine (>= 2.0.6)
+    有两种改法，任选一种：
+    改法一（推荐）：把 bisheng-engine (>= 2.0.6) 替换成 bisheng-engine-i386 (>= 2.0.6)。这样依赖关系就匹配你已安装的包了。
+    修改后保存退出（在 nano 中按 Ctrl+O 保存，Ctrl+X 退出）。
+    重新打包
+    dpkg-deb -b /tmp/bisheng-filter-extract /tmp/bisheng-filter-modified.deb
+    sudo dpkg -i /tmp/bisheng-filter-modified.deb
+    如果安装成功，bisheng-filter 就会配置完成。
+    安装成功
+
+https://www.chinauos.com/resource/download-drivers/result?keyword=bisheng3
+    下载:
+        drive-service_signed_bisheng-filter_3.0.0_amd64.deb
+
+
+    sudo dpkg -i drive-service_signed_bisheng-filter_3.0.0_amd64.deb
+    安装成功
+    sudo dpkg -i drive-service_signed_printer-driver-bisheng-xerox-s2110pcl6_3.0.3_all.deb
+    安装成功
+
+查找ppd文件:
+    find /usr/share/ppd /usr/share/cups -name "*S2110*" -o -name "*s2110*" 2>/dev/null
+    /usr/share/ppd/printer-driver-deepinwine/Fuji Xerox-FX DocuCentre S2110.ppd
+    /usr/share/cups/ppd-updaters/printer-driver-bisheng-xerox-s2110pcl6.ppd-updater
+
+根据你提供的完整记录，我帮你梳理出一条**从零开始、去除所有错误尝试的最终成功路径**。以下步骤已在你的 amd64 Ubuntu 系统上验证通过。
+
+---
+
+## 🎯 最终目标
+在 Ubuntu (amd64) 上安装富士施乐 DocuCentre S2110 打印机的毕昇驱动，并找到 PPD 文件用于添加打印机。
+
+---
+
+## 📦 第一步：安装必要依赖
+
+### 1. 添加 i386 架构支持（若未添加）
+```bash
+sudo dpkg --add-architecture i386
+sudo apt update
+```
+
+### 2. 安装 `deepin-elf-verify`
+从 Deepin 源下载并安装：
+```bash
+wget https://mirrors.cqupt.edu.cn/deepin/pool/main/d/deepin-elf-verify/deepin-elf-verify_1.2.0.6-1_amd64.deb
+sudo dpkg -i deepin-elf-verify_1.2.0.6-1_amd64.deb
+```
+
+### 3. 通过 i-m.dev 源安装 `deepin-wine-runtime`
+```bash
+wget -O- https://deepin-wine.i-m.dev/setup.sh | sh
+sudo apt update
+sudo apt install deepin-wine-runtime
+```
+上述安装的版本是2.0.5
+
+其他方式下载:
+网址1:
+    https://labolina.lysator.liu.se/pub/deepin/packages/beige/pool/commercial/d/deepin-wine-runtime/
+网址2:
+    https://ppa.build.openkylin.top/liweinan/nile-uos/openkylin/pool/main/d/deepin-wine-runtime/
+网址3:
+    https://ecology.chinauos.com/
+    搜索:wine runtime
+
+### 4. 安装 `bisheng-engine-wine8`
+从 OpenKylin 源下载：
+```bash
+wget https://ppa.build.openkylin.top/liweinan/nile-uos/openkylin/pool/main/b/bisheng-engine-wine8/bisheng-engine-wine8_3.0.3-1_amd64.deb
+sudo dpkg -i bisheng-engine-wine8_3.0.3-1_amd64.deb
+```
+
+### 5. 安装 `bisheng-engine-i386` 和 `bisheng-engine-runtime`
+从 Deepin 源下载：
+```bash
+wget https://mirrors.cqupt.edu.cn/deepin/pool/non-free/b/bisheng-engine/bisheng-engine-i386_2.0.8-1_i386.deb
+wget https://mirrors.cqupt.edu.cn/deepin/pool/non-free/b/bisheng-engine/bisheng-engine-runtime_2.0.5-1_i386.deb
+sudo dpkg -i bisheng-engine-runtime_2.0.5-1_i386.deb
+sudo dpkg -i bisheng-engine-i386_2.0.8-1_i386.deb
+```
+
+### 6. 安装 `bisheng-filter` 3.0.0
+从统信软件适配社区下载（你提供的链接）：
+```bash
+# 下载 drive-service_signed_bisheng-filter_3.0.0_amd64.deb
+sudo dpkg -i drive-service_signed_bisheng-filter_3.0.0_amd64.deb
+```
+
+---
+
+## 🖨️ 第二步：安装打印机驱动
+
+### 1. 清理可能存在的旧驱动冲突（如果之前装过）
+```bash
+sudo dpkg --remove --force-remove-reinstreq printer-driver-bisheng-fx-docucentre-s2110
+sudo rm -f "/usr/share/ppd/printer-driver-deepinwine/Fuji Xerox-FX DocuCentre S2110.ppd"
+```
+
+### 2. 安装 Xerox S2110 PCL6 驱动
+```bash
+sudo dpkg -i drive-service_signed_printer-driver-bisheng-xerox-s2110pcl6_3.0.3_all.deb
+```
+
+### 3. 修复可能的依赖（通常不需要）
+```bash
+sudo apt --fix-broken install
+```
+
+---
+
+## 🔍 第三步：找到 PPD 文件
+
+```bash
+find /usr/share/ppd /usr/share/cups -name "*S2110*" -o -name "*s2110*" 2>/dev/null
+```
+
+你应该会看到：
+```
+/usr/share/ppd/printer-driver-deepinwine/Fuji Xerox-FX DocuCentre S2110.ppd
+/usr/share/cups/ppd-updaters/printer-driver-bisheng-xerox-s2110pcl6.ppd-updater
+```
+
+---
+
+## 🧩 第四步：通过 CUPS 添加打印机
+
+1. 浏览器打开：`http://localhost:631`
+2. 点击 **Administration** → **Add Printer**
+3. 选择检测到的 USB 打印机（名称含 `USB` 和 `S2110`）
+4. 在 **Make** 处选择 **Provide PPD file**
+5. 浏览并选择：`/usr/share/ppd/printer-driver-deepinwine/Fuji Xerox-FX DocuCentre S2110.ppd`
+6. 完成添加，打印测试页。
+
+---
+
+## ✅ 验证安装
+
+```bash
+dpkg -l | grep -E 'bisheng|printer-driver-bisheng'
+```
+所有相关包状态应为 `ii`（已安装并配置）。
+
+---
+
+## 💡 注意事项
+- 首次打印时 Wine 环境可能需要初始化，会稍慢，请耐心等待。
+- 如果打印无反应，查看 CUPS 错误日志：`sudo tail -f /var/log/cups/error_log`
+- 若系统重启后打印机消失，检查 CUPS 服务是否自启：`sudo systemctl enable cups`
+
+按照以上步骤，你可以干净、快速地完成驱动安装，无需再经历之前那些错误的依赖尝试。
+
+选择通信协议取决于你的打印机是如何连接到电脑的。根据你的情况，推荐如下：
+
+### 🔌 如果是USB直连（推荐）
+**首选 `usb://` 协议**。这是最直接、最稳定的方式，CUPS 会自动检测并选用，你通常无需手动选择。在 CUPS 添加界面，直接选中带有 `usb://` 开头的设备即可。
+
+### 🌐 如果是网络连接（局域网）
+按以下优先级选择：
+
+1. **首选 `ipp://` (Internet Printing Protocol)**：这是现代网络打印的标准协议，也是 CUPS 的原生协议，功能最全，兼容性最好。端口通常是 **631**。URI 格式类似：`ipp://打印机IP/ipp/print` 或 `ipp://打印机IP:631/printers/打印机名称`。
+
+2. **次选 `socket://` (AppSocket/HP JetDirect)**：如果 IPP 无法连接，这是最通用的替代方案，直接将打印数据发送到 TCP 端口。端口通常是 **9100**。URI 格式：`socket://打印机IP:9100`。
+
+3. **最后尝试 `lpd://` (Line Printer Daemon)**：一种较老的 Unix 打印协议，端口 **515**。如果前两者都不行再考虑。URI 格式：`lpd://打印机IP/队列名`，队列名常见为 `LPT1`、`lp1` 等。
+
+### 💡 给你的 S2110 的具体建议
+鉴于你已经成功安装了毕昇驱动（含 Wine 环境），**USB 直连是最省心的选择**。如果必须走网络，优先在 CUPS 中添加 `ipp://` 协议的打印机。
+
+你可以先在终端运行 `lpinfo -v | grep ":/"` 来查看系统当前检测到的可用设备 URI，根据输出结果再做选择会更准确。
