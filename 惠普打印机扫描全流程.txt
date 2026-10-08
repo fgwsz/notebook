@@ -1,0 +1,86 @@
+1.使用惠普打印机扫描得到图片
+
+sudo apt install hplip hplip-gui
+
+hp-toolbox # 惠普打印机图形工具箱
+
+hp-scan # 惠普扫描仪驱动程序
+```
+$ hp-scan
+
+HP Linux Imaging and Printing System (ver. 3.21.12)
+Scan Utility ver. 2.2
+
+Copyright (c) 2001-18 HP Development Company, LP
+This software comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to distribute it
+under certain conditions. See COPYING file for more details.
+
+
+-----------------
+| SELECT DEVICE |
+-----------------
+
+  Num       Scan device URI                                      
+  --------  -----------------------------------------------------
+  0         epsonscan2:networkscanner:esci2:network:192.168.31.87
+  1         epsonscan2:networkscanner:esci2:network:192.168.31.78
+  2         hpaio:/net/HP_LaserJet_Pro_MFP_M226dw?ip=10.88.44.38 
+  3         airscan:w1:HP LaserJet Pro MFP M226dw (F0E81F)       
+
+Enter number 0...3 for device (q=quit) ? 3
+warning: No destinations specified. Adding 'file' destination by default.
+Using device airscan:w1:HP LaserJet Pro MFP M226dw (F0E81F)
+Opening connection to device...
+
+Resolution: 300dpi
+Mode: gray
+Compression: JPEG
+Scan area (mm):
+  Top left (x,y): (0.000000mm, 0.000000mm)
+  Bottom right (x,y): (209.981796mm, 296.925995mm)
+  Width: 209.981796mm
+  Height: 296.925995mm
+Destination(s): file
+Output file: 
+warning: File destination enabled with no output file specified.
+Setting output format to PNG for greyscale mode.
+warning: Defaulting to '/home/wxb/hpscan004.png'.
+
+Warming up...
+ 
+
+Scanning...
+Reading data: [****************************************************************************************************************************************] 100%  8.3 MB     
+Read 8.3 MB from scanner.
+Closing device.
+
+Outputting to destination 'file':
+
+Done.
+```
+    选 3
+    之后等待
+    扫描的图片会保存到 ~/hpscanxxx.png
+
+2.拼接图片为PDF
+
+sudo apt install imagemagick
+
+convert hpscan001.png hpscan002.png hpscan003.png output.pdf
+
+遇到如下问题：
+convert-im6.q16: attempt to perform an operation not allowed by the security policy `PDF' @ error/constitute.c/IsCoderAuthorized/426.
+
+使用root权限编辑如下文件,并保存
+sudo gvim /etc/ImageMagick-6/policy.xml 
+    修改内容
+    第97行将:
+        <policy domain="coder" rights="none" pattern="PDF" />
+    修改为:
+        <policy domain="coder" rights="read | write" pattern="PDF" />
+    保存
+
+重新执行
+convert hpscan001.png hpscan002.png hpscan003.png output.pdf
+得到output.pdf

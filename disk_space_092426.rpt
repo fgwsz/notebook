@@ -1,0 +1,22 @@
+Top Ten Disk Space Usage
+for  /var/log /home Directories
+
+The /var/log Directory:
+1:	1.8G	/var/log/journal/8a0d42abb5cc4941bc0bcaaebd0d9149
+2:	15.8M	/var/log
+3:	2.6M	/var/log/installer
+4:	1.1M	/var/log/apt
+5:	1016.1K	/var/log/clamav
+6:	11.8K	/var/log/cups
+7:	9.4K	/var/log/unattended-upgrades
+8:	46B	/var/log/journal
+9:	17B	/var/log/hp
+10:	6B	/var/log/wpslog
+11:	6B	/var/log/speech-dispatcher
+12:	6B	/var/log/private
+13:	6B	/var/log/openvpn
+14:	6B	/var/log/hp/tmp
+15:	6B	/var/log/gdm3
+16:	6B	/var/log/dist-upgrade
+
+The /home Directory:
