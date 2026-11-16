@@ -207,3 +207,63 @@ pdftoppm -jpeg "old.pdf" output
 # 替换页面后重新拼接
 convert output-*.jpg new.pdf
 ```
+
+## 8. 旋转图片
+
+使用 ImageMagick 的 `convert` 命令旋转图片，核心语法非常简单，主要是通过 `-rotate` 参数指定旋转角度。
+
+### 基本语法
+
+```bash
+convert 输入图片 -rotate 角度 输出图片
+```
+
+角度为**正数**时，图片会**顺时针**旋转；为**负数**时，则**逆时针**旋转。
+
+### 常用旋转操作
+
+**1. 旋转固定角度（90°、180°、270°）**
+这是最常用的场景，适合快速校正照片方向。
+
+```bash
+# 顺时针旋转90度
+convert input.jpg -rotate 90 output.jpg
+
+# 逆时针旋转90度
+convert input.jpg -rotate -90 output.jpg
+
+# 旋转180度（上下颠倒）
+convert input.jpg -rotate 180 output.jpg
+```
+以上操作均会生成新文件 `output.jpg`，原始文件不受影响。
+
+**2. 按任意角度旋转（如45°、30°）**
+适合创意微调或校正倾斜的扫描件。
+
+```bash
+convert input.jpg -rotate 45 output.jpg
+```
+**需要注意**：非90倍数的旋转，图片的边角会超出原画布范围，产生空白区域，默认这些区域会以黑色填充。
+
+**3. 自定义空白区域的背景色**
+如果旋转后产生的黑色背景不符合需求，可以先用 `-background` 选项指定颜色（如白色或透明），再进行旋转。
+
+```bash
+# 将旋转后的背景设为白色
+convert input.jpg -background white -rotate 45 output.jpg
+
+# 将背景设为透明（仅对PNG等支持透明的格式有效）
+convert input.png -background transparent -rotate 45 output.png
+```
+**顺序很重要**：`-background` 选项必须放在 `-rotate` 选项**之前**才能生效。
+
+### 批量旋转图片
+
+如果需要处理一个目录下的多张图片，可以配合 `find` 命令来实现。
+
+**使用 `find` 配合 `convert`（推荐，可控性强）**
+此命令会查找当前目录（`-maxdepth 1`）下所有 `.jpg` 文件，并逐一进行顺时针90度旋转，**直接覆盖原文件**。
+```bash
+find . -maxdepth 1 -type f -name "*.jpg" -exec convert {} -rotate 90 {} \;
+```
+**注意**：此操作会直接修改原始文件，建议操作前先做好备份。
