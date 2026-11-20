@@ -1526,3 +1526,86 @@ Screen resolution:
 ```
 然后点击`Apply`和`OK`按钮.
 至此设置完毕.
+### 往可重复读写光盘追加内容（growisofs 版）
+
+适用于 **DVD+RW / DVD-RW** 光盘。CD-RW 不能用 growisofs，需要换 `xorriso` 或 `wodim`。
+
+---
+
+#### 第一步：确认光盘类型
+
+```bash
+dvd+rw-mediainfo /dev/sr0
+```
+
+看 `Mounted Media` 一行：
+- 显示 `DVD+RW`、`DVD-RW`、`DVD+R`、`DVD-R` → 可以用 growisofs
+- 显示 `CD-RW`、`CD-R` → 不能用 growisofs
+
+同时记下 `Free Blocks` 或剩余空间，确认够放新文件。
+
+#### 第二步：确认光盘上已有文件系统
+
+```bash
+lsblk -f /dev/sr0
+```
+
+`FSTYPE` 显示 `iso9660` 或 `udf` → 盘上已有文件系统，可以用 `-M` 追加。
+
+如果是空白盘（没有 FSTYPE），第一次写入要用 `-Z`，不能用 `-M`。
+
+#### 第三步：追加数据
+
+```bash
+growisofs -M /dev/sr0 -J -R /要追加的文件或目录/
+```
+
+参数说明：
+
+| 参数 | 作用 |
+|---|---|
+| `-M /dev/sr0` | 追加模式，把新内容合并进光盘已有文件系统，不覆盖旧数据 |
+| `-J` | Joliet 扩展，Windows 下能看长文件名 |
+| `-R` | Rock Ridge 扩展，Linux 下能看长文件名和权限 |
+| 最后的路径 | 要追加的文件或目录，可以是多个 |
+
+示例：
+
+```bash
+growisofs -M /dev/sr0 -J -R ./报告.pdf ./图片/
+```
+
+#### 第四步：验证
+
+```bash
+sudo mount /dev/sr0 /mnt
+ls /mnt
+sudo umount /mnt
+```
+
+能看到旧文件和新追加的文件，就说明成功。
+
+---
+
+#### 注意事项
+
+1. **不要加 `-dvd-compat`**：它会封盘（写 lead-out），之后就不能再追加了。只有确定这张盘以后不再写入时才加。
+2. **`-J -R` 要和第一次刻录时一致**：追加时用的 genisoimage 选项最好和首次写入相同，否则文件系统扩展可能不一致。
+3. **`-M` 只能用于已有文件系统的盘**：空白盘第一次写入用 `-Z`：
+   ```bash
+   growisofs -Z /dev/sr0 -J -R /首次内容/
+   ```
+4. **容量要够**：追加前用 `dvd+rw-mediainfo /dev/sr0` 看剩余空间，确认新文件放得下。
+5. **DVD-RW 有时需要先擦除**：如果 `-M` 报错，可能需要先 `dvd+rw-format -blank=full /dev/sr0` 完全擦除后重新用 `-Z` 写入。
+
+---
+
+#### 一句话模板
+
+```bash
+# 首次写入空白盘
+growisofs -Z /dev/sr0 -J -R /首次内容/
+
+# 之后每次追加
+growisofs -M /dev/sr0 -J -R /新内容/
+```
